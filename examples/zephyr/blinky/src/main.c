@@ -33,7 +33,7 @@
 #include "blinky.h"
 #include "bsp.h"
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /*..........................................................................*/
 static QEvt const *l_blinkyQSto[10]; /* event queue storage for Blinky */

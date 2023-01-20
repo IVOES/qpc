@@ -1,7 +1,7 @@
 /*****************************************************************************
 * Product: QUTEST fixture for the DPP example
-* Last updated for version 7.1.1
-* Last updated on  2022-09-22
+* Last updated for version 7.3.0
+* Last updated on  2023-06-23
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -47,8 +47,6 @@ extern QHsm * const SM_Philo[N_PHILO];
 
 /*..........................................................................*/
 int main(int argc, char *argv[]) {
-    static QSubscrList subscrSto[MAX_PUB_SIG];
-    static QF_MPOOL_EL(TableEvt) smlPoolSto[2*N_PHILO]; /* small pool */
 
     QF_init();    /* initialize the framework and the underlying RT kernel */
     BSP_init(argc, argv); /* initialize the Board Support Package */
@@ -64,13 +62,15 @@ int main(int argc, char *argv[]) {
 
     QS_OBJ_DICTIONARY(&Table_inst);
 
-    /* pause execution of the test and wait for the test script to continue */
+    /* pause the test and wait for the test script to issue continue() */
     QS_TEST_PAUSE();
 
     /* initialize publish-subscribe... */
+    static QSubscrList subscrSto[MAX_PUB_SIG];
     QF_psInit(subscrSto, Q_DIM(subscrSto));
 
     /* initialize event pools... */
+    static QF_MPOOL_EL(TableEvt) smlPoolSto[2*N_PHILO]; /* small pool */
     QF_poolInit(smlPoolSto, sizeof(smlPoolSto), sizeof(smlPoolSto[0]));
 
     /* construct and initialize Philo HSM components */
@@ -108,12 +108,12 @@ void QS_onCommand(uint8_t cmdId,
 
     switch (cmdId) {
        case 0U: {
-           QEvt const e_pause = { PAUSE_SIG, 0U, 0U };
+           QEvt const e_pause = QEVT_INITIALIZER( PAUSE_SIG);
            QHSM_DISPATCH(&AO_Table->super, &e_pause, (uint_fast8_t)param1);
            break;
        }
        case 1U: {
-           QEvt const e_serve = { SERVE_SIG, 0U, 0U };
+           QEvt const e_serve = QEVT_INITIALIZER(SERVE_SIG);
            QHSM_DISPATCH(&AO_Table->super, &e_serve, (uint_fast8_t)param1);
            break;
        }

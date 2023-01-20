@@ -1,7 +1,7 @@
 /*****************************************************************************
 * Product: DPP example
 * Last updated for version 6.7.0
-* Last updated on  2019-12-18
+* Last updated on  2019-12-28
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -49,6 +49,6 @@ void BSP_wait4PB1(void);
 void BSP_ledOn(void);
 void BSP_ledOff(void);
 
-extern QActive *the_Ticker0;
+extern QActive * const the_Ticker0;
 
 #endif /* BSP_H */

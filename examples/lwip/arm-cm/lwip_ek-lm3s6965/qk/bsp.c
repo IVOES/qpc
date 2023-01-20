@@ -98,11 +98,11 @@ void SysTick_Handler(void) {
     tmp ^= buttons.depressed;     /* changed debounced depressed */
     if ((tmp & USER_BTN) != 0U) { /* debounced USER_BTN state changed? */
         if ((buttons.depressed & USER_BTN) != 0U) { /* is BTN depressed? */
-            static QEvt const bd = { BTN_DOWN_SIG, 0U, 0U };
+            static QEvt const bd = QEVT_INITIALIZER(BTN_DOWN_SIG);
             QACTIVE_PUBLISH(&bd, &l_SysTick_Handler);
         }
         else { /* the button is released */
-            static QEvt const bu = { BTN_UP_SIG, 0U, 0U };
+            static QEvt const bu = QEVT_INITIALIZER(BTN_UP_SIG);
             QACTIVE_PUBLISH(&bu, &l_SysTick_Handler);
         }
     }
@@ -218,13 +218,14 @@ void QK_onIdle(void) {
 }
 
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
     /*
     * NOTE: add here your application-specific error handling
     */
-    (void)module;
-    (void)loc;
-    QS_ASSERTION(module, loc, 10000U); /* report assertion to QS */
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
+    QS_ASSERTION(module, id, 10000U); /* report assertion to QS */
     NVIC_SystemReset();
 }
 
@@ -233,6 +234,11 @@ Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
 */
 uint32_t sys_now(void) {
     return l_nTicks * (1000 / BSP_TICKS_PER_SEC);
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 
 /*--------------------------------------------------------------------------*/

@@ -1,7 +1,7 @@
 /*****************************************************************************
 * Product: Reminder state pattern example
-* Last updated for version 6.8.0
-* Last updated on  2020-04-01
+* Last updated for version 7.3.0
+* Last updated on  2023-05-28
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -36,7 +36,7 @@
 
 #include "safe_std.h" /* portable "safe" <stdio.h>/<string.h> facilities */
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /*..........................................................................*/
 enum SensorSignals {
@@ -101,7 +101,8 @@ QState Sensor_polling(Sensor * const me, QEvt const * const e) {
     switch (e->sig) {
         case Q_ENTRY_SIG: {
             /* periodic timeout in 1/2 second and every 1/2 second */
-            QTimeEvt_armX(&me->timeEvt, BSP_TICKS_PER_SEC/2, BSP_TICKS_PER_SEC/2);
+            QTimeEvt_armX(&me->timeEvt,
+                          BSP_TICKS_PER_SEC/2, BSP_TICKS_PER_SEC/2);
             status = Q_HANDLED();
             break;
         }
@@ -118,7 +119,7 @@ QState Sensor_polling(Sensor * const me, QEvt const * const e) {
             /* NOTE: this constant event is statically pre-allocated.
             * It can be posted/published as any other event.
             */
-            static const QEvt reminderEvt = { DATA_READY_SIG, 0U, 0U };
+            static const QEvt reminderEvt = QEVT_INITIALIZER(DATA_READY_SIG);
 
             ++me->pollCtr;
             PRINTF_S("polling %3d\n", me->pollCtr);
@@ -211,8 +212,8 @@ static QEvt const *l_sensorQSto[10]; /* Event queue storage for Sensor */
 /*..........................................................................*/
 int main(int argc, char *argv[]) {
     PRINTF_S("Reminder state pattern\nQP version: %s\n"
-           "Press ESC to quit...\n",
-           QP_VERSION_STR);
+             "Press ESC to quit...\n",
+             QP_VERSION_STR);
 
     BSP_init(argc, argv); /* initialize the BSP */
 
@@ -234,11 +235,14 @@ int main(int argc, char *argv[]) {
 void BSP_onKeyboardInput(uint8_t key) {
     switch (key) {
         case '\033': { /* ESC pressed? */
-            /* NOTE: this constant event is statically pre-allocated.
+            /* NOTE: this immutable (const) event is statically pre-allocated.
             * It can be posted/published as any other event.
             */
-            static QEvt const terminateEvt = { TERMINATE_SIG, 0U, 0U };
+            static QEvt const terminateEvt = QEVT_INITIALIZER(TERMINATE_SIG);
             QACTIVE_POST((QActive *)&l_sensor, &terminateEvt, (void *)0);
+            break;
+        }
+        default: {
             break;
         }
     }

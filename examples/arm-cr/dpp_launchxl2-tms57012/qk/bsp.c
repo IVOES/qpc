@@ -109,11 +109,11 @@ QK_IRQ_BEGIN(rtiCompare0)
     tmp ^= buttons.depressed;     /* changed debounced depressed */
     if ((tmp & (1U << SWB_PIN)) != 0U) {  /* debounced SWB state changed? */
         if ((buttons.depressed & (1U << SWB_PIN)) != 0U) { /* SWB depressed?*/
-            static QEvt const pauseEvt = { PAUSE_SIG, 0U, 0U};
+            static QEvt const pauseEvt = QEVT_INITIALIZER(PAUSE_SIG);
             QACTIVE_PUBLISH(&pauseEvt, &l_rtiCompare0);
         }
         else {            /* the button is released */
-            static QEvt const serveEvt = { SERVE_SIG, 0U, 0U};
+            static QEvt const serveEvt = QEVT_INITIALIZER(SERVE_SIG);
             QACTIVE_PUBLISH(&serveEvt, &l_rtiCompare0);
         }
     }
@@ -283,15 +283,23 @@ void QK_onIdle(void) {
 }
 
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
     /*
     * NOTE: add here your application-specific error handling
     */
-    (void)module;
-    (void)loc;
-    QS_ASSERTION(module, loc, 10000U); /* report assertion to QS */
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
+    QS_ASSERTION(module, id, 10000U); /* report assertion to QS */
     systemREG1->SYSECR = 0; /* perform system reset */
+    for (;;) {} /* explicitly no return */
 }
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
+}
+
 /* QS callbacks ============================================================*/
 #ifdef Q_SPY
 /*..........................................................................*/

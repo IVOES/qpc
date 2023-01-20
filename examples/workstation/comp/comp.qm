@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model version="5.2.4" links="1">
+<model version="5.2.5" links="1">
  <documentation>&quot;Orthogonal Component&quot; example</documentation>
  <!--${qpc}-->
  <framework name="qpc"/>
@@ -195,16 +195,17 @@ QHSM_DISPATCH((QHsm *)&amp;me-&gt;alarm, e, me-&gt;super.prio);</action>
       <entry>BSP_showMsg(&quot;*** 24-hour mode&quot;);</entry>
       <!--${Components::AlarmClock::SM::timekeeping::mode24h::TICK}-->
       <tran trig="TICK">
-       <action>TimeEvt pe; /* temporary synchronous event for the component */
-
-/* roll over in 24-hr mode? */
+       <action>/* roll over in 24-hr mode? */
 if (++me-&gt;current_time == 24U*60U) {
     me-&gt;current_time = 0U;
 }
 BSP_showTime24H(&quot;&quot;, me-&gt;current_time, 60U);
-pe.super.sig = TIME_SIG;
-pe.current_time = me-&gt;current_time;
 
+/* temporary synchronous event for the component */
+TimeEvt pe = {
+    QEVT_INITIALIZER(TIME_SIG),
+    .current_time = me-&gt;current_time
+};
 /* (!) synchronously dispatch to the orthogonal component */
 QHSM_DISPATCH(&amp;me-&gt;alarm.super, &amp;pe.super, me-&gt;super.prio);</action>
        <tran_glyph conn="4,44,3,-1,16">
@@ -220,16 +221,18 @@ QHSM_DISPATCH(&amp;me-&gt;alarm.super, &amp;pe.super, me-&gt;super.prio);</actio
       <entry>BSP_showMsg(&quot;*** 12-hour mode&quot;);</entry>
       <!--${Components::AlarmClock::SM::timekeeping::mode12h::TICK}-->
       <tran trig="TICK">
-       <action>TimeEvt pe; /* temporary synchronous event for the component */
-
-/* roll over in 12-hr mode? */
+       <action>/* roll over in 12-hr mode? */
 if (++me-&gt;current_time == 12U*60U) {
     me-&gt;current_time = 0U;
 }
 BSP_showTime12H(&quot;&quot;, me-&gt;current_time, 60U);
-pe.super.sig = TIME_SIG;
-pe.current_time = me-&gt;current_time;
 
+
+/* temporary synchronous event for the component */
+TimeEvt pe = {
+    QEVT_INITIALIZER(TIME_SIG),
+    .current_time = me-&gt;current_time
+};
 /* (!) synchronously dispatch to the orthogonal component */
 QHSM_DISPATCH(&amp;me-&gt;alarm.super, &amp;pe.super, me-&gt;super.prio);</action>
        <tran_glyph conn="4,58,3,-1,16">
@@ -275,15 +278,14 @@ QTimeEvt_ctorX(&amp;me-&gt;timeEvt, &amp;me-&gt;super, TICK_SIG, 0U);</code>
  <directory name=".">
   <!--${.::alarm.h}-->
   <file name="alarm.h">
-   <text>#ifndef ALARM_H
-#define ALARM_H
+   <text>#ifndef ALARM_H_
+#define ALARM_H_
 
 $declare${Components::Alarm}
 
 $declare${Components::Alarm::ctor}
 
-#endif /* ALARM_H */
-</text>
+#endif /* ALARM_H_ */</text>
   </file>
   <!--${.::alarm.c}-->
   <file name="alarm.c">
@@ -295,13 +297,12 @@ $declare${Components::Alarm::ctor}
 //Q_DEFINE_THIS_FILE
 
 /* Alarm component --------------------*/
-$define${Components::Alarm}
-</text>
+$define${Components::Alarm}</text>
   </file>
   <!--${.::clock.h}-->
   <file name="clock.h">
-   <text>#ifndef CLOCK_H
-#define CLOCK_H
+   <text>#ifndef CLOCK_H_
+#define CLOCK_H_
 
 enum AlarmClockSignals {
     TICK_SIG = Q_USER_SIG, /* time tick event */
@@ -321,8 +322,7 @@ $declare${Events::TimeEvt}
 $declare${Components::APP_alarmClock}
 $declare${Components::AlarmClock_ctor}
 
-#endif /* CLOCK_H */
-</text>
+#endif /* CLOCK_H_ */</text>
   </file>
   <!--${.::clock.c}-->
   <file name="clock.c">
@@ -347,8 +347,7 @@ $define${Components::APP_alarmClock}
 $define${Components::AlarmClock_ctor}
 
 /*..........................................................................*/
-$define${Components::AlarmClock}
-</text>
+$define${Components::AlarmClock}</text>
   </file>
  </directory>
 </model>

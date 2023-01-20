@@ -138,7 +138,7 @@ static void onDialogGUI(WM_MESSAGE * pMsg) {
                     switch (WM_GetId(pMsg->hWinSrc)) {
                         case GUI_ID_BUTTON0: {
                             /* static PAUSE event for the Table AO */
-                            static QEvt const pauseEvt = { PAUSE_SIG, 0U, 0U };
+                            static QEvt const pauseEvt = QEVT_INITIALIZER( PAUSE_SIG);
                             QACTIVE_POST(AO_Table, &pauseEvt, &l_onDialogGUI);
                             break;
                         }

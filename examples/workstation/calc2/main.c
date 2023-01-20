@@ -1,7 +1,7 @@
 /*****************************************************************************
 * Product: calc2 Example
-* Last updated for version 6.9.3
-* Last updated on  2021-03-18
+* Last updated for version 7.3.0
+* Last updated on  2023-06-30
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -62,7 +62,7 @@ int main() {
     QHSM_INIT(the_calc, (void *)0, 0U); /* trigger initial transition */
 
     for (;;) { /* event loop */
-        CalcEvt e; /* Calculator event */
+        CalcEvt e =  { QEVT_INITIALIZER(0U), 0U}; /* Calculator event */
 
         BSP_show_display(); /* show the display */
 

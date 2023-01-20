@@ -1,25 +1,34 @@
 /*============================================================================
-* QP/C Real-Time Embedded Framework (RTEF)
-* Copyright (C) 2005 Quantum Leaps, LLC. All rights reserved.
+* Product: DPP example, NUCLEO-H743ZI board, preemptive QXK kernel
+* Last updated for version 7.3.0
+* Last updated on  2023-05-25
 *
-* SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-QL-commercial
+*                    Q u a n t u m  L e a P s
+*                    ------------------------
+*                    Modern Embedded Software
 *
-* This software is dual-licensed under the terms of the open source GNU
-* General Public License version 3 (or any later version), or alternatively,
-* under the terms of one of the closed source Quantum Leaps commercial
-* licenses.
+* Copyright (C) 2005 Quantum Leaps, LLC. <state-machine.com>
 *
-* The terms of the open source GNU General Public License version 3
-* can be found at: <www.gnu.org/licenses/gpl-3.0>
+* This program is open source software: you can redistribute it and/or
+* modify it under the terms of the GNU General Public License as published
+* by the Free Software Foundation, either version 3 of the License, or
+* (at your option) any later version.
 *
-* The terms of the closed source Quantum Leaps commercial licenses
-* can be found at: <www.state-machine.com/licensing>
+* Alternatively, this program may be distributed and modified under the
+* terms of Quantum Leaps commercial licenses, which expressly supersede
+* the GNU General Public License and are specifically designed for
+* licensees interested in retaining the proprietary status of their code.
 *
-* Redistributions in source code must retain this top-level comment block.
-* Plagiarizing this software to sidestep the license obligations is illegal.
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program. If not, see <www.gnu.org/licenses/>.
 *
 * Contact information:
-* <www.state-machine.com>
+* <www.state-machine.com/licensing>
 * <info@state-machine.com>
 ============================================================================*/
 /*!
@@ -27,7 +36,7 @@
 * @version Last updated for: @ref qpc_7_2_0
 *
 * @file
-* @brief DPP example, NUCLEO-H743ZIE board, dual-mode QXK kernel
+* @brief DPP example, NUCLEO-H743ZIE board, preemptive QXK kernel
 */
 #include "qpc.h"
 #include "dpp.h"
@@ -54,20 +63,23 @@ static uint32_t l_rnd; /* random seed */
 
     /* QSpy source IDs */
     static QSpyId const l_SysTick_Handler = { 0U };
-    static QSpyId const l_EXTI0_IRQHandler = { 0U };
 
     static UART_HandleTypeDef l_uartHandle;
 
     enum AppRecords { /* application-specific trace records */
         PHILO_STAT = QS_USER,
         PAUSED_STAT,
-        COMMAND_STAT,
-        CONTEXT_SW
+        CONTEXT_SW,
+        COMMAND_STAT
     };
 
 #endif
 
-/* ISRs used in this project ===============================================*/
+/* ISRs used in the application ============================================*/
+void SysTick_Handler(void);
+void USART3_IRQHandler(void);
+
+/*..........................................................................*/
 void SysTick_Handler(void) {
     /* state of the button debouncing, see below */
     static struct ButtonsDebouncing {
@@ -86,8 +98,8 @@ void SysTick_Handler(void) {
     }
 #endif
 
-    //QTIMEEVT_TICK_X(0U, &l_SysTick_Handler); /* process time events for rate 0 */
-    QACTIVE_POST(&ticker0.super, 0, &l_SysTick_Handler); /* post to ticker0 */
+    QTIMEEVT_TICK_X(0U, &l_SysTick_Handler); /* time events for rate 0 */
+    //QTICKER_TICK(&ticker0.super, &l_SysTick_Handler); /* trigger ticker AO */
 
     /* Perform the debouncing of buttons. The algorithm for debouncing
     * adapted from the book "Embedded Systems Dictionary" by Jack Ganssle
@@ -101,11 +113,11 @@ void SysTick_Handler(void) {
     tmp ^= buttons.depressed;     /* changed debounced depressed */
     if (tmp != 0U) {  /* debounced Key button state changed? */
         if (buttons.depressed != 0U) { /* PB0 depressed?*/
-            static QEvt const pauseEvt = { PAUSE_SIG, 0U, 0U};
+            static QEvt const pauseEvt = QEVT_INITIALIZER(PAUSE_SIG);
             QACTIVE_PUBLISH(&pauseEvt, &l_SysTick_Handler);
         }
         else { /* the button is released */
-            static QEvt const serveEvt = { SERVE_SIG, 0U, 0U};
+            static QEvt const serveEvt = QEVT_INITIALIZER(SERVE_SIG);
             QACTIVE_PUBLISH(&serveEvt, &l_SysTick_Handler);
         }
     }
@@ -217,19 +229,8 @@ void BSP_init(void) {
         Q_ERROR();
     }
 
-    /* object dictionaries... */
-    QS_OBJ_DICTIONARY(AO_Table);
-    QS_OBJ_DICTIONARY(AO_Philo[0]);
-    QS_OBJ_DICTIONARY(AO_Philo[1]);
-    QS_OBJ_DICTIONARY(AO_Philo[2]);
-    QS_OBJ_DICTIONARY(AO_Philo[3]);
-    QS_OBJ_DICTIONARY(AO_Philo[4]);
-    QS_OBJ_DICTIONARY(XT_Test1);
-    QS_OBJ_DICTIONARY(XT_Test2);
-    QS_OBJ_DICTIONARY(&ticker0);
-
+    /* dictionaries... */
     QS_OBJ_DICTIONARY(&l_SysTick_Handler);
-    QS_OBJ_DICTIONARY(&l_EXTI0_IRQHandler);
     QS_USR_DICTIONARY(PHILO_STAT);
     QS_USR_DICTIONARY(PAUSED_STAT);
     QS_USR_DICTIONARY(COMMAND_STAT);
@@ -238,14 +239,6 @@ void BSP_init(void) {
     /* setup the QS filters... */
     QS_GLB_FILTER(QS_ALL_RECORDS); /* all records */
     QS_GLB_FILTER(-QS_QF_TICK);    /* exclude the clock tick */
-}
-/*..........................................................................*/
-void BSP_ledOn(void) {
-    BSP_LED_On(LED1);
-}
-/*..........................................................................*/
-void BSP_ledOff(void) {
-    BSP_LED_Off(LED1);
 }
 /*..........................................................................*/
 void BSP_displayPhilStat(uint8_t n, char const *stat) {
@@ -296,10 +289,20 @@ void BSP_randomSeed(uint32_t seed) {
 void BSP_terminate(int16_t result) {
     (void)result;
 }
-
 /*..........................................................................*/
+void BSP_ledOn(void) {
+    BSP_LED_On(LED1);
+}
+/*..........................................................................*/
+void BSP_ledOff(void) {
+    BSP_LED_Off(LED1);
+}
+
+/* QF callbacks ============================================================*/
 void QF_onStartup(void) {
-    /* assign all priority bits for preemption-prio. and none to sub-prio. */
+    /* assign all priority bits for preemption-prio. and none to sub-prio.
+    * NOTE: this might have been changed by STM32Cube.
+    */
     NVIC_SetPriorityGrouping(0U);
 
     /* set up the SysTick timer to fire at BSP_TICKS_PER_SEC rate */
@@ -318,17 +321,14 @@ void QF_onStartup(void) {
 /*..........................................................................*/
 void QF_onCleanup(void) {
 }
-
 /*..........................................................................*/
 #ifdef QF_ON_CONTEXT_SW
 /* NOTE: the context-switch callback is called with interrupts DISABLED */
 void QF_onContextSw(QActive *prev, QActive *next) {
-    if ((prev != &ticker0.super) && (next != &ticker0.super)) {
-        QS_BEGIN_NOCRIT(CONTEXT_SW, 0U) /* no critical section! */
-            QS_OBJ(prev);
-            QS_OBJ(next);
-        QS_END_NOCRIT()
-    }
+    QS_BEGIN_NOCRIT(CONTEXT_SW, 0U) /* no critical section! */
+        QS_OBJ(prev);
+        QS_OBJ(next);
+    QS_END_NOCRIT()
 }
 #endif /* QF_ON_CONTEXT_SW */
 
@@ -351,7 +351,7 @@ void QXK_onIdle(void) {
         QF_INT_ENABLE();
 
         if (b != QS_EOD) {  /* not End-Of-Data? */
-            l_uartHandle.Instance->TDR = (b & 0xFFU);  /* put into TDR */
+            l_uartHandle.Instance->TDR = b;  /* put into TDR */
         }
     }
 #elif defined NDEBUG
@@ -374,13 +374,14 @@ void QXK_onIdle(void) {
 }
 
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
     /*
     * NOTE: add here your application-specific error handling
     */
-    (void)module;
-    (void)loc;
-    QS_ASSERTION(module, loc, 10000U); /* report assertion to QS */
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
+    QS_ASSERTION(module, id, 10000U); /* report assertion to QS */
 
 #ifndef NDEBUG
     /* light all LEDs */
@@ -393,6 +394,11 @@ Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
 #endif
 
     NVIC_SystemReset();
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 
 /* QS callbacks ============================================================*/
@@ -439,18 +445,24 @@ QSTimeCtr QS_onGetTime(void) {  /* NOTE: invoked with interrupts DISABLED */
 }
 /*..........................................................................*/
 void QS_onFlush(void) {
-    uint16_t b;
-
-    QF_INT_DISABLE();
-    while ((b = QS_getByte()) != QS_EOD) { /* while not End-Of-Data... */
-        QF_INT_ENABLE();
-        /* while TXE not empty */
-        while ((l_uartHandle.Instance->ISR & UART_FLAG_TXE) == 0U) {
-        }
-        l_uartHandle.Instance->TDR = (b & 0xFFU);  /* put into TDR */
+    for (;;) {
         QF_INT_DISABLE();
+        uint16_t b = QS_getByte();
+        if (b != QS_EOD) {
+            while ((l_uartHandle.Instance->ISR & UART_FLAG_TXE) == 0U) {
+                QF_INT_ENABLE();
+                QF_CRIT_EXIT_NOP();
+
+                QF_INT_DISABLE();
+            }
+            l_uartHandle.Instance->TDR = b;
+            QF_INT_ENABLE();
+        }
+        else {
+            QF_INT_ENABLE();
+            break;
+        }
     }
-    QF_INT_ENABLE();
 }
 /*..........................................................................*/
 /*! callback function to reset the target (to be implemented in the BSP) */
@@ -466,18 +478,13 @@ void QS_onCommand(uint8_t cmdId,
     Q_UNUSED_PAR(param1);
     Q_UNUSED_PAR(param2);
     Q_UNUSED_PAR(param3);
-
-    QS_BEGIN_ID(COMMAND_STAT, 0U) /* app-specific record */
-        QS_U8(2, cmdId);
-        QS_U32(8, param1);
-    QS_END()
 }
 
 #endif /* Q_SPY */
 /*--------------------------------------------------------------------------*/
 
-/*****************************************************************************
-* NOTE1:
+/*==========================================================================*/
+/* NOTE0:
 * The QF_AWARE_ISR_CMSIS_PRI constant from the QF port specifies the highest
 * ISR priority that is disabled by the QF framework. The value is suitable
 * for the NVIC_SetPriority() CMSIS function.

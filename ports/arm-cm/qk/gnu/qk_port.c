@@ -23,8 +23,8 @@
 * <info@state-machine.com>
 ============================================================================*/
 /*!
-* @date Last updated on: 2023-01-14
-* @version Last updated for: @ref qpc_7_2_1
+* @date Last updated on: 2023-06-27
+* @version Last updated for: @ref qpc_7_3_0
 *
 * @file
 * @brief QK/C port to ARM Cortex-M, GNU-ARM toolset
@@ -41,13 +41,13 @@ void QK_USE_IRQ_HANDLER(void);
 void NMI_Handler(void);
 #endif
 
-#define SCnSCB_ICTR  ((uint32_t volatile *)0xE000E004U)
-#define SCB_SYSPRI   ((uint32_t volatile *)0xE000ED14U)
+#define SCB_SYSPRI   ((uint32_t volatile *)0xE000ED18U)
 #define NVIC_EN      ((uint32_t volatile *)0xE000E100U)
-#define NVIC_IP      ((uint8_t  volatile *)0xE000E400U)
+#define NVIC_IP      ((uint32_t volatile *)0xE000E400U)
+#define SCB_CPACR   *((uint32_t volatile *)0xE000ED88U)
 #define FPU_FPCCR   *((uint32_t volatile *)0xE000EF34U)
 #define NVIC_PEND    0xE000E200
-#define NVIC_ICSR    0xE000ED04
+#define SCB_ICSR     0xE000ED04
 
 /* helper macros to "stringify" values */
 #define VAL(x) #x
@@ -73,29 +73,19 @@ void QK_init(void) {
 
 #if (__ARM_ARCH != 6)   /*--------- if ARMv7-M and higher... */
 
-    /* set exception priorities to QF_BASEPRI...
-    * SCB_SYSPRI1: Usage-fault, Bus-fault, Memory-fault
-    */
-    SCB_SYSPRI[1] = (SCB_SYSPRI[1]
-        | (QF_BASEPRI << 16U) | (QF_BASEPRI << 8U) | QF_BASEPRI);
-
-    /* SCB_SYSPRI2: SVCall */
+    /* SCB_SYSPRI[2]:  SysTick */
     SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
 
-    /* SCB_SYSPRI3:  SysTick, PendSV, Debug */
-    SCB_SYSPRI[3] = (SCB_SYSPRI[3]
-        | (QF_BASEPRI << 24U) | (QF_BASEPRI << 16U) | QF_BASEPRI);
-
-    /* set all implemented IRQ priories to QF_BASEPRI... */
-    uint8_t nprio = (8U + ((*SCnSCB_ICTR & 0x7U) << 3U)) * 4U;
-    for (uint8_t n = 0U; n < nprio; ++n) {
-        NVIC_IP[n] = QF_BASEPRI;
+    /* set all 240 possible IRQ priories to QF_BASEPRI... */
+    for (uint_fast8_t n = 0U; n < (240U/sizeof(uint32_t)); ++n) {
+        NVIC_IP[n] = (QF_BASEPRI << 24U) | (QF_BASEPRI << 16U)
+                     | (QF_BASEPRI << 8U) | QF_BASEPRI;
     }
 
 #endif                  /*--------- ARMv7-M or higher */
 
-    /* SCB_SYSPRI3: PendSV set to priority 0xFF (lowest) */
-    SCB_SYSPRI[3] = (SCB_SYSPRI[3] | (0xFFU << 16U));
+    /* SCB_SYSPRI[2]: PendSV set to priority 0xFF (lowest) */
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (0xFFU << 16U));
 
 #ifdef QK_USE_IRQ_NUM   /*--------- QK IRQ specified? */
     /* The QK port is configured to use a given ARM Cortex-M IRQ #
@@ -106,9 +96,11 @@ void QK_init(void) {
 #endif                  /*--------- QK IRQ specified */
 
 #if (__ARM_FP != 0)     /*--------- if VFP available... */
-    /* configure the FPU for QK */
-    FPU_FPCCR |= (1U << 30U)    /* automatic FPU state preservation (ASPEN) */
-                 | (1U << 31U); /* lazy stacking (LSPEN) */
+    /* make sure that the FPU is enabled by seting CP10 & CP11 Full Access */
+    SCB_CPACR = (SCB_CPACR | ((3UL << 20U) | (3UL << 22U)));
+
+    /* FPU automatic state preservation (ASPEN) lazy stacking (LSPEN) */
+    FPU_FPCCR = (FPU_FPCCR | (1U << 30U) | (1U << 31U));
 #endif                  /*--------- VFP available */
 }
 
@@ -141,30 +133,31 @@ void QK_init(void) {
 __attribute__ ((naked, optimize("-fno-stack-protector")))
 void PendSV_Handler(void) {
 __asm volatile (
-
-    /* Prepare constants in registers before entering critical section */
-    "  LDR     r3,=" STRINGIFY(NVIC_ICSR) "\n" /* Interrupt Control and State */
-    "  MOV     r1,#1            \n"
-    "  LSL     r1,r1,#27        \n" /* r0 := (1 << 27) (UNPENDSVSET bit) */
+    "  PUSH    {r0,lr}          \n" /* save EXC_RETURN + stack-aligner */
 
     /*<<<<<<<<<<<<<<<<<<<<<<< CRITICAL SECTION BEGIN <<<<<<<<<<<<<<<<<<<<<<<<*/
 #if (__ARM_ARCH == 6)   /*--------- if ARMv6-M... */
     "  CPSID   i                \n" /* disable interrupts (set PRIMASK) */
 #else                               /* ARMv7-M and higher */
-#if (__ARM_FP != 0)     /*--------- if VFP available... */
-    "  PUSH    {r0,lr}          \n" /* ... push lr plus stack-aligner */
-#endif                  /*--------- VFP available */
     "  MOV     r0,#" STRINGIFY(QF_BASEPRI) "\n"
     "  CPSID   i                \n" /* disable interrupts with BASEPRI */
     "  MSR     BASEPRI,r0       \n" /* apply the Cortex-M7 erraturm */
     "  CPSIE   i                \n" /* 837070, see SDEN-1068427. */
 #endif                  /*--------- ARMv7-M and higher */
 
+#ifdef QF_MEM_ISOLATE
+    "  LDR     r0,=QF_onMemSys  \n"
+    "  BLX     r0               \n" /* call QF_onMemSys() */
+#endif
+
     /* The PendSV exception handler can be preempted by an interrupt,
     * which might pend PendSV exception again. The following write to
     * ICSR[27] un-pends any such spurious instance of PendSV.
     */
-    "  STR     r1,[r3]          \n" /* ICSR[27] := 1 (unpend PendSV) */
+    "  LDR     r2,=" STRINGIFY(SCB_ICSR) "\n" /* Interrupt Control and State */
+    "  MOV     r1,#1            \n"
+    "  LSL     r1,r1,#27        \n" /* r1 := (1 << 27) (UNPENDSVSET bit) */
+    "  STR     r1,[r2]          \n" /* ICSR[27] := 1 (unpend PendSV) */
 
     /* The QK activator must be called in a Thread mode, while this code
     * executes in the Handler mode of the PendSV exception. The switch
@@ -175,7 +168,7 @@ __asm volatile (
     * NOTE: the QK activator is called with interrupts DISABLED and also
     * returns with interrupts DISABLED.
     */
-    "  LSR     r3,r1,#3         \n" /* r3 := (r1 >> 3), set the T bit (new xpsr) */
+    "  LSR     r3,r1,#3         \n" /* r3 := (r1 >> 3), set T bit (new xpsr) */
     "  LDR     r2,=QK_activate_ \n" /* address of QK_activate_ */
     "  SUB     r2,r2,#1         \n" /* align Thumb-address at halfword (new pc) */
     "  LDR     r1,=QK_thread_ret \n" /* return address after the call  (new lr) */
@@ -221,8 +214,13 @@ __asm volatile (
     "  ISB                      \n" /* ISB after MSR CONTROL (ARM AN321,Sect.4.16) */
 #endif                  /*--------- VFP available */
 
+#ifdef QF_MEM_ISOLATE
+    "  LDR     r0,=QF_onMemApp  \n"
+    "  BLX     r0               \n" /* call QF_onMemApp() */
+#endif
+
 #ifndef QK_USE_IRQ_NUM  /*--------- IRQ NOT defined, use NMI by default */
-    "  LDR     r0,=" STRINGIFY(NVIC_ICSR) "\n" /* Interrupt Control and State */
+    "  LDR     r0,=" STRINGIFY(SCB_ICSR) "\n" /* Interrupt Control and State */
     "  MOV     r1,#1            \n"
     "  LSL     r1,r1,#31        \n" /* r1 := (1 << 31) (NMI bit) */
     "  STR     r1,[r0]          \n" /* ICSR[31] := 1 (pend NMI) */
@@ -276,11 +274,9 @@ void QK_USE_IRQ_HANDLER(void) {
 __asm volatile (
     "  ADD     sp,sp,#(8*4)     \n" /* remove one 8-register exception frame */
 
-#if (__ARM_FP != 0)     /*--------- if VFP available... */
-    "  POP     {r0,lr}          \n" /* pop stack aligner and EXC_RETURN to LR */
+    "  POP     {r0,r1}          \n" /* pop stack aligner and EXC_RETURN to r1 */
     "  DSB                      \n" /* ARM Erratum 838869 */
-#endif                  /*--------- VFP available */
-    "  BX      lr               \n" /* return to the preempted task */
+    "  BX      r1               \n" /* return to the preempted task */
     );
 }
 

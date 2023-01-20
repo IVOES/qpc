@@ -31,12 +31,12 @@
 * Web:   www.state-machine.com
 * <info@state-machine.com>
 *****************************************************************************/
-#ifndef BSP_H
-#define BSP_H
+#ifndef BSP_H_
+#define BSP_H_
 
 #define BSP_TICKS_PER_SEC    100U
 
 void BSP_init(int argc, char *argv[]);
 void BSP_onKeyboardInput(uint8_t key); /* process the keyboard scan code */
 
-#endif /* BSP_H */
+#endif /* BSP_H_ */

@@ -4,18 +4,26 @@
 * command-line options)
 */
 
-/*! The preprocessor switch to disable checking assertions
+/*! Preprocessor switch to disable the QP Functional Safety (FuSa) Subsystem
 *
 * @description
-* When defined, Q_NASSERT disables the following macros #Q_ASSERT,
-* #Q_REQUIRE, #Q_ENSURE, #Q_INVARIANT, #Q_ERROR as well as
-* #Q_ASSERT_ID, #Q_REQUIRE_ID, #Q_ENSURE_ID, #Q_INVARIANT_ID, and
-* #Q_ERROR_ID do _not_ evaluate the test condition passed as the
-* argument to these macros.
+* When defined, #Q_UNSAFE disables the
+* @ref ssp_fusa "QP Functional Safety (FuSa) Subsystem".
+* This means that there is no CPU overhead for internal integrity
+* checks and no memory overhead for duplicate storage, but there is
+* **no protection** against Uncontrolled System Failures (USFs) either.
 *
-* @note The notable exceptions are the macros #Q_ALLEGE and
-* #Q_ALLEGE_ID, that still evaluate the test condition, but do not
-* report assertion failures when the switch #Q_NASSERT is defined.
+* @attention
+* The QP Functional Safety (FuSa) Subsystem is enabled by default and
+* explicit disabling it is **NOT** recommended, especially in
+* safety-related applications.
+*/
+#define Q_UNSAFE
+
+/*! @deprecated Preprocessor switch to disable QP assertions
+*
+* @description
+* This macro has been superseded by #Q_UNSAFE.
 */
 #define Q_NASSERT
 
@@ -26,7 +34,37 @@
 * This feature should be used with caution, as stopping and re-starting
 * active objects **cleanly** can be tricky.
 */
-#define QF_ACTIVE_STOP
+#define QF_ACTIVE_STOP      1
+
+/*! The preprocessor switch to activate the QUTest unit testing
+* instrumentation in the code
+*
+* @note
+* This macro requires that #Q_SPY be defined as well.
+*/
+#define Q_UTEST 1
+
+/*! The preprocessor switch to enable invoking event constructors
+* for dynamically created events, see @ref QF::QF_newX_() "QF_newX_()"
+*
+* @trace
+* - @tr{REQ-QP-01_40}
+*/
+#define Q_EVT_CTOR 1
+
+/*! This macro enables calling the context-switch callback
+* QF_onContextSw() in all build-in kernels (QV, QK, QXK)
+*/
+#define QF_ON_CONTEXT_SW    1
+
+/*! The preprocessor switch to activate the Memory Separation in QP.
+*
+* @note
+* This macro requires hardware support, such as the Memory Protection
+* Unit (MPU). Also usually requires the the context-switch callback
+* QF_onContextSw(), so #QF_ON_CONTEXT_SW gets defined as well.
+*/
+#define QF_MEM_ISOLATE      1
 
 /*! The preprocessor switch to activate the QS software tracing
 * instrumentation in the code
@@ -38,28 +76,7 @@
 */
 #define Q_SPY
 
-/*! The preprocessor switch to activate the QUTest unit testing
-* instrumentation in the code
-*
-* @note
-* This macro requires that #Q_SPY be defined as well.
-*/
-#define Q_UTEST
-
-/*! The preprocessor switch to enable constructor in the ::QEvt class
-* instrumentation in the code
-*
-* @tr{RQP005}
-*/
-#define Q_EVT_CTOR
-
-/*! This macro enables calling the context-switch callback
-* QF_onContextSw() in all build-in kernels (QV, QK, QXK)
-*/
-#define QF_ON_CONTEXT_SW
-
 /*! Macro defined only for the internal QP implementation. It should
 * be not defined for the application-level code
 */
 #define QP_IMPL
-

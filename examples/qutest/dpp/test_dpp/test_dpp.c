@@ -59,12 +59,12 @@ void QS_onCommand(uint8_t cmdId,
 
     switch (cmdId) {
        case 0U: {
-           QEvt const e_pause = { PAUSE_SIG, 0U, 0U };
+           QEvt const e_pause = QEVT_INITIALIZER( PAUSE_SIG);
            QHSM_DISPATCH(&AO_Table->super, &e_pause, 0U);
            break;
        }
        case 1U: {
-           QEvt const e_serve = { SERVE_SIG, 0U, 0U };
+           QEvt const e_serve = QEVT_INITIALIZER(SERVE_SIG);
            QHSM_DISPATCH(&AO_Table->super, &e_serve, 0U);
            break;
        }

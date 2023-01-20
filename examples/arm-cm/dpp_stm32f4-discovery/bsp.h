@@ -1,11 +1,11 @@
 /*****************************************************************************
 * Product: DPP example
-* Last Updated for Version: 5.8.1
-* Date of the Last Update:  2016-12-12
+* Last updated for version 7.3.0
+* Last updated on  2023-06-29
 *
-*                    Q u a n t u m     L e a P s
-*                    ---------------------------
-*                    innovating embedded systems
+*                    Q u a n t u m  L e a P s
+*                    ------------------------
+*                    Modern Embedded Software
 *
 * Copyright (C) 2005 Quantum Leaps, LLC. All rights reserved.
 *
@@ -31,8 +31,8 @@
 * <www.state-machine.com/licensing>
 * <info@state-machine.com>
 *****************************************************************************/
-#ifndef BSP_H
-#define BSP_H
+#ifndef BSP_H_
+#define BSP_H_
 
 #define BSP_TICKS_PER_SEC    100U
 
@@ -49,6 +49,6 @@ void BSP_wait4PB1(void);
 void BSP_ledOn(void);
 void BSP_ledOff(void);
 
-extern QActive *the_Ticker0;
+extern QActive *const the_Ticker0;
 
-#endif /* BSP_H */
+#endif /* BSP_H_ */

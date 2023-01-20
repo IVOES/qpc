@@ -23,14 +23,14 @@
 * <info@state-machine.com>
 ============================================================================*/
 /*!
-* @date Last updated on: 2022-08-24
-* @version Last updated for: Zephyr 3.1.99 and @ref qpc_7_1_0
+* @date Last updated on: 2023-06-29
+* @version Last updated for: Zephyr 3.1.99 and @ref qpc_7_3_0
 *
 * @file
 * @brief BSP for Zephyr, DPP example
 */
-#ifndef BSP_H
-#define BSP_H
+#ifndef BSP_H_
+#define BSP_H_
 
 #define BSP_TICKS_PER_SEC    1000U
 
@@ -47,7 +47,5 @@ void BSP_wait4PB1(void);
 void BSP_ledOn(void);
 void BSP_ledOff(void);
 
-extern QTicker ticker0;
-
-#endif /* BSP_H */
+#endif /* BSP_H_ */
 

@@ -1,7 +1,7 @@
-/*****************************************************************************
-* Product: DPP example extened for QXK
-* Last updated for version 7.1.2
-* Last updated on  2022-09-22
+/*============================================================================
+* Product: DPP example extended for QXK
+* Last updated for version 7.3.0
+* Last updated on  2023-06-28
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -30,15 +30,15 @@
 * Contact information:
 * <www.state-machine.com/licensing>
 * <info@state-machine.com>
-*****************************************************************************/
+============================================================================*/
 #include "qpc.h"
 #include "dpp.h"
 #include "bsp.h"
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 static QTicker l_ticker0;
-QActive *the_Ticker0 = &l_ticker0.super;
+QActive * const the_Ticker0 = &l_ticker0.super;
 
 /*..........................................................................*/
 int main() {

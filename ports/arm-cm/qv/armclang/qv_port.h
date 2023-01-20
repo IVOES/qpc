@@ -23,21 +23,22 @@
 * <info@state-machine.com>
 ============================================================================*/
 /*!
-* @date Last updated on: 2022-12-18
-* @version Last updated for: @ref qpc_7_2_0
+* @date Last updated on: 2023-06-29
+* @version Last updated for: @ref qpc_7_3_0
 *
 * @file
 * @brief QV/C port to ARM Cortex-M, ARM-CLANG/LLVM toolset
 */
-#ifndef QV_PORT_H
-#define QV_PORT_H
+#ifndef QV_PORT_H_
+#define QV_PORT_H_
 
 #if (__ARM_ARCH == 6) /* ARMv6-M? */
 
     /* macro to put the CPU to sleep inside QV_onIdle() */
     #define QV_CPU_SLEEP() do { \
-        __asm volatile ("wfi"); \
-        QF_INT_ENABLE();        \
+        __asm volatile ("wfi"::: "memory"); \
+        QF_MEM_APP_();   \
+        QF_INT_ENABLE(); \
     } while (false)
 
     #define QV_ARM_ERRATUM_838869() ((void)0)
@@ -47,8 +48,9 @@
     /* macro to put the CPU to sleep inside QV_onIdle() */
     #define QV_CPU_SLEEP() do { \
         QF_PRIMASK_DISABLE();   \
+        QF_MEM_APP_();          \
         QF_INT_ENABLE();        \
-        __asm volatile ("wfi"); \
+        __asm volatile ("wfi" ::: "memory"); \
         QF_PRIMASK_ENABLE();    \
     } while (false)
 
@@ -70,10 +72,10 @@ void QV_init(void);
 /* When the FPU is configured, clear the FPCA bit in the CONTROL register
 * to prevent wasting the stack space for the FPU context.
 */
-#define QV_START() __asm volatile ("msr CONTROL,%0" :: "r" (0) : )
+#define QV_START() __asm volatile ("msr CONTROL,%0" :: "r" (0) : "memory")
 #endif
 
 #include "qv.h" /* QV platform-independent public interface */
 
-#endif /* QV_PORT_H */
+#endif /* QV_PORT_H_ */
 

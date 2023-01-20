@@ -49,7 +49,7 @@ qpc/                     // QP/C installation directory
 |  [6]--posix-qv/        // port to POSIX (single-threaded)
 @endcode
 
-`[1]`  **Native Ports** are located in sub-directories named after the CPU architecture, such as <span class="img folder">arm-cm</span> for ARM Cortex-M. Under that directory, the sub-directories <span class="img folder">qk</span> and <span class="img folder">qv</span> contain ports for the @ref comp_qk "QK" and @ref comp_qv "QV" kernels, respectively.
+`[1]`  **Native Ports** are located in sub-directories named after the CPU architecture, such as <span class="img folder">arm-cm</span> for ARM Cortex-M. Under that directory, the sub-directories <span class="img folder">qk</span> and <span class="img folder">qv</span> contain ports for the @ref srs_qk "QK" and @ref srs_qv "QV" kernels, respectively.
 
 `[2]`  **Ports for 3rd-party RTOS** are located in sub-directories named after the RTOS, such as <span class="img folder">uc-os2</span> for uc-os2 RTOS. Under that directory, the sub-directories, such as <span class="img folder">arm-cm</span>, contain examples for the specified CPU architecture, such as ARM Cortex-M here.
 
@@ -65,9 +65,6 @@ Because the QP distribution contains *all* ports, the number of sub-directories 
 */
 /*##########################################################################*/
 /*! @page ports_lint PC-Lint-Plus
-
-@image html  pc-lint-plus.png "PC-Lint Plus"
-@image latex pc-lint-plus.png "PC-Lint Plus" width=2in
 
 The QP/C distribution contains a "port" to <a href="https://pclintplus.com" target="_blank" class="extern"><b>PC-Lint-Plus</b></a> static analysis tool from <a href="https://www.vector.com" target="_blank" class="extern">Vector</a>, which is a static analysis tool for C and C++ with one of the longest track records and best value of the money in the industry. The "PC-Lint-Plus port" allows you to statically analyze the QP/C source code and facilitates static analysis of your **application code** based on QP/C.
 
@@ -88,10 +85,8 @@ qpc/                     // QP/C installation directory
 |   |   +---qv/          // port with the QV kernel
 |   |   +---qxk/         // port with the QXK kernel
 |   |
+|   |       au-misra4.lnt // MISRA-C:2023 compliance checks
 |   |       au-ds.lnt    // Dan Saks recommendations
-|   |       au-misra3.lnt    // MISRA-C:2012 compliance checks
-|   |       au-misra3-amd1.lnt // MISRA-C:2012-Amendment-1 additional checks
-|   |       au-misra3-amd2.lnt // MISRA-C:2012-Amendment-2 additional checks
 |   |       qpc.lnt      // PC-Lint-Plus options for applications
 |   |       std.lnt      // Standard PC-Lint-Plus settings recommended by Quantum Leaps
 |   |       lin.bat      // Batch file to invoke PC-Lint-Plus to run analysis of QP/C code
@@ -151,7 +146,7 @@ The QP/C source code is completely free of lint comments, which are viewed as a 
 The structure of the PC-Lint-Plus option files used for "linting" QP/C follows the <a href="http://www.gimpel.com" target="_blank" class="extern">Gimpel Software</a> guidelines for configuring PC-Lint-Plus (See Section 2 "Configuration" in the *PC-Lint-Plus Manual*). The design and grouping of the lint options also reflects the fact that static code analysis of a software framework, such as QP/C, has really two major aspects. First, the source code of the framework itself has to be analyzed. But even more important and helpful to the users of the framework is providing the infrastructure to effectively analyze the application-level code based on the framework. With this in mind, the PC-Lint-Plus options for static analysis of QP/C are divided into two groups, located in directories <span class="img folder">qpc/include</span> and <span class="img folder">qpc/ports/lint</span>. These two groups are for analyzing QP/C **applications** and QP/C **source code**, respectively.
 
 As shown in the PC-Lint-Plus "port" files description, the directory <span class="img folder">qpc/include</span>, contains the PC-Lint-Plus options for "linting" the application code along with all platform-independent QP/C header files required by the applications. This collocation of lint options with header files simplifies "linting", because specifying just `-iqpc/include` include directory to PC-Lint-Plus accomplishes both inclusion of QP/C header files and PC-Lint-Plus options.
-Note that the `qpc/include` directory contains all PC-Lint-Plus option files used in "linting" the code, including the standard MISRA-C:2012 `au-misr3.lnt` option file as well as Dan Saks' recommendations `au-ds.lnt`, which are copied from the PC-Lint-Plus distribution. This design freezes the lint options for which the compliance has been checked.
+Note that the `qpc/include` directory contains all PC-Lint-Plus option files used in "linting" the code, including the standard MISRA-C:2023 `au-misr4.lnt` option file as well as Dan Saks' recommendations `au-ds.lnt`, which are copied from the PC-Lint-Plus distribution. This design freezes the lint options for which the compliance has been checked.
 
 
 @subsection lint_std_lnt The std.lnt option file
@@ -162,12 +157,12 @@ According to the Gimpel Software *PC-Lint-Plus Configuration Guidelines*, the fi
 
 
 @subsection lint_qpc_lnt  The qpc.lnt option file
-The most important file for "linting" QP/C applications is the **qpc.lnt** option file. This file handles all deviations from the MISRA-C:2012 rules, which might arise at the application-level code from the use of the QP/C framework. In other words, the **qpc.lnt** option file allows completely clean "linting" of the application-level code, as long as the application code does not violate any of the MISRA-C:2012 rules.
+The most important file for "linting" QP/C applications is the **qpc.lnt** option file. This file handles all deviations from the MISRA-C:2023 rules, which might arise at the application-level code from the use of the QP/C framework. In other words, the **qpc.lnt** option file allows completely clean "linting" of the application-level code, as long as the application code does not violate any of the MISRA-C:2023 rules.
 
-At the same time, the **qpc.lnt** option file has been very carefully designed not to suppress any MISRA-C:2012 rule checking outside the very specific context of the QP/C API. In other words, the qpc.lnt option file still supports 100% of the MISRA-C:2012 rule checks that PC-Lint-Plus is capable of performing.
+At the same time, the **qpc.lnt** option file has been very carefully designed not to suppress any MISRA-C:2023 rule checking outside the very specific context of the QP/C API. In other words, the qpc.lnt option file still supports 100% of the MISRA-C:2023 rule checks that PC-Lint-Plus is capable of performing.
 
 @remarks
-For example, for reasons explained in Section 5.10 of the <a href="https://www.state-machine.com/doc/AN_QP-C_MISRA.pdf" target="_blank" class="extern">"QP/C MISRA Compliance Matrix"</a>, QP/C extensively uses function-like macros, which deviates from the MISRA-C:2012 advisory Rule 4.9 and which PC-Lint-Plus checks with the warning 9026. However, instead of suppressing this warning globally (with the -e9096 directive), the qpc.lnt option file suppresses warning 9096 only for the specific QP function-like macros that are visible to the application level. So specifically, the qpc.lnt file contains directives `-esym(9026, Q_TRAN, Q_SUPER, ...)`, which suppresses the warning only for the specified macros, but does not disable checking of any other macros in the application-level code.
+For example, for reasons explained in Section 5.10 of the <a href="https://www.state-machine.com/doc/AN_QP-C_MISRA.pdf" target="_blank" class="extern">"QP/C MISRA Compliance Matrix"</a>, QP/C extensively uses function-like macros, which deviates from the MISRA-C:2023 advisory Rule 4.9 and which PC-Lint-Plus checks with the warning 9026. However, instead of suppressing this warning globally (with the -e9096 directive), the qpc.lnt option file suppresses warning 9096 only for the specific QP function-like macros that are visible to the application level. So specifically, the qpc.lnt file contains directives `-esym(9026, Q_TRAN, Q_SUPER, ...)`, which suppresses the warning only for the specified macros, but does not disable checking of any other macros in the application-level code.
 
 @ifnot LATEX
 @nav_next{ports_native}

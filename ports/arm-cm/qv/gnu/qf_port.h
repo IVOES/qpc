@@ -1,5 +1,5 @@
 /*============================================================================
-* QP/C Real-Time Embedded Framework (RTEF)
+* QF/C port to ARM Cortex-M, QV, GNU-ARM
 * Copyright (C) 2005 Quantum Leaps, LLC. All rights reserved.
 *
 * SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-QL-commercial
@@ -23,32 +23,37 @@
 * <info@state-machine.com>
 ============================================================================*/
 /*!
-* @date Last updated on: 2022-04-09
-* @version Last updated for: @ref qpc_7_0_0
+* @date Last updated on: 2023-06-28
+* @version Last updated for: @ref qpc_7_3_0
 *
 * @file
 * @brief QF/C port to Cortex-M, cooperative QV kernel, GNU-ARM toolset
 */
-#ifndef QF_PORT_H
-#define QF_PORT_H
+#ifndef QF_PORT_H_
+#define QF_PORT_H_
+
+/* QF "thread" type used to store the MPU settings in the AO */
+#define QF_THREAD_TYPE  void const *
 
 /* The maximum number of system clock tick rates */
 #define QF_MAX_TICK_RATE        2U
 
 /* QF interrupt disable/enable and log2()... */
-#if (__ARM_ARCH == 6) /* ARMv6-M, v6S-M)? */
+#if (__ARM_ARCH == 6) /* ARMv6-M? */
 
     /* The maximum number of active objects in the application, see NOTE1 */
     #define QF_MAX_ACTIVE       16U
 
     /* Cortex-M0/M0+/M1(v6-M, v6S-M) interrupt disabling policy, see NOTE2 */
-    #define QF_INT_DISABLE()    __asm volatile ("cpsid i")
-    #define QF_INT_ENABLE()     __asm volatile ("cpsie i")
+    #define QF_INT_DISABLE()    __asm volatile ("cpsid i" ::: "memory")
+    #define QF_INT_ENABLE()     __asm volatile ("cpsie i" ::: "memory")
 
-    /* QF critical section entry/exit (unconditional interrupt disabling) */
-    /*#define QF_CRIT_STAT_TYPE not defined */
-    #define QF_CRIT_ENTRY(dummy) QF_INT_DISABLE()
-    #define QF_CRIT_EXIT(dummy)  QF_INT_ENABLE()
+    /* QF critical section (save and restore interrupt status), see NOTE2 */
+    #define QF_CRIT_STAT_       uint32_t primask_;
+    #define QF_CRIT_E_()        __asm volatile (\
+        "mrs %0,PRIMASK\n" "cpsid i" : "=r" (primask_) :: "memory")
+    #define QF_CRIT_X_()        __asm volatile (\
+        "msr PRIMASK,%0" :: "r" (primask_) : "memory")
 
     /* CMSIS threshold for "QF-aware" interrupts, see NOTE2 and NOTE4 */
     #define QF_AWARE_ISR_CMSIS_PRI 0
@@ -56,25 +61,31 @@
     /* hand-optimized LOG2 in assembly for Cortex-M0/M0+/M1(v6-M, v6S-M) */
     #define QF_LOG2(n_) QF_qlog2((uint32_t)(n_))
 
-#else /* ARMv7-M and higher */
+#else /* ARMv7-M or higher */
 
     /* The maximum number of active objects in the application, see NOTE1 */
     #define QF_MAX_ACTIVE       32U
 
-    /* Cortex-M3/M4/M7 alternative interrupt disabling with PRIMASK */
-    #define QF_PRIMASK_DISABLE() __asm volatile ("cpsid i")
-    #define QF_PRIMASK_ENABLE()  __asm volatile ("cpsie i")
+    /* ARMv7-M or higher alternative interrupt disabling with PRIMASK */
+    #define QF_PRIMASK_DISABLE() __asm volatile ("cpsid i" ::: "memory")
+    #define QF_PRIMASK_ENABLE()  __asm volatile ("cpsie i" ::: "memory")
 
-    /* Cortex-M3/M4/M7 interrupt disabling policy, see NOTE3 and NOTE4 */
-    #define QF_INT_DISABLE() __asm volatile (\
-        "cpsid i\n" "msr BASEPRI,%0\n" "cpsie i" :: "r" (QF_BASEPRI) : )
-    #define QF_INT_ENABLE()  __asm volatile (\
-        "msr BASEPRI,%0" :: "r" (0) : )
+    /* ARMv7-M or higher interrupt disabling policy, see NOTE3 and NOTE4 */
+    #define QF_INT_DISABLE()     __asm volatile (\
+        "cpsid i\n" "msr BASEPRI,%0\n" "cpsie i" \
+            :: "r" (QF_BASEPRI) : "memory")
+    #define QF_INT_ENABLE()      __asm volatile (\
+        "msr BASEPRI,%0" :: "r" (0) : "memory")
 
-    /* QF critical section entry/exit (unconditional interrupt disabling) */
-    /*#define QF_CRIT_STAT_TYPE not defined */
-    #define QF_CRIT_ENTRY(dummy) QF_INT_DISABLE()
-    #define QF_CRIT_EXIT(dummy)  QF_INT_ENABLE()
+    /* QF critical section (save and restore interrupt status), see NOTE5 */
+    #define QF_CRIT_STAT_       uint32_t basepri_;
+    #define QF_CRIT_E_() do { \
+        __asm volatile ("mrs %0,BASEPRI" : "=r" (basepri_) :: "memory"); \
+        __asm volatile ("cpsid i\n msr BASEPRI,%0\n cpsie i" \
+                        :: "r" (QF_BASEPRI) : "memory"); \
+    } while (false)
+    #define QF_CRIT_X_() \
+        __asm volatile ("msr BASEPRI,%0" :: "r" (basepri_) : "memory")
 
     /* BASEPRI threshold for "QF-aware" interrupts, see NOTE3 */
     #define QF_BASEPRI           0x3F
@@ -82,12 +93,12 @@
     /* CMSIS threshold for "QF-aware" interrupts, see NOTE5 */
     #define QF_AWARE_ISR_CMSIS_PRI (QF_BASEPRI >> (8 - __NVIC_PRIO_BITS))
 
-    /* Cortex-M3/M4/M7 provide the CLZ instruction for fast LOG2 */
-    #define QF_LOG2(n_) ((uint_fast8_t)(32U - __builtin_clz((unsigned)(n_))))
+    /* ARMv7-M or higher provide the CLZ instruction for fast LOG2 */
+    #define QF_LOG2(n_) ((uint_fast8_t)(32 - __builtin_clz((unsigned)(n_))))
 
 #endif
 
-#define QF_CRIT_EXIT_NOP()      __asm volatile ("isb")
+#define QF_CRIT_EXIT_NOP()      __asm volatile ("isb" ::: "memory")
 
 #include "qep_port.h"   /* QEP port */
 
@@ -96,8 +107,25 @@
     uint_fast8_t QF_qlog2(uint32_t x);
 #endif /* ARMv7-M or higher */
 
+/* Memory isolation --------------------------------------------------------*/
+#ifdef QF_MEM_ISOLATE
+
+    /* Memory isolation requires the context-switch */
+    #define QF_ON_CONTEXT_SW   1U
+
+    /* Memory System setting */
+    #define QF_MEM_SYS_() QF_onMemSys()
+
+    /* Memory Application setting */
+    #define QF_MEM_APP_() QF_onMemApp()
+
+    /* callback functions for memory settings (provided by applications) */
+    void QF_onMemSys(void);
+    void QF_onMemApp(void);
+
+#endif /* def QF_MEM_ISOLATE */
+
 #include "qv_port.h"  /* QV cooperative kernel port */
-#include "qf.h"       /* QF platform-independent public interface */
 
 /*****************************************************************************
 * NOTE1:
@@ -118,8 +146,8 @@
 * with numerical priority values lower than QF_BASEPRI) are NOT disabled in
 * this method. These free-running interrupts have very low ("zero") latency,
 * but they are not allowed to call any QF services, because QF is unaware
-* of them ("QF-unaware" interrutps). Consequently, only interrupts with
-* numerical values of priorities eqal to or higher than QF_BASEPRI
+* of them ("QF-unaware" interrupts). Consequently, only interrupts with
+* numerical values of priorities equal to or higher than QF_BASEPRI
 * ("QF-aware" interrupts ), can call QF services.
 *
 * NOTE4:
@@ -143,5 +171,5 @@
 * macro. This workaround works also for Cortex-M3/M4 cores.
 */
 
-#endif /* QF_PORT_H */
+#endif /* QF_PORT_H_ */
 

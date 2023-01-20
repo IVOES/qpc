@@ -80,7 +80,7 @@ static uint32_t l_rnd;      /* random seed */
 /*..........................................................................*/
 void SysTick_Handler(void) {
     QTIMEEVT_TICK_X(0U, &l_SysTick_Handler); /* process time-evts for rate 0 */
-    //QACTIVE_POST(the_Ticker0, 0, &l_SysTick_Handler); /* post to Ticker0 */
+    //QTICKER_TICK(the_Ticker0, &l_SysTick_Handler); /* trigger ticker AO */
 
     /* Perform the debouncing of buttons. The algorithm for debouncing
     * adapted from the book "Embedded Systems Dictionary" by Jack Ganssle
@@ -99,11 +99,11 @@ void SysTick_Handler(void) {
     tmp ^= buttons.depressed;     /* changed debounced depressed */
     if ((tmp & (1U << PB0_PIN)) != 0U) {  /* debounced PB0 state changed? */
         if ((buttons.depressed & (1U << PB0_PIN)) != 0U) { /* PB0 depressed?*/
-            static QEvt const pauseEvt = { PAUSE_SIG, 0U, 0U};
+            static QEvt const pauseEvt = QEVT_INITIALIZER(PAUSE_SIG);
             QACTIVE_PUBLISH(&pauseEvt, &l_SysTick_Handler);
         }
         else {            /* the button is released */
-            static QEvt const serveEvt = { SERVE_SIG, 0U, 0U};
+            static QEvt const serveEvt = QEVT_INITIALIZER(SERVE_SIG);
             QACTIVE_PUBLISH(&serveEvt, &l_SysTick_Handler);
         }
     }
@@ -421,13 +421,14 @@ void QV_onIdle(void) { /* CATION: called with interrupts DISABLED, NOTE2 */
 }
 
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
     /*
     * NOTE: add here your application-specific error handling
     */
-    (void)module;
-    (void)loc;
-    QS_ASSERTION(module, loc, 10000U); /* report assertion to QS */
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
+    QS_ASSERTION(module, id, 10000U); /* report assertion to QS */
 
 #ifndef NDEBUG
     /* light up both LEDs */
@@ -438,6 +439,11 @@ Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
 #endif
 
     NVIC_SystemReset();
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 
 /* QS callbacks ============================================================*/
@@ -542,7 +548,6 @@ void QS_onReset(void) {
 void QS_onCommand(uint8_t cmdId,
                   uint32_t param1, uint32_t param2, uint32_t param3)
 {
-    void assert_failed(char const *module, int loc);
     (void)cmdId;
     (void)param1;
     (void)param2;
@@ -556,9 +561,6 @@ void QS_onCommand(uint8_t cmdId,
 
     if (cmdId == 10U) {
         Q_ERROR();
-    }
-    else if (cmdId == 11U) {
-        assert_failed("QS_onCommand", 123);
     }
 }
 

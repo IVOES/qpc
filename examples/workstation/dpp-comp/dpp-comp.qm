@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model version="5.2.4" links="1">
+<model version="5.2.5" links="1">
  <documentation>Dining Philosopher Problem example with the &quot;Orthogonal Component&quot; state pattern (see https://state-machine.com/doc/Pattern_Orthogonal.pdf)
 
 The model demonstrates the following features:
+
 1. Partitioning the application into Container and Components
 2. Packages for Container (Cont) and Components (Comp)
 3. External packages with speparate QM-package model files
@@ -84,10 +85,11 @@ QHSM_DISPATCH(SM_Philo[n], e, QS_AP_ID + n);</action>
         me-&gt;fork[LEFT(n)] = USED;
         me-&gt;fork[n] = USED;
 
-        /* synchronoulsy dispatch EAT event to the Philo component */
-        TableEvt evt;
-        evt.super.sig = EAT_SIG;
-        evt.philoNum = n;
+        /* synchronously dispatch EAT event to the Philo component */
+        TableEvt evt = {
+            QEVT_INITIALIZER(EAT_SIG),
+            .philoNum = n
+        };
         QHSM_DISPATCH(SM_Philo[n], &amp;evt.super, QS_AP_ID + n);
 
         me-&gt;isHungry[n] = 0U;
@@ -109,10 +111,11 @@ uint8_t m = LEFT(n);</action>
         <action>me-&gt;fork[m] = USED;
 me-&gt;fork[n] = USED;
 
-/* synchronoulsy dispatch EAT event to the Philo component */
-TableEvt evt;
-evt.super.sig = EAT_SIG;
-evt.philoNum = n;
+/* synchronously dispatch EAT event to the Philo component */
+TableEvt evt = {
+    QEVT_INITIALIZER(EAT_SIG),
+    .philoNum = n
+};
 QHSM_DISPATCH(SM_Philo[n], &amp;evt.super, QS_AP_ID + n);
 BSP_displayPhilStat(n, &quot;eating  &quot;);</action>
         <choice_glyph conn="20,33,5,-1,10">
@@ -147,15 +150,16 @@ me-&gt;fork[m] = FREE;
 me-&gt;fork[n] = FREE;
 m = RIGHT(n); /* check the right neighbor */
 
-TableEvt evt;
 if ((me-&gt;isHungry[m] != 0U) &amp;&amp; (me-&gt;fork[m] == FREE)) {
     me-&gt;fork[n] = USED;
     me-&gt;fork[m] = USED;
     me-&gt;isHungry[m] = 0U;
 
-    /* synchronoulsy dispatch EAT event to the Philo component */
-    evt.super.sig = EAT_SIG;
-    evt.philoNum = m;
+    /* synchronously dispatch EAT event to the Philo component */
+    TableEvt evt = {
+        QEVT_INITIALIZER(EAT_SIG),
+        .philoNum = m
+    };
     QHSM_DISPATCH(SM_Philo[m], &amp;evt.super, QS_AP_ID + m);
     BSP_displayPhilStat(m, &quot;eating  &quot;);
 }
@@ -166,9 +170,11 @@ if ((me-&gt;isHungry[m] != 0U) &amp;&amp; (me-&gt;fork[n] == FREE)) {
     me-&gt;fork[n] = USED;
     me-&gt;isHungry[m] = 0U;
 
-    /* synchronoulsy dispatch EAT event to the Philo component */
-    evt.super.sig = EAT_SIG;
-    evt.philoNum = m;
+    /* synchronously dispatch EAT event to the Philo component */
+    TableEvt evt = {
+        QEVT_INITIALIZER(EAT_SIG),
+        .philoNum = m
+    };
     QHSM_DISPATCH(SM_Philo[m], &amp;evt.super, QS_AP_ID + m);
     BSP_displayPhilStat(m, &quot;eating  &quot;);
 }</action>

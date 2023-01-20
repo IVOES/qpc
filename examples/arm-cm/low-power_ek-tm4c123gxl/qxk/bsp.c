@@ -89,7 +89,7 @@ void Timer0A_IRQHandler(void) {
 void GPIOPortF_IRQHandler(void) {
     QXK_ISR_ENTRY();  /* inform QXK about entering an ISR */
     if ((GPIOF->RIS & BTN_SW1) != 0U) { /* interrupt caused by SW1? */
-        static QEvt const pressedEvt = { BTN_PRESSED_SIG, 0U, 0U};
+        static QEvt const pressedEvt = QEVT_INITIALIZER(BTN_PRESSED_SIG);
         QACTIVE_PUBLISH(&pressedEvt, (void *)0);
         QXSemaphore_signal(&XSEM_sw1);
     }
@@ -217,12 +217,13 @@ void QXK_onIdle(void) {
 }
 
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
     /*
     * NOTE: add here your application-specific error handling
     */
-    (void)module;
-    (void)loc;
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
 #ifndef NDEBUG
     /* for debugging, hang on in an endless loop toggling the RED LED... */
     while (GPIOF->DATA_Bits[BTN_SW1] != 0) {
@@ -231,6 +232,11 @@ Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
     }
 #endif
     NVIC_SystemReset();
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 
 /*****************************************************************************

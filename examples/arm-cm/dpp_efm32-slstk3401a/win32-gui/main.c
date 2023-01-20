@@ -35,7 +35,7 @@
 #include "dpp.h"
 #include "bsp.h"
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /* "fudge factor" for Windows, see NOTE1 */
 enum { WIN_FUDGE_FACTOR = 10 };

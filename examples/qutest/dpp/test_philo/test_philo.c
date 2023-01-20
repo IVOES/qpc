@@ -28,7 +28,7 @@
 
 //#include "safe_std.h" /* portable "safe" <stdio.h>/<string.h> facilities */
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /* instantiate dummy collaborator AOs... */
 static QActiveDummy Table_inst;

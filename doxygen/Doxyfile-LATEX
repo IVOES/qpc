@@ -7,14 +7,15 @@
 #---------------------------------------------------------------------------
 INPUT                  = main.dox \
                          gs.dox \
-                         ../../cert-pack/cert-pack.dox \
-                         ../../cert-pack/srs.dox \
-                         ../../cert-pack/sas.dox \
-                         ../../cert-pack/sds.dox \
-                         ../../cert-pack/sds_sm-c.dox \
-                         ../../cert-pack/misra.dox \
-                         ../../cert-pack/metrics.dox \
+                         ../../cert/cert-kit.dox \
+                         ../../cert/srs.dox \
+                         ../../cert/sas.dox \
+                         ../../cert/sds.dox \
+                         ../../cert/sds_sm-c.dox \
+                         ../../cert/misra.dox \
+                         ../../cert/metrics.dox \
                          history.dox \
+                         api.dox \
                          exa.dox \
                          exa_native.dox \
                          exa_rtos.dox \
@@ -26,11 +27,11 @@ INPUT                  = main.dox \
                          ports_arm-cm.dox \
                          ports_rtos.dox \
                          ports_os.dox \
-                         api.dox \
                          dir.dox \
                          config.h \
                          ../include \
                          ../src \
+                         ../ports/sample \
                          ../ports/lint-plus/std.lnt \
                          ../ports/lint-plus/qpc.lnt \
                          ../ports/lint-plus/options.lnt

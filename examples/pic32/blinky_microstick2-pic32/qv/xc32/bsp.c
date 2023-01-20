@@ -71,7 +71,7 @@ void __ISR(_TIMER_2_VECTOR, IPL4SOFT) tickISR(void) {
 /*..........................................................................*/
 /* for testing interrupt nesting and active object preemption */
 void __ISR(_EXTERNAL_0_VECTOR, IPL6SOFT) testISR(void) {
-    static QEvt const tout_evt = { TIMEOUT_SIG, 0U, 0U };
+    static QEvt const tout_evt = QEVT_INITIALIZER(TIMEOUT_SIG);
 
     IFS0CLR = _IFS0_INT0IF_MASK; /* clear the interrupt source */
 
@@ -96,12 +96,20 @@ void BSP_ledOn(void) {
     LED_ON();
 }
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const file, int_t const loc) {
-    (void)file;       /* unused parameter */
-    (void)loc;        /* unused parameter */
-    QF_INT_DISABLE(); /* make sure that interrupts are disabled */
-    for (;;) {
-    }
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
+    /*
+    * NOTE: add here your application-specific error handling
+    */
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
+    QS_ASSERTION(module, id, 10000U); /* report assertion to QS */
+    for (;;) {}
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 
 /*..........................................................................*/

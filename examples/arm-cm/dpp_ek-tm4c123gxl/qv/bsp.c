@@ -1,13 +1,13 @@
-/*****************************************************************************
+/*============================================================================
 * Product: DPP example, EK-TM4C123GXL board, cooperative QV kernel
-* Last updated for version 7.2.0
-* Last updated on  2022-12-17
+* Last updated for version 7.3.0
+* Last updated on  2023-05-25
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
 *                    Modern Embedded Software
 *
-* Copyright (C) 2005 Quantum Leaps, LLC. All rights reserved.
+* Copyright (C) 2005 Quantum Leaps, LLC. <state-machine.com>
 *
 * This program is open source software: you can redistribute it and/or
 * modify it under the terms of the GNU General Public License as published
@@ -30,7 +30,7 @@
 * Contact information:
 * <www.state-machine.com/licensing>
 * <info@state-machine.com>
-*****************************************************************************/
+============================================================================*/
 #include "qpc.h"
 #include "dpp.h"
 #include "bsp.h"
@@ -81,7 +81,7 @@ static uint32_t l_rnd;  /* random seed */
 /*..........................................................................*/
 void SysTick_Handler(void) {
     /* process time events for clock rate 0 */
-    QTIMEEVT_TICK_X(0U, &l_SysTick_Handler);
+    QTIMEEVT_TICK_X(0U, &l_SysTick_Handler); /* process time events for rate 0 */
 
     /* Perform the debouncing of buttons. The algorithm for debouncing
     * adapted from the book "Embedded Systems Dictionary" by Jack Ganssle
@@ -100,11 +100,11 @@ void SysTick_Handler(void) {
     tmp ^= buttons.depressed;     /* changed debounced depressed */
     if ((tmp & BTN_SW1) != 0U) {  /* debounced SW1 state changed? */
         if ((buttons.depressed & BTN_SW1) != 0U) { /* is SW1 depressed? */
-            static QEvt const pauseEvt = { PAUSE_SIG, 0U, 0U};
+            static QEvt const pauseEvt = QEVT_INITIALIZER(PAUSE_SIG);
             QACTIVE_PUBLISH(&pauseEvt, &l_SysTick_Handler);
         }
-        else {            /* the button is released */
-            static QEvt const serveEvt = { SERVE_SIG, 0U, 0U};
+        else { /* the button is released */
+            static QEvt const serveEvt = QEVT_INITIALIZER(SERVE_SIG);
             QACTIVE_PUBLISH(&serveEvt, &l_SysTick_Handler);
         }
     }
@@ -355,14 +355,9 @@ void QF_onStartup(void) {
     /* assing all priority bits for preemption-prio. and none to sub-prio. */
     NVIC_SetPriorityGrouping(0U);
 
-    /* set priorities of ALL ISRs used in the system, see NOTE1
-    *
-    * !!!!!!!!!!!!!!!!!!!!!!!!!!!! CAUTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    * Assign a priority to EVERY ISR explicitly by calling NVIC_SetPriority().
-    * DO NOT LEAVE THE ISR PRIORITIES AT THE DEFAULT VALUE!
-    */
+    /* set priorities of ALL ISRs used in the system, see NOTE1 */
     NVIC_SetPriority(UART0_IRQn,   0U); /* kernel unaware interrupt */
-    NVIC_SetPriority(GPIOA_IRQn,   QF_AWARE_ISR_CMSIS_PRI);
+    NVIC_SetPriority(GPIOA_IRQn,   QF_AWARE_ISR_CMSIS_PRI + 0U);
     NVIC_SetPriority(SysTick_IRQn, QF_AWARE_ISR_CMSIS_PRI + 1U);
     /* ... */
 
@@ -376,6 +371,16 @@ void QF_onStartup(void) {
 /*..........................................................................*/
 void QF_onCleanup(void) {
 }
+/*..........................................................................*/
+#ifdef QF_ON_CONTEXT_SW
+/* NOTE: the context-switch callback is called with interrupts DISABLED */
+void QF_onContextSw(QActive *prev, QActive *next) {
+    QS_BEGIN_NOCRIT(CONTEXT_SW, 0U) /* no critical section! */
+        QS_OBJ(prev);
+        QS_OBJ(next);
+    QS_END_NOCRIT()
+}
+#endif /* QF_ON_CONTEXT_SW */
 /*..........................................................................*/
 void QV_onIdle(void) {  /* called with interrupts disabled, see NOTE2 */
     /* toggle the User LED on and then off, see NOTE3 */
@@ -410,13 +415,14 @@ void QV_onIdle(void) {  /* called with interrupts disabled, see NOTE2 */
 }
 
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
     /*
     * NOTE: add here your application-specific error handling
     */
-    (void)module;
-    (void)loc;
-    QS_ASSERTION(module, loc, 10000U); /* report assertion to QS */
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
+    QS_ASSERTION(module, id, 10000U); /* report assertion to QS */
 
 #ifndef NDEBUG
     /* light up all LEDs */
@@ -427,6 +433,11 @@ Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
 #endif
 
     NVIC_SystemReset();
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 
 /* QS callbacks ============================================================*/
@@ -521,19 +532,17 @@ void QS_onReset(void) {
 void QS_onCommand(uint8_t cmdId,
                   uint32_t param1, uint32_t param2, uint32_t param3)
 {
-    QS_BEGIN_ID(COMMAND_STAT, 0U) /* app-specific record */
-        QS_U8(2, cmdId);
-        QS_U32(8, param1);
-        QS_U32(8, param2);
-        QS_U32(8, param3);
-    QS_END()
+    Q_UNUSED_PAR(cmdId);
+    Q_UNUSED_PAR(param1);
+    Q_UNUSED_PAR(param2);
+    Q_UNUSED_PAR(param3);
 }
 
 #endif /* Q_SPY */
 /*--------------------------------------------------------------------------*/
 
-/*============================================================================
-* NOTE1:
+/*==========================================================================*/
+/* NOTE1:
 * The QF_AWARE_ISR_CMSIS_PRI constant from the QF port specifies the highest
 * ISR priority that is disabled by the QF framework. The value is suitable
 * for the NVIC_SetPriority() CMSIS function.
@@ -563,3 +572,4 @@ void QS_onCommand(uint8_t cmdId,
 * Please note that the LED is toggled with interrupts locked, so no interrupt
 * execution time contributes to the brightness of the User LED.
 */
+

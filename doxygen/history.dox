@@ -1,10 +1,61 @@
-/*! @page history Design History File (DHF)
+/*! @page history Revision History
 
 @image html  qcp_banner.jpg
 @image latex qcp_banner.jpg width=6.5in
 
 @remark
-This document is part of the @webref{products/qp#CERT,QP Certification Pack}, which has been specifically designed to aid companies in **safety certification** of their software based on the QP real-time embedded frameworks.
+This document is part of the @webref{products/qp#CERT,QP Certification Kit}, which has been specifically designed to aid companies in **safety certification** of their software based on the QP real-time embedded frameworks.
+
+@section qpc_7_3_0 Version 7.3.0, 2023-06-30
+The main focus of this QP/C release is improving the support for **functional safety** standards, such as IEC 61508 for electrical systems, and related IEC 62304/FDA510(k) for medical devices, IEC 60335 for household appliances, DO-178B/C for airborne systems.
+
+@ref ssp_fusa "QP Functional Safety (FuSa) Subsystem"<br>
+This release adds @ref ssp_fusa, which is an expansion of the assertion-based programming extensively used in the QP frameworks from the beginning. The @ref ssp_fusa "QP FuSa Subsystem" consists of the following parts:
+
+- Software assertions as a recommended technique (called Failure Assertion Programming (FAP) in IEC 61508)
+
+- Software Self-Monitoring (SSM), which encompasses such techniques:
+  + Duplicate Inverse Storage for critical variables
+  + Memory Markers for critical objects (e.g., events)
+  + **Memory Isolation by means of Memory Protection Unit (MPU)**
+
+@ref cert "Certification Kit"
+- Expanded traceability and improved the use of @ref cert_uid "Unique Identifiers (UIDs)"
+- Completed @ref misra "MISRA-C:2023 Compliance" documentation
+
+__Source Code:__
+- Re-designed the internals of the framework for Memory Isolation by dynamically adjusting memory settings (e.g., by dynamically reconfiguring the MPU). Among others, this required removing virtual functions from the QActive class.
+- Modified the semantics of the Q_onAssert() callback, which is now always invoked within a critical section (with interrupts disabled.
+- Changed the macro for disabling the QP FuSa Subsystem from #Q_NASSERT to #Q_UNSAFE (disabling  QP FuSa Subsystem is *NOT* recommended, especially in safety-related projects).
+- Modified QP/C source code for better compliance with MISRA-C:2023.
+- Added traceability links to the MISRA-C deviations in source code comments.
+- Modified the behavior of ::QXSemaphore in the QXK kernel, which now behaves like semaphore in embOS/uC-OS2 rather then a semaphore in FreeRTOS.
+
+- Introduced new macro for initializing immutable (static) events. This macro encapsulates the Memory Marker now used in all events:
+  + QEVT_INITIALIZER()
+- Introduced new macros for Memory Isolation:
+  + #QF_MEM_ISOLATE
+  + QF_MEM_SYS_()
+  + QF_MEM_APP_()
+
+__Ports:__
+- Modified the ARM Cortex-M ports (`qpc/ports/arm-cm`) to support Memory Isolation by means of the MPU (configurable by the macro #QF_MEM_ISOLATE)
+- Changed internal macros for specifying critical sections in all existing QP ports. The macros are now as follows:
+  + #QF_CRIT_STAT_
+  + QF_CRIT_E_()
+  + QF_CRIT_X_()
+
+__Examples:__
+- Modified the BSPs (Board Support Packages) in examples for ARM Cortex-M to define the function `assert_failed()`, which is now consistently called by fault handlers in the startup code.
+- Added new examples for Memory Isolation with the MPU:
+  + `qpc/examples/arm-cm/dpp_nucleo-c031c6_mpu` - use of MPU in ARM Cortex-M0+
+  + `qpc/examples/arm-cm/dpp_ek-tm4c123gxl_mpu` - use of MPU in ARM Cortex-M4F
+- Removed calls to Q_onAssert() from all example startup code and replaced it with calls to `assert_failed()`. This is for consistency and interoperability with existing libraries (e.g., STM32Cube) and for adding flexibility in defining error handling for *hardware* exceptions.
+
+@note
+This change impacts most existing examples because it is now necessary to define `assert_failed()` in the applications (typically in the Board Support Package). The typical definition of `assert_failed()` is to call Q_onAssert().
+
+
 
 @section qpc_7_2_1 Version 7.2.1, 2023-01-15
 __QP/C Source Code:__
@@ -15,7 +66,7 @@ __Ports:__
 - Fixed problems in QXK ports for ARM Cortex-M: in case a regular IRQ is used for returning to the thread context. The port didn't handle correctly #QK_USE_IRQ_NUM above 32.
 
 __Bug Fixes:__
-- [bug#328    Assertion qxk:720 in QP/​C/​C++ 7.2.0](https://sourceforge.net/p/qpc/bugs/328)
+- [bug#328 Assertion qxk:720 in QP/C/C++ 7.2.0](https://sourceforge.net/p/qpc/bugs/328)
 
 @attention
 This bug in QXK affects releases QP/C @ref qpc_7_1_0 "7.1.0" through @ref qpc_7_2_0 "7.2.0"
@@ -213,7 +264,7 @@ The Doxygen documentation has been re-structured and improved. Also the more att
 
 
 @section qpc_7_0_0 Version 7.0.0, 2022-04-30
-This QP/C release changes the QP/C implementation from C89 to C99 and also improves compliance of the QP/C source code with MISRA:C-2012 (a.k.a. MISRA3). Also, major focus of this release is the adaptation of the code and documentation to better support safety certification (see [QP Certification Pack](modules.html))
+This QP/C release changes the QP/C implementation from C89 to C99 and also improves compliance of the QP/C source code with MISRA:C-2012 (a.k.a. MISRA3). Also, major focus of this release is the adaptation of the code and documentation to better support safety certification (see [QP Certification Kit](modules.html))
 
 __Modified QP/C source code:__
 - updated QP/C source code for C99
@@ -247,10 +298,10 @@ __Added/Modified examples:__
 __Modified QP/C documentation:__
 - restructured the Doxygen documentation for traceability
 - added the @ref gs_tut "QP/C Tutorial"
-- added the @ref srs "QP Certification Pack"
+- added the @ref srs "QP Certification Kit"
 
 @remark
-The [QP Certification Pack](https://www.state-machine.com/products/qp#CERT) is still work in progress in this release, but the remaining work is limited to documentation only and no code restructuring is anticipated for that.
+The [QP Certification Kit](https://www.state-machine.com/products/qp#CERT) is still work in progress in this release, but the remaining work is limited to documentation only and no code restructuring is anticipated for that.
 
 
 @section qpc_6_9_3 Version 6.9.3, 2021-04-12
@@ -451,7 +502,7 @@ Also, added the information about the target **endianness** to the #QS_TARGET_IN
 
 
 @note
-The addition of the #QS_QF_RUN trace record affects only the [Spy build configuration](https://www.state-machine.com/qpc/struct.html#comp_qs) and is has **no impact** on the Release or Debug build configurations.
+The addition of the #QS_QF_RUN trace record affects only the [Spy build configuration](https://www.state-machine.com/qpc/struct.html#srs_qs) and is has **no impact** on the Release or Debug build configurations.
 
 
 __Updated Ports:__
@@ -1562,7 +1613,7 @@ The two changes in basic approach to distributing and building the framework hav
 
 Changes in detail:
 
-1. Renamed the "Vanilla" scheduler to the @ref comp_qv "QV cooperative kernel" for symmetry with the @ref comp_qk "QK preemptive kernel". Renamed QF_onIdle() callback to QV_onIdle().
+1. Renamed the "Vanilla" scheduler to the @ref srs_qv "QV cooperative kernel" for symmetry with the @ref srs_qk "QK preemptive kernel". Renamed QF_onIdle() callback to QV_onIdle().
 
 2. Removed class QFsm (which is now deprecated). Legacy state machines coded in the "QFsm-style" will continue to work, but will use the ::QHsm implementation internally. There is no longer any efficiency advantage in using the "QFsm-style" state machines.
 

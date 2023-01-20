@@ -1,5 +1,5 @@
 /*============================================================================
-* QP/C Real-Time Embedded Framework (RTEF)
+* QF/C port to ARM Cortex-M, QXK, IAR
 * Copyright (C) 2005 Quantum Leaps, LLC. All rights reserved.
 *
 * SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-QL-commercial
@@ -23,20 +23,23 @@
 * <info@state-machine.com>
 ============================================================================*/
 /*!
-* @date Last updated on: 2022-06-30
-* @version Last updated for: @ref qpc_7_0_1
+* @date Last updated on: 2023-06-28
+* @version Last updated for: @ref qpc_7_3_0
 *
 * @file
-* @brief QF/C port to Cortex-M, preemptive dual-mode QXK kernel, IAR-ARM
+* @brief QF/C port to Cortex-M, dual-mode QXK kernel, IAR-ARM
 */
-#ifndef QF_PORT_H
-#define QF_PORT_H
+#ifndef QF_PORT_H_
+#define QF_PORT_H_
+
+/* QF "thread" type used to store the MPU settings in the AO */
+#define QF_THREAD_TYPE  void const *
 
 /* The maximum number of system clock tick rates */
 #define QF_MAX_TICK_RATE        2U
 
 /* QF interrupt disable/enable and log2()... */
-#if (__ARM_ARCH == 6) /* Cortex-M0/M0+/M1(v6-M, v6S-M)? */
+#if (__ARM_ARCH == 6) /* ARMv6-M? */
 
     /* The maximum number of active objects in the application, see NOTE1 */
     #define QF_MAX_ACTIVE       16U
@@ -46,12 +49,12 @@
     #define QF_INT_ENABLE()     __enable_interrupt()
 
     /* QF critical section entry/exit (save and restore interrupt status) */
-    #define QF_CRIT_STAT_TYPE   unsigned long
-    #define QF_CRIT_ENTRY(primask_) do { \
+    #define QF_CRIT_STAT_       unsigned long primask_;
+    #define QF_CRIT_E_() do {         \
         (primask_) = __get_PRIMASK(); \
         QF_INT_DISABLE(); \
     } while (false)
-    #define QF_CRIT_EXIT(primask_) __set_PRIMASK((primask_))
+    #define QF_CRIT_X_()        __set_PRIMASK((primask_))
 
     /* CMSIS threshold for "QF-aware" interrupts, see NOTE2 and NOTE4 */
     #define QF_AWARE_ISR_CMSIS_PRI 0
@@ -59,30 +62,30 @@
     /* hand-optimized LOG2 in assembly for Cortex-M0/M0+/M1(v6-M, v6S-M) */
     #define QF_LOG2(n_) QF_qlog2((uint32_t)(n_))
 
-#else /* Cortex-M3/M4/M7 */
+#else /* ARMv7-M or higher */
 
     /* The maximum number of active objects in the application, see NOTE1 */
     #define QF_MAX_ACTIVE       32U
 
-    /* Cortex-M3/M4/M7 alternative interrupt disabling with PRIMASK */
+    /* ARMv7-M or higher alternative interrupt disabling with PRIMASK */
     #define QF_PRIMASK_DISABLE() __disable_interrupt()
     #define QF_PRIMASK_ENABLE()  __enable_interrupt()
 
-    /* Cortex-M3/M4/M7 interrupt disabling policy, see NOTE3 and NOTE4 */
-    #define QF_INT_DISABLE() do { \
-        QF_PRIMASK_DISABLE(); \
+    /* ARMv7-M or higher interrupt disabling policy, see NOTE3 and NOTE4 */
+    #define QF_INT_DISABLE() do {  \
+        QF_PRIMASK_DISABLE();      \
         __set_BASEPRI(QF_BASEPRI); \
-        QF_PRIMASK_ENABLE(); \
+        QF_PRIMASK_ENABLE();       \
     } while (false)
     #define QF_INT_ENABLE()      __set_BASEPRI(0U)
 
     /* QF critical section entry/exit (save and restore interrupt status) */
-    #define QF_CRIT_STAT_TYPE   unsigned long
-    #define QF_CRIT_ENTRY(basepri_) do {\
-        (basepri_) = __get_BASEPRI(); \
-        QF_INT_DISABLE(); \
+    #define QF_CRIT_STAT_        unsigned long basepri_;
+    #define QF_CRIT_E_() do {       \
+        basepri_ = __get_BASEPRI(); \
+        QF_INT_DISABLE();           \
     } while (false)
-    #define QF_CRIT_EXIT(basepri_) __set_BASEPRI((basepri_))
+    #define QF_CRIT_X_()         __set_BASEPRI((basepri_))
 
     /* BASEPRI threshold for "QF-aware" interrupts, see NOTE3 */
     #define QF_BASEPRI           0x3F
@@ -90,7 +93,7 @@
     /* CMSIS threshold for "QF-aware" interrupts, see NOTE5 */
     #define QF_AWARE_ISR_CMSIS_PRI (QF_BASEPRI >> (8 - __NVIC_PRIO_BITS))
 
-    /* Cortex-M3/M4/M7 provide the CLZ instruction for fast LOG2 */
+    /* ARMv7-M or higher provide the CLZ instruction for fast LOG2 */
     #define QF_LOG2(n_) ((uint_fast8_t)(32U - __CLZ((unsigned long)(n_))))
 
 #endif
@@ -100,12 +103,30 @@
 #include <intrinsics.h> /* IAR intrinsic functions */
 #include "qep_port.h"   /* QEP port */
 
-#if (__ARM_ARCH == 6) /* Cortex-M0/M0+/M1(v6-M, v6S-M)? */
+#if (__ARM_ARCH == 6) /* ARMv6-M? */
     /* hand-optimized quick LOG2 in assembly */
     uint_fast8_t QF_qlog2(uint32_t x);
-#endif /* Cortex-M0/M0+/M1(v6-M, v6S-M) */
+#endif /* ARMv7-M or higher */
 
-#include "qxk_port.h"   /* QXK dual-mode kernel port */
+/* Memory isolation --------------------------------------------------------*/
+#ifdef QF_MEM_ISOLATE
+
+    /* Memory isolation requires the context-switch */
+    #define QF_ON_CONTEXT_SW   1U
+
+    /* Memory System setting */
+    #define QF_MEM_SYS_() QF_onMemSys()
+
+    /* Memory Application setting */
+    #define QF_MEM_APP_() QF_onMemApp()
+
+    /* callback functions for memory settings (provided by applications) */
+    void QF_onMemSys(void);
+    void QF_onMemApp(void);
+
+#endif /* def QF_MEM_ISOLATE */
+
+#include "qxk_port.h"  /* QXK dual-mode kernel port */
 
 /*****************************************************************************
 * NOTE1:
@@ -126,8 +147,8 @@
 * with numerical priority values lower than QF_BASEPRI) are NOT disabled in
 * this method. These free-running interrupts have very low ("zero") latency,
 * but they are not allowed to call any QF services, because QF is unaware
-* of them ("QF-unaware" interrutps). Consequently, only interrupts with
-* numerical values of priorities eqal to or higher than QF_BASEPRI
+* of them ("QF-unaware" interrupts). Consequently, only interrupts with
+* numerical values of priorities equal to or higher than QF_BASEPRI
 * ("QF-aware" interrupts ), can call QF services.
 *
 * NOTE4:
@@ -151,5 +172,5 @@
 * macro. This workaround works also for Cortex-M3/M4 cores.
 */
 
-#endif /* QF_PORT_H */
+#endif /* QF_PORT_H_ */
 

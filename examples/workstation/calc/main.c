@@ -1,7 +1,7 @@
 /*****************************************************************************
-* Product: calc Example
-* Last updated for version 6.9.1
-* Last updated on  2020-09-11
+* Product: calc1_sub Example
+* Last updated for version 7.3.0
+* Last updated on  2023-06-30
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -62,11 +62,11 @@ int main() {
     QHSM_INIT(the_calc, (void *)0, 0U); /* trigger initial transition */
 
     for (;;) { /* event loop */
-        CalcEvt e; /* Calculator event */
+        CalcEvt e =  { QEVT_INITIALIZER(0U), 0U}; /* Calculator event */
 
-        BSP_display(); /* show the display */
+        BSP_show_display(); /* show the display */
 
-        PRINTF_S("%s", " : ");
+        PRINTF_S("%s"," : ");
         fflush(stdout);
         e.key_code = (uint8_t)QF_consoleWaitForKey();
         PRINTF_S("%c ", (e.key_code >= ' ') ? e.key_code : 'X');

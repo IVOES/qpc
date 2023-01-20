@@ -1,7 +1,7 @@
 /*****************************************************************************
 * Product: History Example, Win32
-* Last updated for version 6.9.1
-* Last updated on  2020-09-11
+* Last updated for version 7.3.0
+* Last updated on  2023-06-30
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -58,7 +58,7 @@ int main() {
     QHSM_INIT(the_oven, (void *)0, 0U);
 
     for (;;) {
-        QEvt e;
+        QEvt e = QEVT_INITIALIZER(0U);
         uint8_t c;
 
         PRINTF_S("\n", "");
@@ -95,8 +95,8 @@ void QF_onClockTick(void) {
 }
 
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const file, int_t const line) {
-    FPRINTF_S(stderr, "Assertion failed in %s, line %d", file, line);
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
+    FPRINTF_S(stderr, "ERROR in %s, line %d", module, id);
     QF_onCleanup();
     exit(-1);
 }

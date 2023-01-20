@@ -1,11 +1,11 @@
 /*****************************************************************************
 * Product: DPP example
-* Last Updated for Version: 6.2.0
-* Date of the Last Update:  2018-03-16
+* Last updated for version 7.3.0
+* Last updated on  2023-06-29
 *
-*                    Q u a n t u m     L e a P s
-*                    ---------------------------
-*                    innovating embedded systems
+*                    Q u a n t u m  L e a P s
+*                    ------------------------
+*                    Modern Embedded Software
 *
 * Copyright (C) 2005 Quantum Leaps, LLC. All rights reserved.
 *
@@ -49,6 +49,6 @@ void BSP_wait4PB1(void);
 void BSP_ledOn(void);
 void BSP_ledOff(void);
 
-extern QActive *the_Ticker0;
+extern QActive *const the_Ticker0;
 
 #endif /* BSP_H */

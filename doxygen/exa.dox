@@ -65,7 +65,7 @@ qpc/                     // QP/C installation directory
 @endcode
 
 `[1]` @subpage exa_native "Native examples"
-are located in sub-directories named after the CPU architecture, such as <span class="img folder">arm-cm</span> for ARM Cortex-M. Under that directory, the sub-directories <span class="img folder">blinky_ek-tm4c123gxl</span> contain the specific example on the specified board, such as "Blinky" on the EK-TM4C123GXL board here. In the specific example folder, you find sub-folders for the @ref comp_qv "QV", @ref comp_qk "QK" and @ref comp_qxk "QXK" kernels, respectively.
+are located in sub-directories named after the CPU architecture, such as <span class="img folder">arm-cm</span> for ARM Cortex-M. Under that directory, the sub-directories <span class="img folder">blinky_ek-tm4c123gxl</span> contain the specific example on the specified board, such as "Blinky" on the EK-TM4C123GXL board here. In the specific example folder, you find sub-folders for the @ref srs_qv "QV", @ref srs_qk "QK" and @ref srs_qxk "QXK" kernels, respectively.
 
 `[2]` @subpage exa_rtos "Examples for 3rd-party RTOS"
 are located in sub-directories named after the RTOS/OS, such as <span class="img folder">freertos</span> for uc-os2 RTOS. Under that directory, the sub-directories, such as <span class="img folder">arm-cm</span>, contain examples for the specified CPU architecture, such as ARM Cortex-M here.
@@ -108,11 +108,11 @@ Most provided examples require special embedded cross-development tools, such as
 @subsection exa_sec_conf Build Configurations
 QP examples @ref ports "QP ports" are provided in the following three **build configurations**:
 
-- **Debug** &mdash; this configuration is built with full debugging information and minimal optimization. When the QP framework finds no events to process, the framework busy-idles until there are new events to process. The @ref comp_qs "QS trace instrumentation" is **disabled**.
+- **Debug** &mdash; this configuration is built with full debugging information and minimal optimization. When the QP framework finds no events to process, the framework busy-idles until there are new events to process. The @ref srs_qs "QS trace instrumentation" is **disabled**.
 
-- **Release** &mdash; this configuration is built with no debugging information and high optimization. Single-stepping and debugging at the source-code level is effectively impossible due to the lack of debugging information and optimized code, but the debugger can be used to download and start the executable. When the QP framework finds no events to process, the framework puts the CPU to sleep until there are new events to process.  The @ref comp_qs "QS trace instrumentation" is **disabled**.
+- **Release** &mdash; this configuration is built with no debugging information and high optimization. Single-stepping and debugging at the source-code level is effectively impossible due to the lack of debugging information and optimized code, but the debugger can be used to download and start the executable. When the QP framework finds no events to process, the framework puts the CPU to sleep until there are new events to process.  The @ref srs_qs "QS trace instrumentation" is **disabled**.
 
-- **Spy** &mdash; like the debug variant, this variant is built with full debugging information and minimal optimization. Additionally, it is build with the @ref comp_qs "QS trace instrumentation" enabled. The on-board serial port and the Q-Spy host application are used for sending and viewing trace data. Like the Debug configuration, the QP framework busy-idles until there are new events to process.
+- **Spy** &mdash; like the debug variant, this variant is built with full debugging information and minimal optimization. Additionally, it is build with the @ref srs_qs "QS trace instrumentation" enabled. The on-board serial port and the Q-Spy host application are used for sending and viewing trace data. Like the Debug configuration, the QP framework busy-idles until there are new events to process.
 
 
 @remark
@@ -272,7 +272,7 @@ The examples in the "workstation" directory are designed for workstations (runni
 
 
 @section exa_ref_boards Examples by Development Board
-The boards chosen for the examples are generally inexpensive and self-contained with minimal need for external hardware (such as external JTAG debuggers or power supplies). Also, all the selected boards provide a virtual COM port (ideally) or can be easily connected to a TTL-to-USB serial converter cable for @ref comp_qs "QS software tracing" output.
+The boards chosen for the examples are generally inexpensive and self-contained with minimal need for external hardware (such as external JTAG debuggers or power supplies). Also, all the selected boards provide a virtual COM port (ideally) or can be easily connected to a TTL-to-USB serial converter cable for @ref srs_qs "QS software tracing" output.
 
 @note
 You can hover the mouse cursor over the <span class="board"></span>&nbsp;&nbsp; icon in the list below to see the picture of the board.

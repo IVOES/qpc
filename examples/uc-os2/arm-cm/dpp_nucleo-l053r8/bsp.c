@@ -1,7 +1,7 @@
-/*****************************************************************************
+/*============================================================================
 * Product: DPP example, NUCLEO-L053R8 board, uC/OS-II RTOS
-* Last updated for version 6.9.3
-* Last updated on  2021-03-03
+* Last updated for version 7.3.0
+* Last updated on  2023-05-25
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -30,7 +30,7 @@
 * Contact information:
 * <www.state-machine.com/licensing>
 * <info@state-machine.com>
-*****************************************************************************/
+============================================================================*/
 #include "qpc.h"
 #include "dpp.h"
 #include "bsp.h"
@@ -63,7 +63,6 @@ static uint32_t l_rnd;  /* random seed */
 
 #endif
 
-/* ISRs used in the application ==========================================*/
 /* uCOS-II application hooks ===============================================*/
 void App_TaskCreateHook (OS_TCB *ptcb) { (void)ptcb; }
 void App_TaskDelHook    (OS_TCB *ptcb) { (void)ptcb; }
@@ -75,8 +74,8 @@ void App_TaskIdleHook(void) {
 
     /* toggle LED2 on and then off, see NOTE01 */
     OS_ENTER_CRITICAL();
-    //GPIOA->BSRR |= (LED_LD2);        /* turn LED[n] on  */
-    //GPIOA->BSRR |= (LED_LD2 << 16);  /* turn LED[n] off */
+    //GPIOA->BSRR = (LED_LD2);        /* turn LED[n] on  */
+    //GPIOA->BSRR = (LED_LD2 << 16);  /* turn LED[n] off */
     OS_EXIT_CRITICAL();
 
 #ifdef Q_SPY
@@ -122,7 +121,8 @@ void App_TimeTickHook(void) {
 #endif
 
     QTIMEEVT_TICK_X(0U, &l_tickHook); /* process time events for rate 0 */
-    //QACTIVE_POST(the_Ticker0, 0, &l_tickHook); /* post to Ticker0 */
+    //QTICKER_TICK(the_Ticker0, &l_SysTick_Handler); /* trigger ticker AO */
+
 
     /* Perform the debouncing of buttons. The algorithm for debouncing
     * adapted from the book "Embedded Systems Dictionary" by Jack Ganssle
@@ -136,11 +136,11 @@ void App_TimeTickHook(void) {
     tmp ^= buttons.depressed;     /* changed debounced depressed */
     if ((tmp & BTN_B1) != 0U) {  /* debounced B1 state changed? */
         if ((buttons.depressed & BTN_B1) != 0U) { /* is B1 depressed? */
-            static QEvt const pauseEvt = { PAUSE_SIG, 0U, 0U};
+            static QEvt const pauseEvt = QEVT_INITIALIZER(PAUSE_SIG);
             QACTIVE_PUBLISH(&pauseEvt, &l_tickHook);
         }
         else {            /* the button is released */
-            static QEvt const serveEvt = { SERVE_SIG, 0U, 0U};
+            static QEvt const serveEvt = QEVT_INITIALIZER(SERVE_SIG);
             QACTIVE_PUBLISH(&serveEvt, &l_tickHook);
         }
     }
@@ -189,10 +189,10 @@ void BSP_init(void) {
 /*..........................................................................*/
 void BSP_displayPhilStat(uint8_t n, char const *stat) {
     if (stat[0] == 'h') {
-        GPIOA->BSRR |= LED_LD2;  /* turn LED on  */
+        GPIOA->BSRR = LED_LD2;  /* turn LED on  */
     }
     else {
-        GPIOA->BSRR |= (LED_LD2 << 16);  /* turn LED off */
+        GPIOA->BSRR = (LED_LD2 << 16);  /* turn LED off */
     }
 
     QS_BEGIN_ID(PHILO_STAT, AO_Philo[n]->prio) /* app-specific record */
@@ -204,10 +204,10 @@ void BSP_displayPhilStat(uint8_t n, char const *stat) {
 void BSP_displayPaused(uint8_t paused) {
     /* not enough LEDs to implement this feature */
     if (paused != 0U) {
-        //GPIOA->BSRR |= (LED_LD2);  /* turn LED[n] on  */
+        //GPIOA->BSRR = (LED_LD2);  /* turn LED[n] on  */
     }
     else {
-        //GPIOA->BSRR |= (LED_LD2 << 16);  /* turn LED[n] off */
+        //GPIOA->BSRR = (LED_LD2 << 16);  /* turn LED[n] off */
     }
 }
 /*..........................................................................*/
@@ -245,23 +245,29 @@ void QF_onStartup(void) {
 void QF_onCleanup(void) {
 }
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
     /*
     * NOTE: add here your application-specific error handling
     */
-    (void)module;
-    (void)loc;
-    QS_ASSERTION(module, loc, 10000U); /* report assertion to QS */
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
+    QS_ASSERTION(module, id, 10000U); /* report assertion to QS */
 
 #ifndef NDEBUG
     /* wait until button B1 is pressed... */
     while ((GPIOC->IDR  & BTN_B1) != 0U) {
-        GPIOA->BSRR |= (LED_LD2);        /* turn LED2 on  */
-        GPIOA->BSRR |= (LED_LD2 << 16);  /* turn LED2 off */
+        GPIOA->BSRR = (LED_LD2);        /* turn LED2 on  */
+        GPIOA->BSRR = (LED_LD2 << 16);  /* turn LED2 off */
     }
 #endif
 
     NVIC_SystemReset();
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 
 /* QS callbacks ============================================================*/

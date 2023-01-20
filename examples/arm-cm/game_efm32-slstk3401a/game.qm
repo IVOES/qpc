@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<model version="5.2.4" links="1">
+<model version="5.2.5" links="1">
  <documentation>&quot;Fly 'n' Shoot&quot; game model from Chapters 1 &amp; 9 of PSiCC2</documentation>
  <!--${qpc}-->
  <framework name="qpc"/>
@@ -165,7 +165,6 @@ if ((me-&gt;last_mine_x + GAME_MINES_DIST_MIN &lt; GAME_TUNNEL_WIDTH)
         }
     }
     if (n &lt; Q_DIM(me-&gt;mines)) { /* a disabled Mine found? */
-        ObjectPosEvt ope; /* event to dispatch to the Mine */
         rnd = (BSP_random() &amp; 0xFFFFU);
 
         if ((rnd &amp; 1U) == 0U) { /* choose the type of the mine */
@@ -184,11 +183,12 @@ if ((me-&gt;last_mine_x + GAME_MINES_DIST_MIN &lt; GAME_TUNNEL_WIDTH)
                 - me-&gt;wall_thickness_bottom - 4U);
         me-&gt;last_mine_y = (uint8_t)(me-&gt;wall_thickness_top + 2U + rnd);
 
-        ope.super.sig = MINE_PLANT_SIG;
+        ObjectPosEvt ope; /* event to dispatch to the Mine */
+        QEvt_ctor(&amp;ope.super, MINE_PLANT_SIG);
         ope.x = me-&gt;last_mine_x;
         ope.y = me-&gt;last_mine_y;
         /* direct dispatch */
-        QHSM_DISPATCH(me-&gt;mines[n], (QEvt *)&amp;ope, me-&gt;super.prio);
+        QHSM_DISPATCH(me-&gt;mines[n], &amp;ope.super, me-&gt;super.prio);
     }
 }</code>
    </operation>
@@ -196,8 +196,7 @@ if ((me-&gt;last_mine_x + GAME_MINES_DIST_MIN &lt; GAME_TUNNEL_WIDTH)
    <operation name="dispatchToAllMines" type="void" visibility="0x02" properties="0x00">
     <!--${AOs::Tunnel::dispatchToAllMin~::e}-->
     <parameter name="e" type="QEvt const *"/>
-    <code>uint8_t n;
-for (n = 0U; n &lt; GAME_MINES_MAX; ++n) {
+    <code>for (uint8_t n = 0U; n &lt; GAME_MINES_MAX; ++n) {
     if (me-&gt;mines[n] != (QHsm *)0) { /* is the mine used? */
         QHSM_DISPATCH(me-&gt;mines[n], e, me-&gt;super.prio);
     }
@@ -379,11 +378,10 @@ BSP_updateScreen();</action>
      </state>
      <!--${AOs::Tunnel::SM::active::playing}-->
      <state name="playing">
-      <entry>static QEvt const takeoff = { TAKE_OFF_SIG, 0U, 0U };
+      <entry>static QEvt const takeoff = QEVT_INITIALIZER(TAKE_OFF_SIG);
 me-&gt;wall_gap = GAME_WALLS_GAP_Y;
 QACTIVE_POST(AO_Ship, &amp;takeoff, me); /* post the TAKEOFF sig */</entry>
-      <exit>QEvt recycle;
-recycle.sig = MINE_RECYCLE_SIG;
+      <exit>static QEvt const recycle = QEVT_INITIALIZER(MINE_RECYCLE_SIG);
 Tunnel_dispatchToAllMines(me, &amp;recycle); /* recycle all Mines */</exit>
       <!--${AOs::Tunnel::SM::active::playing::TIME_TICK}-->
       <tran trig="TIME_TICK">
@@ -404,7 +402,7 @@ uint8_t bmp = Q_EVT_CAST(ObjectImageEvt)-&gt;bmp;
 
 /* did the Ship/Missile hit the tunnel wall? */
 if (BSP_isWallHit(bmp, x, y)) {
-    static QEvt const hit = { HIT_WALL_SIG, 0U, 0U };
+    static QEvt const hit = QEVT_INITIALIZER(HIT_WALL_SIG);
     QACTIVE_POST(AO_Ship, &amp;hit, me);
 }
 BSP_paintBitmap(x, y, bmp);
@@ -421,7 +419,7 @@ uint8_t bmp = Q_EVT_CAST(ObjectImageEvt)-&gt;bmp;
 
 /* did the Ship/Missile hit the tunnel wall? */
 if (BSP_isWallHit(bmp, x, y)) {
-    static QEvt const hit = { HIT_WALL_SIG, 0U, 0U };
+    static QEvt const hit = QEVT_INITIALIZER(HIT_WALL_SIG);
     QACTIVE_POST(AO_Missile, &amp;hit, me);
 }
 BSP_paintBitmap(x, y, bmp);
@@ -1014,7 +1012,7 @@ uint8_t bmp = Q_EVT_CAST(ObjectImageEvt)-&gt;bmp;</action>
        <choice target="../../../../1">
         <guard brief="collision with MINE1_BMP?">BSP_doBitmapsOverlap(MINE1_BMP, me-&gt;x, me-&gt;y, bmp, x, y)</guard>
         <action brief="...">static MineEvt const mine1_hit = {
-    { HIT_MINE_SIG, 0U, 0U }, /* the QEvt base instance */
+    QEVT_INITIALIZER(HIT_MINE_SIG), /* the QEvt base instance */
     1U  /* type of the mine (1 for Mine type-1) */
 };
 QACTIVE_POST(AO_Ship, (QEvt *)&amp;mine1_hit, me);
@@ -1037,7 +1035,7 @@ uint8_t bmp = Q_EVT_CAST(ObjectImageEvt)-&gt;bmp;</action>
        <choice target="../../../2">
         <guard brief="collision with MINE1_BMP?">BSP_doBitmapsOverlap(MINE1_BMP, me-&gt;x, me-&gt;y, bmp, x, y)</guard>
         <action brief="...">static ScoreEvt const mine1_destroyed = {
-    { DESTROYED_MINE_SIG, 0U, 0U },  /* the QEvt base instance */
+    QEVT_INITIALIZER(DESTROYED_MINE_SIG),  /* the QEvt base instance */
     25U  /* score for destroying Mine type-1 */
 };
 QACTIVE_POST(AO_Missile, (QEvt *)&amp;mine1_destroyed, me);</action>
@@ -1212,7 +1210,7 @@ uint8_t bmp = Q_EVT_CAST(ObjectImageEvt)-&gt;bmp;</action>
        <choice target="../../../../1">
         <guard brief="collision with MINE2_BMP?">BSP_doBitmapsOverlap(MINE2_BMP, me-&gt;x, me-&gt;y, bmp, x, y)</guard>
         <action>static MineEvt const mine1_hit = {
-    { HIT_MINE_SIG, 0U, 0U }, /* the QEvt base instance */
+    QEVT_INITIALIZER(HIT_MINE_SIG), /* the QEvt base instance */
     2U  /* type of the mine (2 for Mine type-2) */
 };
  QACTIVE_POST(AO_Ship, (QEvt *)&amp;mine1_hit, me);
@@ -1241,7 +1239,7 @@ uint8_t bmp = Q_EVT_CAST(ObjectImageEvt)-&gt;bmp;</action>
 * a smaller bitmap MINE2_MISSILE_BMP.
 */
 static ScoreEvt const mine2_destroyed = {
-    { DESTROYED_MINE_SIG, 0U, 0U },  /* the QEvt base instance */
+    QEVT_INITIALIZER(DESTROYED_MINE_SIG),  /* the QEvt base instance */
     45U  /* score for destroying Mine type-2 */
 };
 QACTIVE_POST(AO_Missile, (QEvt *)&amp;mine2_destroyed, me);</action>
@@ -1364,10 +1362,9 @@ enum GameBitmapIds {
 };
 
 /* declare shared facilities */
-$declare${Shared}
+$declare ${Shared}
 
-#endif  /* GAME_H */
-</text>
+#endif  /* GAME_H */</text>
   </file>
   <!--${.::missile.c}-->
   <file name="missile.c">
@@ -1378,14 +1375,14 @@ $declare${Shared}
 /* Q_DEFINE_THIS_FILE */
 
 /* local objects -----------------------------------------------------------*/
-$declare${AOs::Missile}
+$declare ${AOs::Missile}
 
 /* Public-scope objects ----------------------------------------------------*/
-$define${Shared::AO_Missile}
+$define ${Shared::AO_Missile}
 
 /* Active object definition ------------------------------------------------*/
-$define${Shared::Missile_ctor_call}
-$define${AOs::Missile}</text>
+$define ${Shared::Missile_ctor_call}
+$define ${AOs::Missile}</text>
   </file>
   <!--${.::ship.c}-->
   <file name="ship.c">
@@ -1399,14 +1396,14 @@ $define${AOs::Missile}</text>
 #define SHIP_HEIGHT 3
 
 /* encapsulated delcaration of the Ship active object ----------------------*/
-$declare${AOs::Ship}
+$declare ${AOs::Ship}
 
 /* Public-scope objects ----------------------------------------------------*/
-$define${Shared::AO_Ship}
+$define ${Shared::AO_Ship}
 
 /* Active object definition ------------------------------------------------*/
-$define${Shared::Ship_ctor_call}
-$define${AOs::Ship}</text>
+$define ${Shared::Ship_ctor_call}
+$define ${AOs::Ship}</text>
   </file>
   <!--${.::tunnel.c}-->
   <file name="tunnel.c">
@@ -1417,14 +1414,14 @@ $define${AOs::Ship}</text>
 Q_DEFINE_THIS_FILE
 
 /* local objects -----------------------------------------------------------*/
-$declare${AOs::Tunnel}
+$declare ${AOs::Tunnel}
 
 /* Public-scope objects ----------------------------------------------------*/
-$define${Shared::AO_Tunnel}
+$define ${Shared::AO_Tunnel}
 
 /* Active object definition ================================================*/
-$define${Shared::Tunnel_ctor_call}
-$define${AOs::Tunnel}</text>
+$define ${Shared::Tunnel_ctor_call}
+$define ${AOs::Tunnel}</text>
   </file>
   <!--${.::mine1.c}-->
   <file name="mine1.c">
@@ -1435,14 +1432,14 @@ $define${AOs::Tunnel}</text>
 Q_DEFINE_THIS_FILE
 
 /* encapsulated delcaration of the Mine1 HSM -------------------------------*/
-$declare(AOs::Mine1)
+$declare ${AOs::Mine1}
 
 /* helper macro to provide the ID of this mine */
 #define MINE_ID(me_)    ((uint8_t)((me_) - &amp;Mine1_inst[0]))
 
 /* Mine1 class definition --------------------------------------------------*/
-$define(Shared::Mine1_ctor_call)
-$define(AOs::Mine1)</text>
+$define ${Shared::Mine1_ctor_call}
+$define ${AOs::Mine1}</text>
   </file>
   <!--${.::mine2.c}-->
   <file name="mine2.c">
@@ -1453,14 +1450,14 @@ $define(AOs::Mine1)</text>
 Q_DEFINE_THIS_FILE
 
 /* encapsulated delcaration of the Mine2 HSM -------------------------------*/
-$declare(AOs::Mine2)
+$declare ${AOs::Mine2}
 
 /* helper macro to provide the ID of this mine */
 #define MINE_ID(me_)    ((uint8_t)((me_) - &amp;Mine2_inst[0]))
 
 /* Mine2 class definition --------------------------------------------------*/
-$define(Shared::Mine2_ctor_call)
-$define(AOs::Mine2)</text>
+$define ${Shared::Mine2_ctor_call}
+$define ${AOs::Mine2}</text>
   </file>
  </directory>
 </model>

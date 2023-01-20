@@ -1,11 +1,11 @@
 /*****************************************************************************
-* Product: BSP for DPP example
-* Last updated for: @ref qpc_7_0_0
-* Last updated on  2022-01-21
+* Product: DPP example
+* Last updated for version 6.7.0
+* Last updated on  2019-12-28
 *
-*                    Q u a n t u m     L e a P s
-*                    ---------------------------
-*                    innovating embedded systems
+*                    Q u a n t u m  L e a P s
+*                    ------------------------
+*                    Modern Embedded Software
 *
 * Copyright (C) 2005 Quantum Leaps, LLC. All rights reserved.
 *
@@ -25,7 +25,7 @@
 * GNU General Public License for more details.
 *
 * You should have received a copy of the GNU General Public License
-* along with this program. If not, see <www.gnu.org/licenses/>.
+* along with this program. If not, see <www.gnu.org/licenses>.
 *
 * Contact information:
 * <www.state-machine.com/licensing>
@@ -49,6 +49,6 @@ void BSP_wait4PB1(void);
 void BSP_ledOn(void);
 void BSP_ledOff(void);
 
-extern QTicker ticker0;
+extern QActive * const the_Ticker0;
 
 #endif /* BSP_H */

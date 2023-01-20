@@ -3,7 +3,7 @@
 #include "dpp.h"
 #include "freertos/FreeRTOS.h"
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 static const char * TAG = "main";
 
 /*

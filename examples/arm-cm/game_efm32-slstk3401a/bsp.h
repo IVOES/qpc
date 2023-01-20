@@ -1,11 +1,11 @@
 /*****************************************************************************
 * Product: "Fly 'n' Shoot" game example on EFM32-SLSTK3401A board
-* Last updated for version 5.8.1
-* Last updated on  2016-12-12
+* Last updated for version 7.3.0
+* Last updated on  2023-06-29
 *
-*                    Q u a n t u m     L e a P s
-*                    ---------------------------
-*                    innovating embedded systems
+*                    Q u a n t u m  L e a P s
+*                    ------------------------
+*                    Modern Embedded Software
 *
 * Copyright (C) 2005 Quantum Leaps, LLC. All rights reserved.
 *
@@ -60,6 +60,6 @@ void BSP_displayOff(void);
 void BSP_randomSeed(uint32_t seed); /* random seed */
 uint32_t BSP_random(void);          /* pseudo-random generator */
 
-extern QActive *the_Ticker0; /* "Ticker" active object for tick rate 0 */
+extern QActive *const the_Ticker0;  /* "Ticker" AO for tick rate 0 */
 
 #endif /* BSP_H */

@@ -56,19 +56,22 @@ void QF_onCleanup(void) {
 }
 /*..........................................................................*/
 void QF_onClockTick(void) {
-    int ch;
-
     QTIMEEVT_TICK_X(0U, &l_clock_tick); /* perform the QF clock tick processing */
 
-    ch = QF_consoleGetKey();
+    int ch = QF_consoleGetKey();
     if (ch != 0) { /* any key pressed? */
         BSP_onKeyboardInput(ch);
     }
 }
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
-    FPRINTF_S(stderr, "Assertion failed in %s:%d", module, loc);
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
+    FPRINTF_S(stderr, "ERROR in %s:%d", module, id);
     QF_onCleanup();
     exit(-1);
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 

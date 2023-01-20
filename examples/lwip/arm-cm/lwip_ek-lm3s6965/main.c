@@ -35,7 +35,7 @@
 #include "dpp.h"  /* application events and active objects */
 #include "bsp.h"
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /* Local-scope objects -----------------------------------------------------*/
 static QEvt const *l_tableQueueSto[N_PHILO];

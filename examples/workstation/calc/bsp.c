@@ -66,12 +66,21 @@ void BSP_insert(int keyId) {
     }
 }
 /*..........................................................................*/
+void BSP_display(double value) {
+    SNPRINTF_S(l_display, Q_DIM(l_display),
+        "%" STRINGIFY(DISP_WIDTH) ".6g", value);
+}
+/*..........................................................................*/
+void BSP_display_error(char const *err) {
+    STRNCPY_S(l_display, DISP_WIDTH, err);
+}
+/*..........................................................................*/
 void BSP_negate(void) {
     BSP_clear();
     l_display[DISP_WIDTH - 2] = '-';
 }
 /*..........................................................................*/
-void BSP_display(void) {
+void BSP_show_display(void) {
     PRINTF_S("\n[%" STRINGIFY(DISP_WIDTH) "s] ", l_display);
 }
 /*..........................................................................*/
@@ -84,50 +93,6 @@ void BSP_exit(void) {
 /*..........................................................................*/
 double BSP_get_value(void) {
     return strtod(l_display, (char **)0);
-}
-/*..........................................................................*/
-int BSP_eval(double operand1, int oper, double operand2) {
-    int ok = 1;
-    double result = 0.0;
-    switch (oper) {
-        case KEY_PLUS: {
-            result = operand1 + operand2;
-            break;
-        }
-        case KEY_MINUS: {
-            result = operand1 - operand2;
-            break;
-        }
-        case KEY_MULT: {
-            result = operand1 * operand2;
-            break;
-        }
-        case KEY_DIVIDE: {
-            if ((operand2 < -1e-30) || (1e-30 < operand2)) {
-                result = operand1 / operand2;
-            }
-            else {
-                /* error: divide by zero */
-                STRNCPY_S(l_display, DISP_WIDTH, " Error 0 ");
-                ok = 0;
-            }
-            break;
-        }
-    }
-    if (ok) {
-        if ((-0.000001 < result) && (result < 0.000001)) {
-            result = 0.0;
-        }
-        if ((-99999999.0 < result) && (result < 99999999.0)) {
-            SNPRINTF_S(l_display, DISP_WIDTH, "%10.7g", result);
-        }
-        else {
-            /* error: out of range */
-            STRNCPY_S(l_display, DISP_WIDTH, " Error 1 ");
-            ok = 0;
-        }
-    }
-    return ok;
 }
 /*..........................................................................*/
 void BSP_message(char const *msg) {
@@ -148,8 +113,13 @@ void QF_onClockTick(void) {
 
 /*..........................................................................*/
 /* this function is used by the QP embedded systems-friendly assertions */
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
-    FPRINTF_S(stderr, "Assertion failed in %s:%d", module, loc);
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
+    FPRINTF_S(stderr, "ERROR in %s:%d", module, id);
     QF_onCleanup();
     exit(-1);
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }

@@ -38,7 +38,7 @@
 
 #include "safe_std.h" /* portable "safe" <stdio.h>/<string.h> facilities */
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /*..........................................................................*/
 int main(int argc, char *argv[]) {

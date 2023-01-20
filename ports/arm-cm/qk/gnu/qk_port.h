@@ -23,14 +23,14 @@
 * <info@state-machine.com>
 ============================================================================*/
 /*!
-* @date Last updated on: 2022-12-18
-* @version Last updated for: @ref qpc_7_2_0
+* @date Last updated on: 2023-05-25
+* @version Last updated for: @ref qpc_7_3_0
 *
 * @file
 * @brief QK/C port to ARM Cortex-M, GNU-ARM toolset
 */
-#ifndef QK_PORT_H
-#define QK_PORT_H
+#ifndef QK_PORT_H_
+#define QK_PORT_H_
 
 /* determination if the code executes in the ISR context */
 #define QK_ISR_CONTEXT_() (QK_get_IPSR() != 0U)
@@ -45,14 +45,27 @@ static inline uint32_t QK_get_IPSR(void) {
 /* QK ISR entry and exit */
 #define QK_ISR_ENTRY() ((void)0)
 
-#define QK_ISR_EXIT()  do {                                   \
-    QF_INT_DISABLE();                                         \
-    if (QK_sched_() != 0U) {                                  \
-        *Q_UINT2PTR_CAST(uint32_t, 0xE000ED04U) = (1U << 28U);\
-    }                                                         \
-    QF_INT_ENABLE();                                          \
-    QK_ARM_ERRATUM_838869();                                  \
-} while (false)
+#ifdef QF_MEM_ISOLATE
+    #define QK_ISR_EXIT()  do {                                   \
+        QF_INT_DISABLE();                                         \
+        QF_MEM_SYS_();                                            \
+        if (QK_sched_() != 0U) {                                  \
+            *Q_UINT2PTR_CAST(uint32_t, 0xE000ED04U) = (1U << 28U);\
+        }                                                         \
+        QF_MEM_APP_();                                            \
+        QF_INT_ENABLE();                                          \
+        QK_ARM_ERRATUM_838869();                                  \
+    } while (false)
+#else
+    #define QK_ISR_EXIT()  do {                                   \
+        QF_INT_DISABLE();                                         \
+        if (QK_sched_() != 0U) {                                  \
+            *Q_UINT2PTR_CAST(uint32_t, 0xE000ED04U) = (1U << 28U);\
+        }                                                         \
+        QF_INT_ENABLE();                                          \
+        QK_ARM_ERRATUM_838869();                                  \
+    } while (false)
+#endif
 
 #if (__ARM_ARCH == 6) /* ARMv6-M? */
     #define QK_ARM_ERRATUM_838869() ((void)0)
@@ -91,5 +104,5 @@ void QK_thread_ret(void);
 
 #include "qk.h" /* QK platform-independent public interface */
 
-#endif /* QK_PORT_H */
+#endif /* QK_PORT_H_ */
 

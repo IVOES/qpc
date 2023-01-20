@@ -95,7 +95,7 @@ static QState Gizmo_init(Gizmo * const me, QEvt const * const e) {
     switch (e->sig) {
         /*${AOs::Gizmo::SM::init} */
         case Q_ENTRY_SIG: {
-            static QEvt const startEvt = { START_SIG, 0U, 0U };
+            static QEvt const startEvt = QEVT_INITIALIZER(START_SIG);
             QACTIVE_POST(&me->super, &startEvt, me); /* self-post */
             status_ = Q_HANDLED();
             break;

@@ -1,7 +1,7 @@
 /*****************************************************************************
 * Product: QUTEST fixture for the DPP components
-* Last updated for version 6.4.0
-* Last updated on  2019-02-08
+* Last updated for version 7.3.0
+* Last updated on  2023-06-23
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -37,7 +37,7 @@
 
 //#include "safe_std.h" /* portable "safe" <stdio.h>/<string.h> facilities */
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /* instantiate dummy collaborator AOs... */
 static QActiveDummy Philo_inst[N_PHILO];
@@ -51,10 +51,6 @@ QActive * const AO_Philo[N_PHILO] = {
 
 /*..........................................................................*/
 int main(int argc, char *argv[]) {
-    static QEvt const *tableQueueSto[N_PHILO];
-    static QSubscrList subscrSto[MAX_PUB_SIG];
-    static QF_MPOOL_EL(TableEvt) smlPoolSto[2*N_PHILO]; /* small pool */
-    uint8_t n;
 
     QF_init();    /* initialize the framework and the underlying RT kernel */
     BSP_init(argc, argv); /* initialize the Board Support Package */
@@ -69,16 +65,18 @@ int main(int argc, char *argv[]) {
     QS_TEST_PAUSE();
 
     /* initialize publish-subscribe... */
+    static QSubscrList subscrSto[MAX_PUB_SIG];
     QF_psInit(subscrSto, Q_DIM(subscrSto));
 
     /* initialize event pools... */
+    static QF_MPOOL_EL(TableEvt) smlPoolSto[2*N_PHILO]; /* small pool */
     QF_poolInit(smlPoolSto, sizeof(smlPoolSto), sizeof(smlPoolSto[0]));
 
     /* start and setup dummy AOs...
     * NOTE: You need to start dummy AOs, if you wish to subscribe
     *       them to events.
     */
-    for (n = 0; n < N_PHILO; ++n) {
+    for (uint8_t n = 0U; n < N_PHILO; ++n) {
         QActiveDummy_ctor(&Philo_inst[n]);
         QACTIVE_START(AO_Philo[n],
                      (uint_fast8_t)(n + 1U), /* priority */
@@ -90,6 +88,7 @@ int main(int argc, char *argv[]) {
 
     /* start the active objects... */
     Table_ctor(); /* instantiate the Table active object */
+    static QEvt const *tableQueueSto[N_PHILO];
     QACTIVE_START(AO_Table,           /* AO to start */
                   (uint_fast8_t)(N_PHILO + 1), /* QP priority of the AO */
                   tableQueueSto,        /* event queue storage */
@@ -121,12 +120,12 @@ void QS_onCommand(uint8_t cmdId,
 
     switch (cmdId) {
        case 0U: {
-           QEvt const e = { PAUSE_SIG, 0U, 0U };
+           QEvt const e = QEVT_INITIALIZER( PAUSE_SIG);
            QHSM_DISPATCH(&AO_Table->super, &e, AO_Table->prio);
            break;
        }
        case 1U: {
-           QEvt const e = { SERVE_SIG, 0U, 0U };
+           QEvt const e = QEVT_INITIALIZER(SERVE_SIG);
            QHSM_DISPATCH(&AO_Table->super, &e, AO_Table->prio);
            break;
        }

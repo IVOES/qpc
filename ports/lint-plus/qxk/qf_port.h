@@ -23,26 +23,29 @@
 * <info@state-machine.com>
 ============================================================================*/
 /*!
-* @date Last updated on: 2022-07-29
-* @version Last updated for: @ref qpc_7_0_1
+* @version Last updated for: @ref qpc_7_3_0
+* @date Last updated on: 2023-06-29
 *
 * @file
 * @brief QF/C port example for QXK, generic C99 compiler.
 */
-#ifndef QF_PORT_H
-#define QF_PORT_H
+#ifndef QF_PORT_H_
+#define QF_PORT_H_
+
+/* QF "thread" type used to store the MPU settings in the AO */
+#define QF_THREAD_TYPE  void const *
 
 /* interrupt disabling mechanism */
-#define QF_INT_DISABLE()            intDisable()
-#define QF_INT_ENABLE()             intEnable()
+#define QF_INT_DISABLE()    intDisable()
+#define QF_INT_ENABLE()     intEnable()
 
 void intDisable(void);
 void intEnable(void);
 
 /* QF critical section mechanism */
-#define QF_CRIT_STAT_TYPE           crit_stat_t
-#define QF_CRIT_ENTRY(stat_)        ((stat_) = critEntry())
-#define QF_CRIT_EXIT(stat_)         critExit(stat_)
+#define QF_CRIT_STAT_       crit_stat_t crit_stat_;
+#define QF_CRIT_E_()        (crit_stat_ = critEntry())
+#define QF_CRIT_X_()        critExit(crit_stat_)
 
 typedef unsigned int crit_stat_t;
 crit_stat_t critEntry(void);
@@ -51,4 +54,5 @@ void critExit(crit_stat_t stat);
 #include "qep_port.h"  /* QEP port */
 #include "qxk_port.h"  /* QXK port */
 
-#endif /* QF_PORT_H */
+#endif /* QF_PORT_H_ */
+

@@ -23,14 +23,14 @@
 * <info@state-machine.com>
 ============================================================================*/
 /*!
-* @date Last updated on: 2022-12-18
-* @version Last updated for: @ref qpc_7_2_0
+* @date Last updated on: 2023-05-25
+* @version Last updated for: @ref qpc_7_3_0
 *
 * @file
 * @brief QXK/C port to ARM Cortex-M, ARM-CLANG compiler
 */
-#ifndef QXK_PORT_H
-#define QXK_PORT_H
+#ifndef QXK_PORT_H_
+#define QXK_PORT_H_
 
 /* determination if the code executes in the ISR context */
 #define QXK_ISR_CONTEXT_() (QXK_get_IPSR() != 0U)
@@ -49,14 +49,27 @@ static inline uint32_t QXK_get_IPSR(void) {
 /* QXK ISR entry and exit */
 #define QXK_ISR_ENTRY() ((void)0)
 
-#define QXK_ISR_EXIT()  do {   \
-    QF_INT_DISABLE();          \
-    if (QXK_sched_() != 0U) {  \
-        QXK_CONTEXT_SWITCH_(); \
-    }                          \
-    QF_INT_ENABLE();           \
-    QXK_ARM_ERRATUM_838869();  \
-} while (false)
+#ifdef QF_MEM_ISOLATE
+    #define QXK_ISR_EXIT()  do {                                  \
+        QF_INT_DISABLE();                                         \
+        QF_MEM_SYS_();                                            \
+        if (QXK_sched_() != 0U) {                                 \
+            *Q_UINT2PTR_CAST(uint32_t, 0xE000ED04U) = (1U << 28U);\
+        }                                                         \
+        QF_MEM_APP_();                                            \
+        QF_INT_ENABLE();                                          \
+        QXK_ARM_ERRATUM_838869();                                 \
+    } while (false)
+#else
+    #define QXK_ISR_EXIT()  do {                                  \
+        QF_INT_DISABLE();                                         \
+        if (QXK_sched_() != 0U) {                                 \
+            *Q_UINT2PTR_CAST(uint32_t, 0xE000ED04U) = (1U << 28U);\
+        }                                                         \
+        QF_INT_ENABLE();                                          \
+        QXK_ARM_ERRATUM_838869();                                 \
+    } while (false)
+#endif
 
 #if (__ARM_ARCH == 6) /* ARMv6-M? */
     #define QXK_ARM_ERRATUM_838869() ((void)0)
@@ -95,5 +108,5 @@ void QXK_thread_ret(void);
 
 #include "qxk.h" /* QXK platform-independent public interface */
 
-#endif /* QXK_PORT_H */
+#endif /* QXK_PORT_H_ */
 

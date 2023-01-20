@@ -1,7 +1,7 @@
 /*****************************************************************************
 * Product: DPP example
-* Last updated for version 7.1.2
-* Last updated on  2022-09-22
+* Last updated for version 7.3.0
+* Last updated on  2023-06-28
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -35,7 +35,7 @@
 #include "dpp.h"
 #include "bsp.h"
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /*..........................................................................*/
 int main() {

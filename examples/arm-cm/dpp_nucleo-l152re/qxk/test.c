@@ -1,7 +1,7 @@
-/*****************************************************************************
+/*============================================================================
 * Product: DPP example
-* Last updated for version 6.7.0
-* Last updated on  2019-12-27
+* Last updated for version 7.3.0
+* Last updated on  2023-06-28
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -30,74 +30,66 @@
 * Contact information:
 * <www.state-machine.com/licensing>
 * <info@state-machine.com>
-*****************************************************************************/
+============================================================================*/
 #include "qpc.h"
 #include "dpp.h"
 #include "bsp.h"
 
-/* local "extended" thread object ..........................................*/
-static QXThread l_test1;
-static QXThread l_test2;
+/* local communication mechanisms ..........................................*/
 static QXMutex l_mutex;
 static QXSemaphore l_sema;
 
-/* Thread-Local Storage for the "extended" threads .........................*/
-typedef struct {
-    uint32_t foo;
-    uint8_t bar[10];
-} TLS_test;
-static TLS_test l_tls1;
-static TLS_test l_tls2;
-
-static void lib_fun(uint32_t x) {
-    QXK_TLS(TLS_test *)->foo = x;
-}
-
-/* global pointer to the test thread .......................................*/
-QXThread * const XT_Test1 = &l_test1;
-QXThread * const XT_Test2 = &l_test2;
+/*--------------------------------------------------------------------------*/
+/* Test1 eXtended thread... */
+static QXThread l_test1;
+QXThread * const XT_Test1 = &l_test1; /* global opaque pointer */
 
 /*..........................................................................*/
 static void Thread1_run(QXThread * const me) {
 
-    QS_OBJ_DICTIONARY(&l_test1);
+    QS_OBJ_DICTIONARY(XT_Test1);
+    QS_OBJ_DICTIONARY(&XT_Test1->timeEvt);
 
-    me->super.thread = &l_tls1; /* initialize the TLS for Thread1 */
+    /* subscribe to the EAT signal (from the DPP part of the application) */
+    QActive_subscribe(&me->super, EAT_SIG);
 
     for (;;) {
-        QXMutex_lock(&l_mutex, QXTHREAD_NO_TIMEOUT); /* lock the mutex */
-        BSP_ledOn();
-
-        if (QXMutex_tryLock(&l_mutex)) { /* exercise the mutex */
+        QEvt const *e = QXThread_queueGet(BSP_TICKS_PER_SEC/4U);
+        if (e != (QEvt *)0) {
             (void)QXSemaphore_signal(&l_sema); /* signal Thread2 */
-
-            QXThread_delay(10U);  /* BLOCK while holding a mutex */
-
-            QXMutex_unlock(&l_mutex);
+            QF_gc(e); /* must explicitly recycle the received event! */
         }
 
+        QXMutex_lock(&l_mutex, QXTHREAD_NO_TIMEOUT); /* lock the mutex */
+        BSP_ledOn();
+        if (QXMutex_tryLock(&l_mutex)) { /* nested mutex lock */
+            /* some flating point code to exercise the single-prec. VFP... */
+            double volatile x = 1.4142135;
+            x = x * 1.4142135;
+            QXThread_delay(1U);  /* BLOCK while holding a mutex */
+            QXMutex_unlock(&l_mutex);
+        }
         QXMutex_unlock(&l_mutex);
         BSP_ledOff();
-
-        QXThread_delay(BSP_TICKS_PER_SEC/7);  /* BLOCK */
-
-        /* publish to thread2 */
-        //QACTIVE_PUBLISH(Q_NEW(QEvt, TEST_SIG), &l_test1.super);
-
-        /* test TLS */
-        lib_fun(1U);
     }
 }
-
 /*..........................................................................*/
 void Test1_ctor(void) {
     QXThread_ctor(&l_test1, &Thread1_run, 0U);
 }
 
+/*--------------------------------------------------------------------------*/
+/* Test2 eXtended thread... */
+static QXThread l_test2;
+QXThread * const XT_Test2 = &l_test2;  /* global opaque pointer */
+
 /*..........................................................................*/
 static void Thread2_run(QXThread * const me) {
 
-    QS_OBJ_DICTIONARY(&l_test2);
+    QS_OBJ_DICTIONARY(XT_Test2);
+    QS_OBJ_DICTIONARY(&XT_Test2->timeEvt);
+    QS_OBJ_DICTIONARY(&l_sema);
+    QS_OBJ_DICTIONARY(&l_mutex);
 
     /* initialize the semaphore before using it
     * NOTE: the semaphore is initialized in the highest-priority thread
@@ -116,24 +108,15 @@ static void Thread2_run(QXThread * const me) {
     //QXMutex_init(&l_mutex, 0U); /* priority-ceiling NOT used */
     QXMutex_init(&l_mutex, N_PHILO + 6U); /*priority-ceiling protocol used*/
 
-    me->super.thread = &l_tls2; /* initialize the TLS for Thread2 */
-
-    /* subscribe to the test signal */
-    QActive_subscribe(&me->super, TEST_SIG);
-
     for (;;) {
         /* wait on a semaphore (BLOCK indefinitely) */
         QXSemaphore_wait(&l_sema, QXTHREAD_NO_TIMEOUT);
 
         QXMutex_lock(&l_mutex, QXTHREAD_NO_TIMEOUT); /* lock the mutex */
-        QXThread_delay(1U);  /* wait more (BLOCK) */
+        QXThread_delay(5U);  /* BLOCK while holding a mutex */
         QXMutex_unlock(&l_mutex);
-
-        /* test TLS */
-        lib_fun(2U);
     }
 }
-
 /*..........................................................................*/
 void Test2_ctor(void) {
     QXThread_ctor(&l_test2, &Thread2_run, 0U);

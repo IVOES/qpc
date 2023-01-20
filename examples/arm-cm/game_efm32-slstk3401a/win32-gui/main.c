@@ -35,7 +35,7 @@
 #include "bsp.h"
 #include "game.h"
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /* "fudge factor" for Windows, see NOTE1 */
 enum { WIN_FUDGE_FACTOR = 10 };
@@ -45,7 +45,7 @@ int main() {
     static QEvt const *missileQueueSto[2*WIN_FUDGE_FACTOR];
     static QEvt const *shipQueueSto[3*WIN_FUDGE_FACTOR];
     static QEvt const *tunnelQueueSto[(GAME_MINES_MAX + 5)*WIN_FUDGE_FACTOR];
-    static QF_MPOOL_EL(QEvt) smlPoolSto[10*WIN_FUDGE_FACTOR];
+    //static QF_MPOOL_EL(QEvt) smlPoolSto[10*WIN_FUDGE_FACTOR];
     static QF_MPOOL_EL(ObjectImageEvt)
            medPoolSto[(2*GAME_MINES_MAX + 10)*WIN_FUDGE_FACTOR];
     static QSubscrList subscrSto[MAX_PUB_SIG];
@@ -57,7 +57,7 @@ int main() {
     QF_psInit(subscrSto, Q_DIM(subscrSto));
 
     /* initialize the event pools... */
-    QF_poolInit(smlPoolSto, sizeof(smlPoolSto), sizeof(smlPoolSto[0]));
+    //QF_poolInit(smlPoolSto, sizeof(smlPoolSto), sizeof(smlPoolSto[0]));
     QF_poolInit(medPoolSto, sizeof(medPoolSto), sizeof(medPoolSto[0]));
 
     /* object dictionaries for AOs... */

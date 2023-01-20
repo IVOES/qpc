@@ -35,7 +35,7 @@
 #include "dpp.h"
 #include "bsp.h"
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /*..........................................................................*/
 int main(int argc, char *argv[]) {

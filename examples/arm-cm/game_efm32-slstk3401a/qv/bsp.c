@@ -88,7 +88,7 @@ static void paintBitsClear(uint8_t x, uint8_t y,
 
 /* ISRs used in the application ==========================================*/
 void SysTick_Handler(void) {
-    static QEvt const tickEvt = { TIME_TICK_SIG, 0U, 0U };
+    static QEvt const tickEvt = QEVT_INITIALIZER(TIME_TICK_SIG);
 
 #ifdef Q_SPY
     {
@@ -100,7 +100,8 @@ void SysTick_Handler(void) {
 #endif
 
     //QTIMEEVT_TICK_X(0U, &l_SysTick_Handler); /* process time events for rate 0 */
-    QACTIVE_POST(the_Ticker0, 0, 0); /* post a don't-care event to Ticker0 */
+    QTICKER_TICK(the_Ticker0, &l_SysTick_Handler); /* trigger ticker AO */
+
     QACTIVE_PUBLISH(&tickEvt, &l_SysTick_Handler); /* publish to all subscribers */
 
     {
@@ -124,7 +125,7 @@ void SysTick_Handler(void) {
        tmp ^= buttons.depressed;     /* changed debounced depressed */
        if ((tmp & (1U << PB0_PIN)) != 0U) {  /* debounced PB0 state changed? */
            if ((buttons.depressed & (1U << PB0_PIN)) != 0U) {/*PB0 depressed?*/
-               static QEvt const trigEvt = { PLAYER_TRIGGER_SIG, 0U, 0U};
+               static QEvt const trigEvt = QEVT_INITIALIZER(PLAYER_TRIGGER_SIG);
                QACTIVE_PUBLISH(&trigEvt, &l_SysTick_Handler);
            }
        }
@@ -711,13 +712,14 @@ void QV_onIdle(void) {  /* called with interrupts disabled, see NOTE01 */
 }
 
 /*..........................................................................*/
-Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
     /*
     * NOTE: add here your application-specific error handling
     */
-    (void)module;
-    (void)loc;
-    QS_ASSERTION(module, loc, 10000U); /* report assertion to QS */
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
+    QS_ASSERTION(module, id, 10000U); /* report assertion to QS */
 
 #ifndef NDEBUG
     /* light up both LEDs */
@@ -728,6 +730,11 @@ Q_NORETURN Q_onAssert(char const * const module, int_t const loc) {
 #endif
 
     NVIC_SystemReset();
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 
 /* QS callbacks ============================================================*/
@@ -832,7 +839,6 @@ void QS_onReset(void) {
 void QS_onCommand(uint8_t cmdId,
                   uint32_t param1, uint32_t param2, uint32_t param3)
 {
-    void assert_failed(char const *module, int loc);
     (void)cmdId;
     (void)param1;
     (void)param2;
@@ -846,9 +852,6 @@ void QS_onCommand(uint8_t cmdId,
 
     if (cmdId == 10U) {
         Q_ERROR();
-    }
-    else if (cmdId == 11U) {
-        assert_failed("QS_onCommand", 123);
     }
 }
 

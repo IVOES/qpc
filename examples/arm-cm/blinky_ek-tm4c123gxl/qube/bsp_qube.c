@@ -32,7 +32,7 @@ void BSP_ledOn(void) {
 QEvt const* Qube_onGenEvt(QSignal sig, char const* params) {
     Q_UNUSED_PAR(params); /* QHsmTst does not use params */
 
-    static QEvt evt = { 0U, 0U, 0U };
-    evt.sig = sig;
+    static QEvt evt;
+    QEvt_ctor(&evt, sig);
     return &evt;
 }

@@ -37,7 +37,7 @@
 
 //#include "safe_std.h" /* portable "safe" <stdio.h>/<string.h> facilities */
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 /*..........................................................................*/
 /* dummy Philo HSMs... */
@@ -104,12 +104,12 @@ void QS_onCommand(uint8_t cmdId,
 
     switch (cmdId) {
        case 0U: {
-           QEvt const e = { PAUSE_SIG, 0U, 0U };
+           QEvt const e = QEVT_INITIALIZER( PAUSE_SIG);
            QHSM_DISPATCH(&AO_Table->super, &e, AO_Table->prio);
            break;
        }
        case 1U: {
-           QEvt const e = { SERVE_SIG, 0U, 0U };
+           QEvt const e = QEVT_INITIALIZER(SERVE_SIG);
            QHSM_DISPATCH(&AO_Table->super, &e, AO_Table->prio);
            break;
        }

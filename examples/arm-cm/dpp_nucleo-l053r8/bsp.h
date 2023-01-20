@@ -49,6 +49,6 @@ void BSP_wait4SW1(void);
 void BSP_ledOn(void);
 void BSP_ledOff(void);
 
-extern QActive *the_Ticker0;
+extern QActive * const the_Ticker0;
 
 #endif /* BSP_H */

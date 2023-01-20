@@ -1,7 +1,7 @@
 /*****************************************************************************
 * Product: "Fly 'n' Shoot" game example
-* Last updated for version 6.9.2
-* Last updated on  2021-02-12
+* Last updated for version 7.3.0
+* Last updated on  2023-06-09
 *
 *                    Q u a n t u m  L e a P s
 *                    ------------------------
@@ -35,10 +35,10 @@
 #include "bsp.h"
 #include "game.h"
 
-Q_DEFINE_THIS_FILE
+//Q_DEFINE_THIS_FILE
 
 static QTicker l_ticker0; /* ticker active object for tick rate 0 */
-QActive *the_Ticker0 = &l_ticker0.super;
+QActive * const the_Ticker0 = &l_ticker0.super;
 
 /*..........................................................................*/
 int main() {
@@ -46,8 +46,8 @@ int main() {
     static QEvt const * shipQueueSto[3];
     static QEvt const * tunnelQueueSto[GAME_MINES_MAX + 5];
 
-    static QF_MPOOL_EL(QEvt)           smlPoolSto[10];
-    static QF_MPOOL_EL(ObjectImageEvt) medPoolSto[2*GAME_MINES_MAX + 10];
+    //static QF_MPOOL_EL(QEvt)           smlPoolSto[10];
+    static QF_MPOOL_EL(ObjectImageEvt) medPoolSto[2*GAME_MINES_MAX + 20];
 
     static QSubscrList    subscrSto[MAX_PUB_SIG];
 
@@ -58,7 +58,7 @@ int main() {
     QF_psInit(subscrSto, Q_DIM(subscrSto));
 
     /* initialize the event pools... */
-    QF_poolInit(smlPoolSto, sizeof(smlPoolSto), sizeof(smlPoolSto[0]));
+    //QF_poolInit(smlPoolSto, sizeof(smlPoolSto), sizeof(smlPoolSto[0]));
     QF_poolInit(medPoolSto, sizeof(medPoolSto), sizeof(medPoolSto[0]));
 
     /* object dictionaries for AOs... */

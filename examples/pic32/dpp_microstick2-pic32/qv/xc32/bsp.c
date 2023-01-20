@@ -80,7 +80,7 @@ void __ISR(_TIMER_2_VECTOR, IPL4SOFT) tickISR(void) {
 /*..........................................................................*/
 /* for testing interrupt nesting and active object preemption */
 void __ISR(_EXTERNAL_0_VECTOR, IPL6SOFT) testISR(void) {
-    static QEvt const eat_evt = { EAT_SIG, 0U, 0U };
+    static QEvt const eat_evt = QEVT_INITIALIZER(EAT_SIG);
 
     IFS0CLR = _IFS0_INT0IF_MASK; /* clear the interrupt source */
 
@@ -94,7 +94,10 @@ void BSP_init(void) {
 
     BSP_randomSeed(1234U);
 
-    Q_ALLEGE(QS_INIT((void *)0) != 0); /*initialize the QS software tracing */
+    /* initialize the QS software tracing */
+    if (QS_INIT((void *)0) == 0U) {
+        Q_ERROR();
+    }
     QS_OBJ_DICTIONARY(&l_tickISR);
     QS_OBJ_DICTIONARY(&l_testISR);
 
@@ -140,12 +143,20 @@ void BSP_randomSeed(uint32_t seed) {
 * that you ship your production code with assertions enabled).
 */
 
-Q_NORETURN Q_onAssert(char const * const file, int_t const loc) {
-    (void)file;       /* unused parameter */
-    (void)loc;        /* unused parameter */
-    QF_INT_DISABLE(); /* make sure that interrupts are disabled */
-    for (;;) {
-    }
+Q_NORETURN Q_onAssert(char const * const module, int_t const id) {
+    /*
+    * NOTE: add here your application-specific error handling
+    */
+    Q_UNUSED_PAR(module);
+    Q_UNUSED_PAR(id);
+
+    QS_ASSERTION(module, id, 10000U); /* report assertion to QS */
+    for (;;) {}
+}
+/*..........................................................................*/
+void assert_failed(char const * const module, int_t const id); /* prototype */
+void assert_failed(char const * const module, int_t const id) {
+    Q_onAssert(module, id);
 }
 
 /*..........................................................................*/
