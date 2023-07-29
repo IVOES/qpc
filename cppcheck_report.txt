@@ -1,0 +1,2378 @@
+doxygen/snippets/qep_qevt.c:3:13: style: struct member 'CalcEvt::keyId' is never used. [unusedStructMember]
+    uint8_t keyId; /* ID of the key depressed */
+            ^
+doxygen/snippets/qep_qhsm.c:4:12: style: struct member 'Calc::operand1' is never used. [unusedStructMember]
+    double operand1;
+           ^
+doxygen/snippets/qep_qhsm.c:5:12: style: struct member 'Calc::operand2' is never used. [unusedStructMember]
+    double operand2;
+           ^
+doxygen/snippets/qep_qhsm.c:6:10: style: struct member 'Calc::display' is never used. [unusedStructMember]
+    char display[DISP_WIDTH + 1];
+         ^
+doxygen/snippets/qep_qhsm.c:7:13: style: struct member 'Calc::len' is never used. [unusedStructMember]
+    uint8_t len;
+            ^
+doxygen/snippets/qep_qhsm.c:8:13: style: struct member 'Calc::opKey' is never used. [unusedStructMember]
+    uint8_t opKey;
+            ^
+doxygen/snippets/qep_qmsm.c:4:12: style: struct member 'Calc::operand1' is never used. [unusedStructMember]
+    double operand1;
+           ^
+doxygen/snippets/qep_qmsm.c:5:12: style: struct member 'Calc::operand2' is never used. [unusedStructMember]
+    double operand2;
+           ^
+doxygen/snippets/qep_qmsm.c:6:10: style: struct member 'Calc::display' is never used. [unusedStructMember]
+    char display[DISP_WIDTH + 1];
+         ^
+doxygen/snippets/qep_qmsm.c:7:13: style: struct member 'Calc::len' is never used. [unusedStructMember]
+    uint8_t len;
+            ^
+doxygen/snippets/qep_qmsm.c:8:13: style: struct member 'Calc::opKey' is never used. [unusedStructMember]
+    uint8_t opKey;
+            ^
+doxygen/snippets/qf_postx.c:7:5: error: syntax error: keyword 'if' is not allowed in global scope [syntaxError]
+    if (pe != (TableEvt *)0) {
+    ^
+doxygen/snippets/qf_tevt.c:3:21: error: Unmatched '{'. Configuration: ''. [syntaxError]
+    switch (e->sig) {
+                    ^
+doxygen/snippets/qmp_use.c:2:1: error: syntax error: keyword 'if' is not allowed in global scope [syntaxError]
+if (block != (void *)0) { /* allocation succeeded? */
+^
+doxygen/snippets/qs_ap.c:1:1: error: syntax error [syntaxError]
+enum UserSpyRecords {
+^
+doxygen/snippets/qs_filter.c:4:5: error: syntax error [syntaxError]
+    if (!QS_INIT(argv)) {         /* Initialize QS target component */
+    ^
+doxygen/snippets/qs_objArrDic.c:3:1: error: syntax error [syntaxError]
+for (uint8_t n = 0U; n < N_PHILO; ++n) {
+^
+doxygen/snippets/qs_onGetTime.c:7:5: error: syntax error [syntaxError]
+. . .
+    ^
+doxygen/snippets/qs_startup.c:21:5: error: syntax error [syntaxError]
+. . .
+    ^
+examples/arm-cm/blinky_button_nucleo-l053r8/blinky1.c:34:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("blinky1") /* for DBC assertions in this module */
+^
+examples/arm-cm/blinky_button_nucleo-l053r8/blinky3.c:34:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("blinky3") /* for DBC assertions in this module */
+^
+examples/arm-cm/blinky_button_nucleo-l053r8/button2a.c:34:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("button2a") /* for DBC assertions in this module */
+^
+examples/arm-cm/blinky_button_nucleo-l053r8/button2b.c:34:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("button2b") /* for DBC assertions in this module */
+^
+examples/arm-cm/blinky_button_nucleo-l053r8/qk/bsp.c:37:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("bsp_nucleo-l053r8") /* for DBC assertions */
+^
+examples/arm-cm/blinky_button_nucleo-l053r8/qk/main.c:34:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("main")
+^
+examples/arm-cm/dpp_efm32-slstk3401a/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/qk/bsp.c:329:25: error: There is an unknown macro here somewhere. Configuration is required. If ; is a macro then please configure it. [unknownMacro]
+        stat = "Unknown";
+                        ^
+examples/arm-cm/dpp_efm32-slstk3401a/qv/bsp.c:113:13: style: Variable 'tmp' is assigned a value that is never used. [unreadVariable]
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_efm32-slstk3401a/qxk/bsp.c:109:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_efm32-slstk3401a/qxk/bsp.c:96:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_efm32-slstk3401a/qxk/bsp.c:109:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_efm32-slstk3401a/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_ek-tm4c123gxl/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_ek-tm4c123gxl/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qk/bsp.c:161:14: style: struct member 'MPU_Region::RBAR' is never used. [unusedStructMember]
+    uint32_t RBAR;
+             ^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qk/bsp.c:162:14: style: struct member 'MPU_Region::RASR' is never used. [unusedStructMember]
+    uint32_t RASR;
+             ^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qk/bsp.c:238:13: style: union member 'Anonymous2::byteso' is never used. [unusedStructMember]
+    uint8_t byteso[1U << PHILO_SHARED_SIZE_POW2];
+            ^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qv/bsp.c:155:14: style: struct member 'MPU_Region::RBAR' is never used. [unusedStructMember]
+    uint32_t RBAR;
+             ^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qv/bsp.c:156:14: style: struct member 'MPU_Region::RASR' is never used. [unusedStructMember]
+    uint32_t RASR;
+             ^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qv/bsp.c:232:13: style: union member 'Anonymous2::byteso' is never used. [unusedStructMember]
+    uint8_t byteso[1U << PHILO_SHARED_SIZE_POW2];
+            ^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qxk/bsp.c:161:14: style: struct member 'MPU_Region::RBAR' is never used. [unusedStructMember]
+    uint32_t RBAR;
+             ^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qxk/bsp.c:162:14: style: struct member 'MPU_Region::RASR' is never used. [unusedStructMember]
+    uint32_t RASR;
+             ^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qxk/bsp.c:238:13: style: union member 'Anonymous2::byteso' is never used. [unusedStructMember]
+    uint8_t byteso[1U << PHILO_SHARED_SIZE_POW2];
+            ^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_mbed-lpc1768/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_mbed-lpc1768/qk/bsp.c:104:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_mbed-lpc1768/qk/bsp.c:91:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_mbed-lpc1768/qk/bsp.c:104:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_mbed-lpc1768/qv/bsp.c:102:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_mbed-lpc1768/qv/bsp.c:89:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_mbed-lpc1768/qv/bsp.c:102:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_mbed-lpc1768/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-c031c6/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-c031c6/qk/bsp.c:99:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6/qk/bsp.c:81:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-c031c6/qk/bsp.c:99:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6/qv/bsp.c:97:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6/qv/bsp.c:79:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-c031c6/qv/bsp.c:97:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6/qxk/bsp.c:99:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6/qxk/bsp.c:81:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-c031c6/qxk/bsp.c:99:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qk/bsp.c:153:14: style: struct member 'MPU_Region::RBAR' is never used. [unusedStructMember]
+    uint32_t RBAR;
+             ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qk/bsp.c:154:14: style: struct member 'MPU_Region::RASR' is never used. [unusedStructMember]
+    uint32_t RASR;
+             ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qk/bsp.c:230:13: style: union member 'Anonymous2::byteso' is never used. [unusedStructMember]
+    uint8_t byteso[1U << PHILO_SHARED_SIZE_POW2];
+            ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qk/bsp.c:105:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qk/bsp.c:83:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qk/bsp.c:105:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qv/bsp.c:149:14: style: struct member 'MPU_Region::RBAR' is never used. [unusedStructMember]
+    uint32_t RBAR;
+             ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qv/bsp.c:150:14: style: struct member 'MPU_Region::RASR' is never used. [unusedStructMember]
+    uint32_t RASR;
+             ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qv/bsp.c:226:13: style: union member 'Anonymous2::byteso' is never used. [unusedStructMember]
+    uint8_t byteso[1U << PHILO_SHARED_SIZE_POW2];
+            ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qv/bsp.c:103:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qv/bsp.c:81:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qv/bsp.c:103:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qxk/bsp.c:153:14: style: struct member 'MPU_Region::RBAR' is never used. [unusedStructMember]
+    uint32_t RBAR;
+             ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qxk/bsp.c:154:14: style: struct member 'MPU_Region::RASR' is never used. [unusedStructMember]
+    uint32_t RASR;
+             ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qxk/bsp.c:230:13: style: union member 'Anonymous2::byteso' is never used. [unusedStructMember]
+    uint8_t byteso[1U << PHILO_SHARED_SIZE_POW2];
+            ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qxk/bsp.c:105:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qxk/bsp.c:83:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/qxk/bsp.c:105:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-c031c6_mpu/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/qk/bsp.c:109:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-h743zi/qk/bsp.c:96:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-h743zi/qk/bsp.c:109:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-h743zi/qv/bsp.c:100:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-h743zi/qv/bsp.c:87:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-h743zi/qv/bsp.c:100:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-h743zi/qxk/bsp.c:109:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-h743zi/qxk/bsp.c:96:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-h743zi/qxk/bsp.c:109:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-h743zi/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-l053r8/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-l053r8/qk/bsp.c:100:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l053r8/qk/bsp.c:86:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-l053r8/qk/bsp.c:100:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l053r8/qv/bsp.c:95:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l053r8/qv/bsp.c:77:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-l053r8/qv/bsp.c:95:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l053r8/qxk/bsp.c:99:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l053r8/qxk/bsp.c:85:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-l053r8/qxk/bsp.c:99:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l053r8/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-l152re/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-l152re/qk/bsp.c:98:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l152re/qk/bsp.c:80:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-l152re/qk/bsp.c:98:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l152re/qv/bsp.c:96:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l152re/qv/bsp.c:78:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-l152re/qv/bsp.c:96:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l152re/qxk/bsp.c:98:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l152re/qxk/bsp.c:80:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-l152re/qxk/bsp.c:98:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l152re/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-l552ze/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_nucleo-l552ze/qk/bsp.c:91:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l552ze/qk/bsp.c:74:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-l552ze/qk/bsp.c:91:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l552ze/qv/bsp.c:90:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l552ze/qv/bsp.c:73:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-l552ze/qv/bsp.c:90:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l552ze/qxk/bsp.c:94:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l552ze/qxk/bsp.c:77:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_nucleo-l552ze/qxk/bsp.c:94:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_nucleo-l552ze/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_stm32f4-discovery/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/dpp_stm32f4-discovery/qk/bsp.c:106:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_stm32f4-discovery/qk/bsp.c:94:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_stm32f4-discovery/qk/bsp.c:106:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_stm32f4-discovery/qv/bsp.c:104:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_stm32f4-discovery/qv/bsp.c:92:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_stm32f4-discovery/qv/bsp.c:104:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_stm32f4-discovery/qxk/bsp.c:106:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_stm32f4-discovery/qxk/bsp.c:94:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/arm-cm/dpp_stm32f4-discovery/qxk/bsp.c:106:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/arm-cm/dpp_stm32f4-discovery/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/low-power_ek-tm4c123gxl/blinky0.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/low-power_ek-tm4c123gxl/blinky1.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cm/low-power_ek-tm4c123gxl/main.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cr/blinky_launchxl2-tms57012/qk/bsp.c:112:20: style: Variable '((t_isrFuncPTR*)0xFFF82000U)[2+1]' is assigned a value that is never used. [unreadVariable]
+    VIM_RAM[2 + 1] = (t_isrFuncPTR)&rtiCompare0; /* install the IRQ */
+                   ^
+examples/arm-cr/dpp_launchxl2-tms57012/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/arm-cr/dpp_launchxl2-tms57012/qk/bsp.c:110:5: error: syntax error: keyword 'if' is not allowed in global scope [syntaxError]
+    if ((tmp & (1U << SWB_PIN)) != 0U) {  /* debounced SWB state changed? */
+    ^
+examples/arm-cr/dpp_launchxl2-tms57012/qv/bsp.c:303:21: style: Variable '((t_isrFuncPTR*)0xFFF82000U)[13+1]' is assigned a value that is never used. [unreadVariable]
+    VIM_RAM[13 + 1] = (t_isrFuncPTR)&sciHighLevel; /* install the ISR */
+                    ^
+examples/arm-cr/dpp_launchxl2-tms57012/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/bsp.c:84:13: style: Variable 'tmp' is assigned a value that is never used. [unreadVariable]
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 62 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:610:5: style: Assignment of function parameter has no effect outside the function. [uselessAssignmentArg]
+    BufferSize   -= NumBytesRem;
+    ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:702:5: style: Assignment of function parameter has no effect outside the function. [uselessAssignmentArg]
+    BufferSize   -= NumBytesRem;
+    ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1244:25: style: The scope of the variable 'pDst' can be reduced. [variableScope]
+  volatile char*        pDst;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1294:25: style: The scope of the variable 'pDst' can be reduced. [variableScope]
+  volatile char*        pDst;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1353:25: style: The scope of the variable 'pDst' can be reduced. [variableScope]
+  volatile char*        pDst;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1645:34: style: The scope of the variable 'pUp' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_UP* pUp;
+                                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1696:36: style: The scope of the variable 'pDown' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_DOWN* pDown;
+                                   ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1739:34: style: The scope of the variable 'pUp' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_UP* pUp;
+                                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1774:36: style: The scope of the variable 'pDown' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_DOWN* pDown;
+                                   ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1809:34: style: The scope of the variable 'pUp' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_UP* pUp;
+                                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1844:36: style: The scope of the variable 'pDown' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_DOWN* pDown;
+                                   ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1892:25: style: The scope of the variable 'pRing' can be reduced. [variableScope]
+  SEGGER_RTT_BUFFER_UP* pRing;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1893:12: style: The scope of the variable 'Avail' can be reduced. [variableScope]
+  unsigned Avail;
+           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1941:25: style: The scope of the variable 'FragLen' can be reduced. [variableScope]
+  unsigned              FragLen;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1942:25: style: The scope of the variable 'Avail' can be reduced. [variableScope]
+  unsigned              Avail;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1943:25: style: The scope of the variable 'pRing' can be reduced. [variableScope]
+  SEGGER_RTT_BUFFER_UP* pRing;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:610:18: style: Variable 'BufferSize' is assigned a value that is never used. [unreadVariable]
+    BufferSize   -= NumBytesRem;
+                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:702:18: style: Variable 'BufferSize' is assigned a value that is never used. [unreadVariable]
+    BufferSize   -= NumBytesRem;
+                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:379:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY((void*)pDst, pBuffer, NumBytesToWrite);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:433:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY((void*)pDst, pData, NumBytes);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:457:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY((void*)pDst, pData, NumBytesAtOnce);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:460:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY((void*)pDst, pData + Rem, NumBytesAtOnce);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:579:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY(pBuffer, (void*)pSrc, NumBytesRem);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:607:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY(pBuffer, (void*)pSrc, NumBytesRem);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:671:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY(pBuffer, (void*)pSrc, NumBytesRem);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:699:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY(pBuffer, (void*)pSrc, NumBytesRem);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:853:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      SEGGER_RTT_MEMCPY((void*)pDst, pData, NumBytes);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:871:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      SEGGER_RTT_MEMCPY((void*)pDst, pData, Avail);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:258:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__CC_ARM' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_RTT_PUT_CB_SECTION(SEGGER_RTT_CB_ALIGN(SEGGER_RTT_CB _SEGGER_RTT));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:259:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__CC_ARM' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acUpBuffer  [BUFFER_SIZE_UP]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:260:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__CC_ARM' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acDownBuffer[BUFFER_SIZE_DOWN]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:258:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__GNUC__;__clang__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_RTT_PUT_CB_SECTION(SEGGER_RTT_CB_ALIGN(SEGGER_RTT_CB _SEGGER_RTT));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:259:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__GNUC__;__clang__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acUpBuffer  [BUFFER_SIZE_UP]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:260:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__GNUC__;__clang__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acDownBuffer[BUFFER_SIZE_DOWN]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:258:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__ICCARM__;__ICCRX__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_RTT_PUT_CB_SECTION(SEGGER_RTT_CB_ALIGN(SEGGER_RTT_CB _SEGGER_RTT));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:259:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__ICCARM__;__ICCRX__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acUpBuffer  [BUFFER_SIZE_UP]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:260:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__ICCARM__;__ICCRX__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acDownBuffer[BUFFER_SIZE_DOWN]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT_Syscalls_GCC.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 48 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT_printf.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 47 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT_printf.c:118:12: style: The scope of the variable 'Div' can be reduced. [variableScope]
+  unsigned Div;
+           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT_printf.c:122:8: style: The scope of the variable 'c' can be reduced. [variableScope]
+  char c;
+       ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT_printf.c:302:8: style: The scope of the variable 'c' can be reduced. [variableScope]
+  char c;
+       ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 73 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:988:21: style: The scope of the variable 'c' can be reduced. [variableScope]
+  char              c;
+                    ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1387:45: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordVoid' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordVoid(unsigned int EventID) {
+                                            ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:242:65: note: Function 'SEGGER_SYSVIEW_RecordVoid' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordVoid                    (unsigned int EventId);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1387:45: note: Function 'SEGGER_SYSVIEW_RecordVoid' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordVoid(unsigned int EventID) {
+                                            ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1407:44: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32(unsigned int EventID, U32 Value) {
+                                           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:243:65: note: Function 'SEGGER_SYSVIEW_RecordU32' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32                     (unsigned int EventId, U32 Para0);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1407:44: note: Function 'SEGGER_SYSVIEW_RecordU32' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32(unsigned int EventID, U32 Value) {
+                                           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1407:57: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32' argument 2 names different: declaration 'Para0' definition 'Value'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32(unsigned int EventID, U32 Value) {
+                                                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:243:78: note: Function 'SEGGER_SYSVIEW_RecordU32' argument 2 names different: declaration 'Para0' definition 'Value'.
+void SEGGER_SYSVIEW_RecordU32                     (unsigned int EventId, U32 Para0);
+                                                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1407:57: note: Function 'SEGGER_SYSVIEW_RecordU32' argument 2 names different: declaration 'Para0' definition 'Value'.
+void SEGGER_SYSVIEW_RecordU32(unsigned int EventID, U32 Value) {
+                                                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1430:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x2' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x2(unsigned int EventID, U32 Para0, U32 Para1) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:244:65: note: Function 'SEGGER_SYSVIEW_RecordU32x2' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x2                   (unsigned int EventId, U32 Para0, U32 Para1);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1430:46: note: Function 'SEGGER_SYSVIEW_RecordU32x2' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x2(unsigned int EventID, U32 Para0, U32 Para1) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1455:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x3' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x3(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:245:65: note: Function 'SEGGER_SYSVIEW_RecordU32x3' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x3                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1455:46: note: Function 'SEGGER_SYSVIEW_RecordU32x3' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x3(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1482:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x4' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x4(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:246:65: note: Function 'SEGGER_SYSVIEW_RecordU32x4' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x4                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1482:46: note: Function 'SEGGER_SYSVIEW_RecordU32x4' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x4(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1511:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x5' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x5(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:247:65: note: Function 'SEGGER_SYSVIEW_RecordU32x5' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x5                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1511:46: note: Function 'SEGGER_SYSVIEW_RecordU32x5' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x5(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1542:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x6' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x6(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:248:65: note: Function 'SEGGER_SYSVIEW_RecordU32x6' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x6                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1542:46: note: Function 'SEGGER_SYSVIEW_RecordU32x6' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x6(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1575:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x7' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x7(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:249:65: note: Function 'SEGGER_SYSVIEW_RecordU32x7' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x7                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1575:46: note: Function 'SEGGER_SYSVIEW_RecordU32x7' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x7(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1610:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x8' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x8(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:250:65: note: Function 'SEGGER_SYSVIEW_RecordU32x8' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x8                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1610:46: note: Function 'SEGGER_SYSVIEW_RecordU32x8' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x8(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1647:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x9' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x9(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:251:65: note: Function 'SEGGER_SYSVIEW_RecordU32x9' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x9                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1647:46: note: Function 'SEGGER_SYSVIEW_RecordU32x9' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x9(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1686:47: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x10' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x10(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8, U32 Para9) {
+                                              ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:252:65: note: Function 'SEGGER_SYSVIEW_RecordU32x10' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x10                  (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8, U32 Para9);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1686:47: note: Function 'SEGGER_SYSVIEW_RecordU32x10' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x10(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8, U32 Para9) {
+                                              ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1721:47: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordString' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordString(unsigned int EventID, const char* pString) {
+                                              ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:253:65: note: Function 'SEGGER_SYSVIEW_RecordString' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordString                  (unsigned int EventId, const char* pString);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1721:47: note: Function 'SEGGER_SYSVIEW_RecordString' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordString(unsigned int EventID, const char* pString) {
+                                              ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2471:76: style:inconclusive: Function 'SEGGER_SYSVIEW_EncodeData' argument 3 names different: declaration 'Len' definition 'NumBytes'. [funcArgNamesDifferent]
+U8* SEGGER_SYSVIEW_EncodeData(U8 *pPayload, const char* pSrc, unsigned int NumBytes) {
+                                                                           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.h:284:97: note: Function 'SEGGER_SYSVIEW_EncodeData' argument 3 names different: declaration 'Len' definition 'NumBytes'.
+U8*  SEGGER_SYSVIEW_EncodeData                    (U8* pPayload, const char* pSrc, unsigned int Len);
+                                                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2471:76: note: Function 'SEGGER_SYSVIEW_EncodeData' argument 3 names different: declaration 'Len' definition 'NumBytes'.
+U8* SEGGER_SYSVIEW_EncodeData(U8 *pPayload, const char* pSrc, unsigned int NumBytes) {
+                                                                           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:884:9: style: Variable 'c' is assigned a value that is never used. [unreadVariable]
+      c = *p;
+        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:260:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE), zero_init)) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:262:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE), zero_init)) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:260:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE), zero_init)) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:262:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE), zero_init)) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:340:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    __attribute__ ((section (SEGGER_SYSVIEW_SECTION), zero_init)) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:342:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    __attribute__ ((section (SEGGER_SYSVIEW_SECTION), zero_init)) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:246:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:248:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:246:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:248:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:330:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    __attribute__ ((section (SEGGER_SYSVIEW_SECTION))) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:332:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    __attribute__ ((section (SEGGER_SYSVIEW_SECTION))) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:272:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:274:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:353:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE] __attribute__ ((aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE)));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:355:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        static char _DownBuffer[8] __attribute__ ((aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE)));  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1779:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      ENCODE_U32(pPayload, SEGGER_SYSVIEW_ID_SHIFT);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1851:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SEGGER_SYSVIEW_ID_SHIFT);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1876:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SHRINK_ID(pInfo->TaskID));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1882:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SHRINK_ID(pInfo->TaskID));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2042:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SHRINK_ID(TimerId));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2138:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2163:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2187:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2225:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2248:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2368:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SHRINK_ID(ResourceId));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2500:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  Id = SHRINK_ID(Id);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2528:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  return SHRINK_ID(Id);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW_Config_embOS.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 33 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW_Config_embOS.c:74:0: information: Skipping configuration 'SEGGER_SYSVIEW_SYSDESC1' since the value of 'SEGGER_SYSVIEW_SYSDESC1' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_SYSVIEW_SendSysDesc(SEGGER_SYSVIEW_SYSDESC1);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW_Config_embOS.c:77:0: information: Skipping configuration 'SEGGER_SYSVIEW_SYSDESC2' since the value of 'SEGGER_SYSVIEW_SYSDESC2' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_SYSVIEW_SendSysDesc(SEGGER_SYSVIEW_SYSDESC2);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW_embOS.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 57 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW_embOS.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:301:23: error: Comparing pointers that point to different objects [comparePointers]
+  if (heap_end + incr > &__heap_end__) {
+                      ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:50:13: note: Variable declared here.
+extern char __heap_start__;  // Has to be defined in the linker file.
+            ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:298:16: note: Address of variable taken here.
+    heap_end = & __heap_start__;
+               ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:51:13: note: Variable declared here.
+extern char __heap_end__;
+            ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:301:25: note: Address of variable taken here.
+  if (heap_end + incr > &__heap_end__) {
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:301:23: note: Comparing pointers that point to different objects
+  if (heap_end + incr > &__heap_end__) {
+                      ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 49 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:599:5: style: Assignment of function parameter has no effect outside the function. [uselessAssignmentArg]
+    BufferSize   -= NumBytesRem;
+    ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:691:5: style: Assignment of function parameter has no effect outside the function. [uselessAssignmentArg]
+    BufferSize   -= NumBytesRem;
+    ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1233:25: style: The scope of the variable 'pDst' can be reduced. [variableScope]
+  volatile char*        pDst;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1283:25: style: The scope of the variable 'pDst' can be reduced. [variableScope]
+  volatile char*        pDst;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1342:25: style: The scope of the variable 'pDst' can be reduced. [variableScope]
+  volatile char*        pDst;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1634:34: style: The scope of the variable 'pUp' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_UP* pUp;
+                                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1685:36: style: The scope of the variable 'pDown' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_DOWN* pDown;
+                                   ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1728:34: style: The scope of the variable 'pUp' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_UP* pUp;
+                                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1763:36: style: The scope of the variable 'pDown' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_DOWN* pDown;
+                                   ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1798:34: style: The scope of the variable 'pUp' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_UP* pUp;
+                                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1833:36: style: The scope of the variable 'pDown' can be reduced. [variableScope]
+  volatile SEGGER_RTT_BUFFER_DOWN* pDown;
+                                   ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1881:25: style: The scope of the variable 'pRing' can be reduced. [variableScope]
+  SEGGER_RTT_BUFFER_UP* pRing;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1882:12: style: The scope of the variable 'Avail' can be reduced. [variableScope]
+  unsigned Avail;
+           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1930:25: style: The scope of the variable 'FragLen' can be reduced. [variableScope]
+  unsigned              FragLen;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1931:25: style: The scope of the variable 'Avail' can be reduced. [variableScope]
+  unsigned              Avail;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:1932:25: style: The scope of the variable 'pRing' can be reduced. [variableScope]
+  SEGGER_RTT_BUFFER_UP* pRing;
+                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:599:18: style: Variable 'BufferSize' is assigned a value that is never used. [unreadVariable]
+    BufferSize   -= NumBytesRem;
+                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:691:18: style: Variable 'BufferSize' is assigned a value that is never used. [unreadVariable]
+    BufferSize   -= NumBytesRem;
+                 ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:368:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY((void*)pDst, pBuffer, NumBytesToWrite);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:422:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY((void*)pDst, pData, NumBytes);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:446:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY((void*)pDst, pData, NumBytesAtOnce);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:449:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY((void*)pDst, pData + Rem, NumBytesAtOnce);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:568:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY(pBuffer, (void*)pSrc, NumBytesRem);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:596:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY(pBuffer, (void*)pSrc, NumBytesRem);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:660:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY(pBuffer, (void*)pSrc, NumBytesRem);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:688:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    SEGGER_RTT_MEMCPY(pBuffer, (void*)pSrc, NumBytesRem);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:842:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      SEGGER_RTT_MEMCPY((void*)pDst, pData, NumBytes);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:860:0: information: Skipping configuration 'MEMCPY' since the value of 'MEMCPY' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      SEGGER_RTT_MEMCPY((void*)pDst, pData, Avail);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:249:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__CC_ARM' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+SEGGER_RTT_PUT_CB_SECTION(SEGGER_RTT_CB_ALIGN(SEGGER_RTT_CB _SEGGER_RTT));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:250:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__CC_ARM' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acUpBuffer  [SEGGER_RTT__ROUND_UP_2_CACHE_LINE_SIZE(BUFFER_SIZE_UP)]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:251:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__CC_ARM' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acDownBuffer[SEGGER_RTT__ROUND_UP_2_CACHE_LINE_SIZE(BUFFER_SIZE_DOWN)]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:249:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__GNUC__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+SEGGER_RTT_PUT_CB_SECTION(SEGGER_RTT_CB_ALIGN(SEGGER_RTT_CB _SEGGER_RTT));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:250:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__GNUC__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acUpBuffer  [SEGGER_RTT__ROUND_UP_2_CACHE_LINE_SIZE(BUFFER_SIZE_UP)]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:251:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__GNUC__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acDownBuffer[SEGGER_RTT__ROUND_UP_2_CACHE_LINE_SIZE(BUFFER_SIZE_DOWN)]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:249:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__ICCARM__;__ICCRX__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+SEGGER_RTT_PUT_CB_SECTION(SEGGER_RTT_CB_ALIGN(SEGGER_RTT_CB _SEGGER_RTT));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:250:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__ICCARM__;__ICCRX__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acUpBuffer  [SEGGER_RTT__ROUND_UP_2_CACHE_LINE_SIZE(BUFFER_SIZE_UP)]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT.c:251:0: information: Skipping configuration 'SEGGER_RTT_SECTION;__ICCARM__;__ICCRX__' since the value of 'SEGGER_RTT_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+SEGGER_RTT_PUT_BUFFER_SECTION(SEGGER_RTT_BUFFER_ALIGN(static char _acDownBuffer[SEGGER_RTT__ROUND_UP_2_CACHE_LINE_SIZE(BUFFER_SIZE_DOWN)]));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT_Syscalls_IAR.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 36 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT_printf.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 35 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT_printf.c:118:12: style: The scope of the variable 'Div' can be reduced. [variableScope]
+  unsigned Div;
+           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT_printf.c:122:8: style: The scope of the variable 'c' can be reduced. [variableScope]
+  char c;
+       ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_RTT_printf.c:302:8: style: The scope of the variable 'c' can be reduced. [variableScope]
+  char c;
+       ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 61 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:988:21: style: The scope of the variable 'c' can be reduced. [variableScope]
+  char              c;
+                    ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1387:45: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordVoid' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordVoid(unsigned int EventID) {
+                                            ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:242:65: note: Function 'SEGGER_SYSVIEW_RecordVoid' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordVoid                    (unsigned int EventId);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1387:45: note: Function 'SEGGER_SYSVIEW_RecordVoid' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordVoid(unsigned int EventID) {
+                                            ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1407:44: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32(unsigned int EventID, U32 Value) {
+                                           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:243:65: note: Function 'SEGGER_SYSVIEW_RecordU32' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32                     (unsigned int EventId, U32 Para0);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1407:44: note: Function 'SEGGER_SYSVIEW_RecordU32' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32(unsigned int EventID, U32 Value) {
+                                           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1407:57: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32' argument 2 names different: declaration 'Para0' definition 'Value'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32(unsigned int EventID, U32 Value) {
+                                                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:243:78: note: Function 'SEGGER_SYSVIEW_RecordU32' argument 2 names different: declaration 'Para0' definition 'Value'.
+void SEGGER_SYSVIEW_RecordU32                     (unsigned int EventId, U32 Para0);
+                                                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1407:57: note: Function 'SEGGER_SYSVIEW_RecordU32' argument 2 names different: declaration 'Para0' definition 'Value'.
+void SEGGER_SYSVIEW_RecordU32(unsigned int EventID, U32 Value) {
+                                                        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1430:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x2' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x2(unsigned int EventID, U32 Para0, U32 Para1) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:244:65: note: Function 'SEGGER_SYSVIEW_RecordU32x2' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x2                   (unsigned int EventId, U32 Para0, U32 Para1);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1430:46: note: Function 'SEGGER_SYSVIEW_RecordU32x2' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x2(unsigned int EventID, U32 Para0, U32 Para1) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1455:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x3' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x3(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:245:65: note: Function 'SEGGER_SYSVIEW_RecordU32x3' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x3                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1455:46: note: Function 'SEGGER_SYSVIEW_RecordU32x3' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x3(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1482:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x4' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x4(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:246:65: note: Function 'SEGGER_SYSVIEW_RecordU32x4' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x4                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1482:46: note: Function 'SEGGER_SYSVIEW_RecordU32x4' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x4(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1511:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x5' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x5(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:247:65: note: Function 'SEGGER_SYSVIEW_RecordU32x5' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x5                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1511:46: note: Function 'SEGGER_SYSVIEW_RecordU32x5' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x5(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1542:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x6' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x6(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:248:65: note: Function 'SEGGER_SYSVIEW_RecordU32x6' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x6                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1542:46: note: Function 'SEGGER_SYSVIEW_RecordU32x6' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x6(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1575:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x7' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x7(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:249:65: note: Function 'SEGGER_SYSVIEW_RecordU32x7' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x7                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1575:46: note: Function 'SEGGER_SYSVIEW_RecordU32x7' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x7(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1610:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x8' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x8(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:250:65: note: Function 'SEGGER_SYSVIEW_RecordU32x8' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x8                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1610:46: note: Function 'SEGGER_SYSVIEW_RecordU32x8' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x8(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1647:46: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x9' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x9(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:251:65: note: Function 'SEGGER_SYSVIEW_RecordU32x9' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x9                   (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1647:46: note: Function 'SEGGER_SYSVIEW_RecordU32x9' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x9(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8) {
+                                             ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1686:47: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordU32x10' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordU32x10(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8, U32 Para9) {
+                                              ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:252:65: note: Function 'SEGGER_SYSVIEW_RecordU32x10' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x10                  (unsigned int EventId, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8, U32 Para9);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1686:47: note: Function 'SEGGER_SYSVIEW_RecordU32x10' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordU32x10(unsigned int EventID, U32 Para0, U32 Para1, U32 Para2, U32 Para3, U32 Para4, U32 Para5, U32 Para6, U32 Para7, U32 Para8, U32 Para9) {
+                                              ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1721:47: style:inconclusive: Function 'SEGGER_SYSVIEW_RecordString' argument 1 names different: declaration 'EventId' definition 'EventID'. [funcArgNamesDifferent]
+void SEGGER_SYSVIEW_RecordString(unsigned int EventID, const char* pString) {
+                                              ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:253:65: note: Function 'SEGGER_SYSVIEW_RecordString' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordString                  (unsigned int EventId, const char* pString);
+                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1721:47: note: Function 'SEGGER_SYSVIEW_RecordString' argument 1 names different: declaration 'EventId' definition 'EventID'.
+void SEGGER_SYSVIEW_RecordString(unsigned int EventID, const char* pString) {
+                                              ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2471:76: style:inconclusive: Function 'SEGGER_SYSVIEW_EncodeData' argument 3 names different: declaration 'Len' definition 'NumBytes'. [funcArgNamesDifferent]
+U8* SEGGER_SYSVIEW_EncodeData(U8 *pPayload, const char* pSrc, unsigned int NumBytes) {
+                                                                           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.h:284:97: note: Function 'SEGGER_SYSVIEW_EncodeData' argument 3 names different: declaration 'Len' definition 'NumBytes'.
+U8*  SEGGER_SYSVIEW_EncodeData                    (U8* pPayload, const char* pSrc, unsigned int Len);
+                                                                                                ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2471:76: note: Function 'SEGGER_SYSVIEW_EncodeData' argument 3 names different: declaration 'Len' definition 'NumBytes'.
+U8* SEGGER_SYSVIEW_EncodeData(U8 *pPayload, const char* pSrc, unsigned int NumBytes) {
+                                                                           ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:884:9: style: Variable 'c' is assigned a value that is never used. [unreadVariable]
+      c = *p;
+        ^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:260:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE), zero_init)) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:262:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE), zero_init)) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:260:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE), zero_init)) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:262:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE), zero_init)) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:340:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    __attribute__ ((section (SEGGER_SYSVIEW_SECTION), zero_init)) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:342:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__CC_ARM' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    __attribute__ ((section (SEGGER_SYSVIEW_SECTION), zero_init)) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:246:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:248:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:246:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:248:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((section (SEGGER_SYSVIEW_SECTION), aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:330:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    __attribute__ ((section (SEGGER_SYSVIEW_SECTION))) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:332:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;SEGGER_SYSVIEW_SECTION;__GNUC__' since the value of 'SEGGER_SYSVIEW_SECTION' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    __attribute__ ((section (SEGGER_SYSVIEW_SECTION))) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:272:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      __attribute__ ((aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE];
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:274:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        __attribute__ ((aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE))) static char _DownBuffer[8];  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:353:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      static char _UpBuffer  [SEGGER_SYSVIEW_RTT_BUFFER_SIZE] __attribute__ ((aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE)));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:355:0: information: Skipping configuration 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE;__GNUC__' since the value of 'SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+        static char _DownBuffer[8] __attribute__ ((aligned (SEGGER_SYSVIEW_CPU_CACHE_LINE_SIZE)));  // Small, fixed-size buffer, for back-channel comms
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1779:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+      ENCODE_U32(pPayload, SEGGER_SYSVIEW_ID_SHIFT);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1851:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SEGGER_SYSVIEW_ID_SHIFT);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1876:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SHRINK_ID(pInfo->TaskID));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:1882:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SHRINK_ID(pInfo->TaskID));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2042:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SHRINK_ID(TimerId));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2138:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2163:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2187:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2225:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2248:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  TaskId = SHRINK_ID(TaskId);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2368:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  ENCODE_U32(pPayload, SHRINK_ID(ResourceId));
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2500:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  Id = SHRINK_ID(Id);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW.c:2528:0: information: Skipping configuration 'SEGGER_SYSVIEW_ID_SHIFT' since the value of 'SEGGER_SYSVIEW_ID_SHIFT' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  return SHRINK_ID(Id);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW_Config_embOS.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 33 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW_Config_embOS.c:74:0: information: Skipping configuration 'SEGGER_SYSVIEW_SYSDESC1' since the value of 'SEGGER_SYSVIEW_SYSDESC1' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_SYSVIEW_SendSysDesc(SEGGER_SYSVIEW_SYSDESC1);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW_Config_embOS.c:77:0: information: Skipping configuration 'SEGGER_SYSVIEW_SYSDESC2' since the value of 'SEGGER_SYSVIEW_SYSDESC2' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+  SEGGER_SYSVIEW_SendSysDesc(SEGGER_SYSVIEW_SYSDESC2);
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW_embOS.c:0:0: information: Too many #ifdef configurations - cppcheck only checks 12 of 45 configurations. Use --force to check all configurations. [toomanyconfigs]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/SEGGER/SEGGER_SYSVIEW_embOS.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/emwin/demo_no_wm/Config/LCDConf.c:158:7: style: Variable 'p' is assigned a value that is never used. [unreadVariable]
+    p = (LCD_X_SETVRAMADDR_INFO *)pData;
+      ^
+examples/emwin/demo_no_wm/Config/LCDConf.c:167:7: style: Variable 'p' is assigned a value that is never used. [unreadVariable]
+    p = (LCD_X_SETORG_INFO *)pData;
+      ^
+examples/emwin/demo_no_wm/Config/LCDConf.c:176:7: style: Variable 'p' is assigned a value that is never used. [unreadVariable]
+    p = (LCD_X_SETLUTENTRY_INFO *)pData;
+      ^
+examples/emwin/demo_no_wm/Config/LCDConf.c:110:0: information: Skipping configuration 'PALETTE' since the value of 'PALETTE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    LCD_SetLUTEx(0, PALETTE);
+^
+examples/emwin/demo_no_wm/main.c:48:11: style: union member 'SmallEvent::min_size' is never used. [unusedStructMember]
+    void *min_size;
+          ^
+examples/emwin/demo_with_wm/Config/LCDConf.c:158:7: style: Variable 'p' is assigned a value that is never used. [unreadVariable]
+    p = (LCD_X_SETVRAMADDR_INFO *)pData;
+      ^
+examples/emwin/demo_with_wm/Config/LCDConf.c:167:7: style: Variable 'p' is assigned a value that is never used. [unreadVariable]
+    p = (LCD_X_SETORG_INFO *)pData;
+      ^
+examples/emwin/demo_with_wm/Config/LCDConf.c:176:7: style: Variable 'p' is assigned a value that is never used. [unreadVariable]
+    p = (LCD_X_SETLUTENTRY_INFO *)pData;
+      ^
+examples/emwin/demo_with_wm/Config/LCDConf.c:110:0: information: Skipping configuration 'PALETTE' since the value of 'PALETTE' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    LCD_SetLUTEx(0, PALETTE);
+^
+examples/emwin/demo_with_wm/main.c:48:11: style: union member 'SmallEvent::min_size' is never used. [unusedStructMember]
+    void *min_size;
+          ^
+examples/esp-idf/dpp-esp32devkitc/main/main.c:20:14: style: struct member 'mediumPool::data' is never used. [unusedStructMember]
+    uint32_t data[CONFIG_QPC_MEDIUM_POOL_ENTRY_SIZE];
+             ^
+examples/esp-idf/dpp-esp32devkitc/main/main.c:30:14: style: struct member 'largePool::data' is never used. [unusedStructMember]
+    uint32_t data[CONFIG_QPC_LARGE_POOL_ENTRY_SIZE];
+             ^
+examples/freertos/arm-cm/dpp_ek-tm4c123gxl/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/freertos/arm-cm/dpp_ek-tm4c123gxl/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/freertos/arm-cm/dpp_nucleo-h743zi/bsp.c:134:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/freertos/arm-cm/dpp_nucleo-h743zi/bsp.c:124:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear SysTick_CTRL_COUNTFLAG */
+            ^
+examples/freertos/arm-cm/dpp_nucleo-h743zi/bsp.c:134:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/freertos/arm-cm/dpp_nucleo-h743zi/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/freertos/arm-cm/dpp_nucleo-h743zi/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/lwip/arm-cm/lwip_ek-lm3s6965/lwipmgr.c:149:40: style: Variable 'user0' is assigned a value that is never used. [unreadVariable]
+    macaddr[2] = (uint8_t)user0; user0 >>= 8;
+                                       ^
+examples/pic32/blinky_microstick2-pic32/qk/xc32/bsp.c:77:6: error: There is an unknown macro here somewhere. Configuration is required. If __ISR is a macro then please configure it. [unknownMacro]
+void __ISR(_EXTERNAL_0_VECTOR, IPL6SOFT) testISR(void) {
+     ^
+examples/pic32/blinky_microstick2-pic32/qv/xc32/bsp.c:73:6: error: There is an unknown macro here somewhere. Configuration is required. If __ISR is a macro then please configure it. [unknownMacro]
+void __ISR(_EXTERNAL_0_VECTOR, IPL6SOFT) testISR(void) {
+     ^
+examples/pic32/dpp_microstick2-pic32/qk/xc32/bsp.c:86:6: error: There is an unknown macro here somewhere. Configuration is required. If __ISR is a macro then please configure it. [unknownMacro]
+void __ISR(_EXTERNAL_0_VECTOR, IPL6SOFT) testISR(void) {
+     ^
+examples/pic32/dpp_microstick2-pic32/qv/xc32/bsp.c:82:6: error: There is an unknown macro here somewhere. Configuration is required. If __ISR is a macro then please configure it. [unknownMacro]
+void __ISR(_EXTERNAL_0_VECTOR, IPL6SOFT) testISR(void) {
+     ^
+examples/qutest/dpp-comp/src/bsp.c:77:28: error: There is an unknown macro here somewhere. Configuration is required. If ; is a macro then please configure it. [unknownMacro]
+        Q_ASSERT_ID(100, 0);
+                           ^
+examples/qutest/dpp-comp/src/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/qutest/dpp/src/bsp.c:77:28: error: There is an unknown macro here somewhere. Configuration is required. If ; is a macro then please configure it. [unknownMacro]
+        Q_ASSERT_ID(100, 0);
+                           ^
+examples/qutest/dpp/src/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/qutest/dpp/src/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/qutest/self_test/test/test_qutest.c:211:22: error: There is an unknown macro here somewhere. Configuration is required. If ; is a macro then please configure it. [unknownMacro]
+        return qs_tp_;
+                     ^
+examples/qutest/unity_ledbar/printf/printf_LedBar.c:9:5: warning: %d in format string (no. 1) requires 'int' but the argument type is 'unsigned int'. [invalidPrintfArgType_sint]
+    printf("LedBar_setPercent %d %d\n", ret, percent);
+    ^
+examples/qutest/unity_ledbar/printf/spy_Led.c:19:5: warning: %d in format string (no. 1) requires 'int' but the argument type is 'unsigned int'. [invalidPrintfArgType_sint]
+    printf("Led_on %d %d\n", ret, index);
+    ^
+examples/qutest/unity_ledbar/src/LedBar.c:7:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("LedBar")
+^
+examples/qutest/unity_ledbar2/src/LedBar2.c:8:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("LedBar2")
+^
+examples/qutest/unity_mock/test/spy_Led.c:71:31: error: There is an unknown macro here somewhere. Configuration is required. If ; is a macro then please configure it. [unknownMacro]
+        ret = (uint32_t)qs_tp_;
+                              ^
+examples/threadx/arm-cm/dpp_ek-tm4c123gxl/main.c:45:13: style: union member 'SmallEvents::e0' is never used. [unusedStructMember]
+    void   *e0; /* minimum event size */
+            ^
+examples/threadx/arm-cm/dpp_ek-tm4c123gxl/main.c:46:13: style: union member 'SmallEvents::e1' is never used. [unusedStructMember]
+    uint8_t e1[sizeof(TableEvt)];
+            ^
+examples/threadx/arm-cm/dpp_ek-tm4c123gxl/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/threadx/arm-cm/dpp_ek-tm4c123gxl/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/threadx/arm-cm/dpp_stm32f429-discovery/main.c:45:13: style: union member 'SmallEvents::e0' is never used. [unusedStructMember]
+    void   *e0; /* minimum event size */
+            ^
+examples/threadx/arm-cm/dpp_stm32f429-discovery/main.c:46:13: style: union member 'SmallEvents::e1' is never used. [unusedStructMember]
+    uint8_t e1[sizeof(TableEvt)];
+            ^
+examples/threadx/arm-cm/dpp_stm32f429-discovery/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/threadx/arm-cm/dpp_stm32f429-discovery/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:82:15: style: Unused variable: cpu_sr [unusedVariable]
+    OS_CPU_SR cpu_sr;
+              ^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:102:15: style: Unused variable: cpu_sr [unusedVariable]
+    OS_CPU_SR cpu_sr;
+              ^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/uc-os2/arm-cm/dpp_nucleo-l053r8/bsp.c:72:15: style: Unused variable: cpu_sr [unusedVariable]
+    OS_CPU_SR cpu_sr;
+              ^
+examples/uc-os2/arm-cm/dpp_nucleo-l053r8/bsp.c:132:9: style: Variable 'tmp' is reassigned a value before the old one has been used. [redundantAssignment]
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/uc-os2/arm-cm/dpp_nucleo-l053r8/bsp.c:118:13: note: tmp is assigned
+        tmp = SysTick->CTRL; /* clear CTRL_COUNTFLAG */
+            ^
+examples/uc-os2/arm-cm/dpp_nucleo-l053r8/bsp.c:132:9: note: tmp is overwritten
+    tmp = buttons.depressed; /* save the debounced depressed buttons */
+        ^
+examples/uc-os2/arm-cm/dpp_nucleo-l053r8/bsp.c:331:15: style: Unused variable: cpu_sr [unusedVariable]
+    OS_CPU_SR cpu_sr;
+              ^
+examples/uc-os2/arm-cm/dpp_nucleo-l053r8/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/uc-os2/arm-cm/dpp_nucleo-l053r8/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/workstation/blinky/blinky.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/workstation/dpp-comp/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/workstation/dpp/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/workstation/dpp/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/workstation/qhsmtst/main.c:73:13: warning:inconclusive: Width 1 given in format string (no. 1) is smaller than destination buffer 'inp[4]'. [invalidScanfFormatWidth_smaller]
+            scanf("%1s", inp); /* input the event */
+            ^
+examples/workstation/qhsmtst/qhsmtst.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/workstation/qmsmtst/main.c:73:13: warning:inconclusive: Width 1 given in format string (no. 1) is smaller than destination buffer 'inp[4]'. [invalidScanfFormatWidth_smaller]
+            scanf("%1s", inp); /* input the event */
+            ^
+examples/workstation/qmsmtst/qmsmtst.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/zephyr/dpp/src/philo.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/zephyr/dpp/src/table.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+ports/arm-cm/qk/armclang/qk_port.c:77:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
+                  ^
+ports/arm-cm/qk/armclang/qk_port.c:88:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (0xFFU << 16U));
+                  ^
+ports/arm-cm/qk/armclang/qk_port.c:39:0: information: Skipping configuration 'QK_USE_IRQ_HANDLER' since the value of 'QK_USE_IRQ_HANDLER' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+void QK_USE_IRQ_HANDLER(void);
+^
+ports/arm-cm/qk/armclang/qk_port.c:94:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_IP[QK_USE_IRQ_NUM] = 0U; /* priority 0 (highest) */
+^
+ports/arm-cm/qk/armclang/qk_port.c:95:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_EN[QK_USE_IRQ_NUM >> 5U] = (1U << (QK_USE_IRQ_NUM & 0x1FU));
+^
+ports/arm-cm/qk/armclang/qk_port.c:224:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LDR     r0,=" STRINGIFY(NVIC_PEND + ((QK_USE_IRQ_NUM >> 5) << 2)) "\n"
+^
+ports/arm-cm/qk/armclang/qk_port.c:226:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LSLS    r1,r1,#" STRINGIFY(QK_USE_IRQ_NUM & 0x1F) "\n" /* r1 := IRQ bit */
+^
+ports/arm-cm/qk/gnu/qk_port.c:77:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
+                  ^
+ports/arm-cm/qk/gnu/qk_port.c:88:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (0xFFU << 16U));
+                  ^
+ports/arm-cm/qk/gnu/qk_port.c:39:0: information: Skipping configuration 'QK_USE_IRQ_HANDLER' since the value of 'QK_USE_IRQ_HANDLER' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+void QK_USE_IRQ_HANDLER(void);
+^
+ports/arm-cm/qk/gnu/qk_port.c:94:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_IP[QK_USE_IRQ_NUM] = 0U; /* priority 0 (highest) */
+^
+ports/arm-cm/qk/gnu/qk_port.c:95:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_EN[QK_USE_IRQ_NUM >> 5U] = (1U << (QK_USE_IRQ_NUM & 0x1FU));
+^
+ports/arm-cm/qk/gnu/qk_port.c:229:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LDR     r0,=" STRINGIFY(NVIC_PEND + ((QK_USE_IRQ_NUM >> 5) << 2)) "\n"
+^
+ports/arm-cm/qk/gnu/qk_port.c:231:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LSL     r1,r1,#" STRINGIFY(QK_USE_IRQ_NUM & 0x1F) "\n" /* r1 := IRQ bit */
+^
+ports/arm-cm/qk/iar/qk_port.c:77:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
+                  ^
+ports/arm-cm/qk/iar/qk_port.c:88:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (0xFFU << 16U));
+                  ^
+ports/arm-cm/qk/iar/qk_port.c:39:0: information: Skipping configuration 'QK_USE_IRQ_HANDLER' since the value of 'QK_USE_IRQ_HANDLER' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+void QK_USE_IRQ_HANDLER(void);
+^
+ports/arm-cm/qk/iar/qk_port.c:94:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_IP[QK_USE_IRQ_NUM] = 0U; /* priority 0 (highest) */
+^
+ports/arm-cm/qk/iar/qk_port.c:95:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_EN[QK_USE_IRQ_NUM >> 5U] = (1U << (QK_USE_IRQ_NUM & 0x1FU));
+^
+ports/arm-cm/qk/iar/qk_port.c:224:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LDR     r0,=" STRINGIFY(NVIC_PEND + ((QK_USE_IRQ_NUM >> 5) << 2)) "\n"
+^
+ports/arm-cm/qk/iar/qk_port.c:226:0: information: Skipping configuration 'QK_USE_IRQ_NUM' since the value of 'QK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LSLS    r1,r1,#" STRINGIFY(QK_USE_IRQ_NUM & 0x1F) "\n" /* r1 := IRQ bit */
+^
+ports/arm-cm/qv/armclang/qv_port.c:63:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
+                  ^
+ports/arm-cm/qv/gnu/qv_port.c:63:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
+                  ^
+ports/arm-cm/qv/iar/qv_port.c:63:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
+                  ^
+ports/arm-cm/qxk/armclang/qxk_port.c:77:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
+                  ^
+ports/arm-cm/qxk/armclang/qxk_port.c:88:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (0xFFU << 16U));
+                  ^
+ports/arm-cm/qxk/armclang/qxk_port.c:43:0: information: Skipping configuration 'QXK_USE_IRQ_HANDLER' since the value of 'QXK_USE_IRQ_HANDLER' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+void QXK_USE_IRQ_HANDLER(void);
+^
+ports/arm-cm/qxk/armclang/qxk_port.c:94:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_IP[QXK_USE_IRQ_NUM] = 0U; /* priority 0 (highest) */
+^
+ports/arm-cm/qxk/armclang/qxk_port.c:95:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_EN[QXK_USE_IRQ_NUM >> 5U] = (1U << (QXK_USE_IRQ_NUM & 0x1FU));
+^
+ports/arm-cm/qxk/armclang/qxk_port.c:550:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LDR     r0,=" STRINGIFY(NVIC_PEND + ((QXK_USE_IRQ_NUM >> 5) << 2)) "\n"
+^
+ports/arm-cm/qxk/armclang/qxk_port.c:552:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LSLS    r1,r1,#" STRINGIFY(QXK_USE_IRQ_NUM & 0x1F) "\n" /* r1 := IRQ bit */
+^
+ports/arm-cm/qxk/gnu/qxk_port.c:77:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
+                  ^
+ports/arm-cm/qxk/gnu/qxk_port.c:88:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (0xFFU << 16U));
+                  ^
+ports/arm-cm/qxk/gnu/qxk_port.c:43:0: information: Skipping configuration 'QXK_USE_IRQ_HANDLER' since the value of 'QXK_USE_IRQ_HANDLER' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+void QXK_USE_IRQ_HANDLER(void);
+^
+ports/arm-cm/qxk/gnu/qxk_port.c:94:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_IP[QXK_USE_IRQ_NUM] = 0U; /* priority 0 (highest) */
+^
+ports/arm-cm/qxk/gnu/qxk_port.c:95:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_EN[QXK_USE_IRQ_NUM >> 5U] = (1U << (QXK_USE_IRQ_NUM & 0x1FU));
+^
+ports/arm-cm/qxk/gnu/qxk_port.c:555:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LDR     r0,=" STRINGIFY(NVIC_PEND + ((QXK_USE_IRQ_NUM >> 5) << 2)) "\n"
+^
+ports/arm-cm/qxk/gnu/qxk_port.c:557:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LSL     r1,r1,#" STRINGIFY(QXK_USE_IRQ_NUM & 0x1F) "\n" /* r1 := IRQ bit */
+^
+ports/arm-cm/qxk/iar/qxk_port.c:77:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (QF_BASEPRI << 24U));
+                  ^
+ports/arm-cm/qxk/iar/qxk_port.c:88:19: style: Variable '((uint32_t volatile*)0xE000ED18U)[2]' is assigned a value that is never used. [unreadVariable]
+    SCB_SYSPRI[2] = (SCB_SYSPRI[2] | (0xFFU << 16U));
+                  ^
+ports/arm-cm/qxk/iar/qxk_port.c:43:0: information: Skipping configuration 'QXK_USE_IRQ_HANDLER' since the value of 'QXK_USE_IRQ_HANDLER' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+void QXK_USE_IRQ_HANDLER(void);
+^
+ports/arm-cm/qxk/iar/qxk_port.c:94:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_IP[QXK_USE_IRQ_NUM] = 0U; /* priority 0 (highest) */
+^
+ports/arm-cm/qxk/iar/qxk_port.c:95:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    NVIC_EN[QXK_USE_IRQ_NUM >> 5U] = (1U << (QXK_USE_IRQ_NUM & 0x1FU));
+^
+ports/arm-cm/qxk/iar/qxk_port.c:550:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LDR     r0,=" STRINGIFY(NVIC_PEND + ((QXK_USE_IRQ_NUM >> 5) << 2)) "\n"
+^
+ports/arm-cm/qxk/iar/qxk_port.c:552:0: information: Skipping configuration 'QXK_USE_IRQ_NUM' since the value of 'QXK_USE_IRQ_NUM' is unknown. Use -D if you want to check it. You can use -U to skip it explicitly. [ConfigurationNotChecked]
+    "  LSLS    r1,r1,#" STRINGIFY(QXK_USE_IRQ_NUM & 0x1F) "\n" /* r1 := IRQ bit */
+^
+ports/embos/qf_port.c:129:0: error: Syntax error in #elif [preprocessorErrorDirective]
+#elif
+^
+ports/embos/qf_port.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+ports/esp-idf/qf_port.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+ports/freertos/qf_port.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+ports/posix-qv/qf_port.c:58:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("qf_port")
+^
+ports/posix/qf_port.c:58:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("qf_port")
+^
+ports/uc-os2/qf_port.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+ports/win32-qutest/qutest_port.c:279:17: style: Consecutive return, break, continue, goto or throw statements are unnecessary. [duplicateBreak]
+                break;
+                ^
+ports/win32-qv/qf_port.c:46:1: error: There is an unknown macro here somewhere. Configuration is required. If Q_DEFINE_THIS_MODULE is a macro then please configure it. [unknownMacro]
+Q_DEFINE_THIS_MODULE("qf_port")
+^
+ports/win32-qv/qwin_gui.c:207:31: style:inconclusive: Function 'SegmentDisplay_init' argument 2 names different: declaration 'segNum' definition 'segmentNum'. [funcArgNamesDifferent]
+                         UINT segmentNum, UINT bitmapNum)
+                              ^
+ports/win32-qv/qwin_gui.h:125:31: note: Function 'SegmentDisplay_init' argument 2 names different: declaration 'segNum' definition 'segmentNum'.
+                         UINT segNum, UINT bitmapNum);
+                              ^
+ports/win32-qv/qwin_gui.c:207:31: note: Function 'SegmentDisplay_init' argument 2 names different: declaration 'segNum' definition 'segmentNum'.
+                         UINT segmentNum, UINT bitmapNum)
+                              ^
+ports/win32/qwin_gui.c:207:31: style:inconclusive: Function 'SegmentDisplay_init' argument 2 names different: declaration 'segNum' definition 'segmentNum'. [funcArgNamesDifferent]
+                         UINT segmentNum, UINT bitmapNum)
+                              ^
+ports/win32/qwin_gui.h:125:31: note: Function 'SegmentDisplay_init' argument 2 names different: declaration 'segNum' definition 'segmentNum'.
+                         UINT segNum, UINT bitmapNum);
+                              ^
+ports/win32/qwin_gui.c:207:31: note: Function 'SegmentDisplay_init' argument 2 names different: declaration 'segNum' definition 'segmentNum'.
+                         UINT segmentNum, UINT bitmapNum)
+                              ^
+src/qf/qep_hsm.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qep_msm.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qf_act.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qf_actq.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qf_defer.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qf_mem.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qf_ps.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qf_qact.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qf_qeq.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qf_qmact.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qf/qf_time.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qk/qk.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qs/qs.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qs/qs_rx.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qv/qv.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qxk/qxk.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qxk/qxk_mutex.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qxk/qxk_sema.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+src/qxk/qxk_xthr.c:0:0: information: This file is not analyzed. Cppcheck failed to extract a valid configuration. Use -v for more details. [noValidConfiguration]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:136:0: style: The function 'App_TCBInitHook' is never used. [unusedFunction]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:97:0: style: The function 'App_TaskCreateHook' is never used. [unusedFunction]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:98:0: style: The function 'App_TaskDelHook' is never used. [unusedFunction]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:100:0: style: The function 'App_TaskIdleHook' is never used. [unusedFunction]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:133:0: style: The function 'App_TaskReturnHook' is never used. [unusedFunction]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:134:0: style: The function 'App_TaskStatHook' is never used. [unusedFunction]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:135:0: style: The function 'App_TaskSwHook' is never used. [unusedFunction]
+
+^
+examples/uc-os2/arm-cm/dpp_ek-tm4c123gxl/bsp.c:138:0: style: The function 'App_TimeTickHook' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/BSP.c:120:0: style: The function 'BSP_ClrLED' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/BSP.c:76:0: style: The function 'BSP_Init' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/BSP.c:108:0: style: The function 'BSP_SetLED' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/BSP.c:132:0: style: The function 'BSP_ToggleLED' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/Setup/BSP_UART.c:303:0: style: The function 'BSP_UART_DeInit' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/Setup/BSP_UART.c:249:0: style: The function 'BSP_UART_Init' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/Setup/BSP_UART.c:321:0: style: The function 'BSP_UART_SetBaudrate' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/Setup/BSP_UART.c:336:0: style: The function 'BSP_UART_SetReadCallback' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/Setup/BSP_UART.c:352:0: style: The function 'BSP_UART_SetWriteCallback' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/iar/Setup/BSP_UART.c:374:0: style: The function 'BSP_UART_Write1' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:482:0: style: The function 'BSP_advanceWalls' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:225:0: style: The function 'BSP_clearFB' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:235:0: style: The function 'BSP_clearWalls' is never used. [unusedFunction]
+
+^
+examples/qutest/qhsmtst/test/test_qhsm.c:67:0: style: The function 'BSP_display' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:614:0: style: The function 'BSP_displayOff' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:610:0: style: The function 'BSP_displayOn' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/qv/bsp.c:330:0: style: The function 'BSP_displayPaused' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/qv/bsp.c:316:0: style: The function 'BSP_displayPhilStat' is never used. [unusedFunction]
+
+^
+examples/workstation/calc/bsp.c:74:0: style: The function 'BSP_display_error' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:507:0: style: The function 'BSP_doBitmapsOverlap' is never used. [unusedFunction]
+
+^
+examples/arm-cm/blinky_ek-tm4c123gxl/qube/bsp_qube.c:15:0: style: The function 'BSP_exit' is never used. [unusedFunction]
+
+^
+examples/qutest/start_seq/src/bsp.c:56:0: style: The function 'BSP_getStatus' is never used. [unusedFunction]
+
+^
+examples/workstation/calc/bsp.c:94:0: style: The function 'BSP_get_value' is never used. [unusedFunction]
+
+^
+examples/workstation/calc/bsp.c:57:0: style: The function 'BSP_insert' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:245:0: style: The function 'BSP_isThrottle' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:571:0: style: The function 'BSP_isWallHit' is never used. [unusedFunction]
+
+^
+examples/arm-cm/low-power_ek-tm4c123gxl/qk/bsp.c:136:0: style: The function 'BSP_led0_off' is never used. [unusedFunction]
+
+^
+examples/arm-cm/low-power_ek-tm4c123gxl/qk/bsp.c:140:0: style: The function 'BSP_led0_on' is never used. [unusedFunction]
+
+^
+examples/workstation/calc/bsp.c:98:0: style: The function 'BSP_message' is never used. [unusedFunction]
+
+^
+examples/qutest/start_seq/src/bsp.c:50:0: style: The function 'BSP_msg' is never used. [unusedFunction]
+
+^
+examples/workstation/calc/bsp.c:78:0: style: The function 'BSP_negate' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:477:0: style: The function 'BSP_paintBitmap' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qk_lock.c:1:0: style: The function 'BSP_random' is never used. [unusedFunction]
+
+^
+examples/workstation/comp/bsp.c:49:0: style: The function 'BSP_showMsg' is never used. [unusedFunction]
+
+^
+examples/workstation/comp/bsp.c:59:0: style: The function 'BSP_showTime12H' is never used. [unusedFunction]
+
+^
+examples/workstation/comp/bsp.c:54:0: style: The function 'BSP_showTime24H' is never used. [unusedFunction]
+
+^
+examples/arm-cm/low-power_ek-tm4c123gxl/qk/bsp.c:152:0: style: The function 'BSP_tickRate0_on' is never used. [unusedFunction]
+
+^
+examples/arm-cm/game_efm32-slstk3401a/qk/bsp.c:219:0: style: The function 'BSP_updateScreen' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qep_qinit.c:12:0: style: The function 'Calc_on' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_mbed-lpc1768/qk/bsp.c:123:0: style: The function 'EINT0_IRQHandler' is never used. [unusedFunction]
+
+^
+test/et/et.c:66:0: style: The function 'ET_test_' is never used. [unusedFunction]
+
+^
+test/et/et.c:120:0: style: The function 'ET_verify_assert_' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-c031c6/qk/bsp.c:119:0: style: The function 'EXTI0_1_IRQHandler' is never used. [unusedFunction]
+
+^
+examples/freertos/arm-cm/dpp_nucleo-h743zi/bsp.c:75:0: style: The function 'EXTI0_IRQHandler' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_ek-tm4c123gxl/qk/bsp.c:121:0: style: The function 'GPIOPortA_IRQHandler' is never used. [unusedFunction]
+
+^
+examples/arm-cm/low-power_ek-tm4c123gxl/qk/bsp.c:89:0: style: The function 'GPIOPortF_IRQHandler' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/qv/bsp.c:120:0: style: The function 'GPIO_EVEN_IRQHandler' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qxk_sema.c:21:0: style: The function 'GPIO_Handler' is never used. [unusedFunction]
+
+^
+examples/emwin/demo_no_wm/bsp.c:75:0: style: The function 'GUI_MOUSE_StoreState' is never used. [unusedFunction]
+
+^
+examples/emwin/demo_no_wm/Config/GUIConf.c:50:0: style: The function 'GUI_X_Config' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/stm32h7xx_hal_msp.c:98:0: style: The function 'HAL_InitTick' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-l552ze/stm32l5xx_hal_msp.c:66:0: style: The function 'HAL_MspInit' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/stm32h7xx_hal_msp.c:166:0: style: The function 'HAL_UARTEx_RxFifoFullCallback' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/stm32h7xx_hal_msp.c:170:0: style: The function 'HAL_UARTEx_TxFifoEmptyCallback' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/stm32h7xx_hal_msp.c:174:0: style: The function 'HAL_UARTEx_WakeupCallback' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/stm32h7xx_hal_msp.c:149:0: style: The function 'HAL_UART_MspDeInit' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/stm32h7xx_hal_msp.c:111:0: style: The function 'HAL_UART_MspInit' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/stm32h7xx_hal_msp.c:178:0: style: The function 'HAL_UART_RxCpltCallback' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/SEGGER_HardFaultHandler.c:209:0: style: The function 'HardFaultHandler' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qf_tick.c:10:0: style: The function 'ISR_timer' is never used. [unusedFunction]
+
+^
+examples/emwin/demo_no_wm/Config/LCDConf.c:95:0: style: The function 'LCD_X_Config' is never used. [unusedFunction]
+
+^
+examples/emwin/demo_no_wm/Config/LCDConf.c:135:0: style: The function 'LCD_X_DisplayDriver' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-l552ze/qk/bsp.c:118:0: style: The function 'LPUART1_IRQHandler' is never used. [unusedFunction]
+
+^
+examples/qutest/unity_ledbar/test/mocks/MockLed.c:121:0: style: The function 'Led_off_CMockExpect' is never used. [unusedFunction]
+
+^
+examples/qutest/unity_ledbar/test/mocks/MockLed.c:87:0: style: The function 'Led_on_CMockExpectAndReturn' is never used. [unusedFunction]
+
+^
+examples/emwin/demo_no_wm/main.c:55:0: style: The function 'MainTask' is never used. [unusedFunction]
+
+^
+ports/arm-cm/qk/armclang/qk_port.c:253:0: style: The function 'NMI_Handler' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/RTOSInit_STM32H7xx.c:281:0: style: The function 'OS_COM_Send1' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Error.c:264:0: style: The function 'OS_Error' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/bsp.c:147:0: style: The function 'OS_Idle' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/RTOSInit_STM32H7xx.c:183:0: style: The function 'OS_InitHW' is never used. [unusedFunction]
+
+^
+ports/arm-cm/qk/armclang/qk_port.c:129:0: style: The function 'PendSV_Handler' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qf_post.c:3:0: style: The function 'Philoso_hungry' is never used. [unusedFunction]
+
+^
+test/qf/qequeue/test.c:70:0: style: The function 'QActive_publish_' is never used. [unusedFunction]
+
+^
+ports/qube/qube.c:343:0: style: The function 'QActive_start_' is never used. [unusedFunction]
+
+^
+ports/win32/qf_port.c:169:0: style: The function 'QActive_stop' is never used. [unusedFunction]
+
+^
+ports/threadx/qf_port.c:239:0: style: The function 'QFSchedLock_' is never used. [unusedFunction]
+
+^
+ports/threadx/qf_port.c:279:0: style: The function 'QFSchedUnlock_' is never used. [unusedFunction]
+
+^
+ports/win32/qf_port.c:68:0: style: The function 'QF_enterCriticalSection_' is never used. [unusedFunction]
+
+^
+ports/win32/qf_port.c:72:0: style: The function 'QF_leaveCriticalSection_' is never used. [unusedFunction]
+
+^
+test/qf/qequeue/test.c:83:0: style: The function 'QF_newX_' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qf_oncontextsw.c:4:0: style: The function 'QF_onContextSw' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qk/bsp.c:176:0: style: The function 'QF_onMemApp' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_ek-tm4c123gxl_mpu/qk/bsp.c:168:0: style: The function 'QF_onMemSys' is never used. [unusedFunction]
+
+^
+test/qf/qequeue/test.c:66:0: style: The function 'QF_poolGetMaxBlockSize' is never used. [unusedFunction]
+
+^
+ports/win32/qf_port.c:125:0: style: The function 'QF_setWin32Prio' is never used. [unusedFunction]
+
+^
+ports/arm-cm/qk/armclang/qk_port.c:72:0: style: The function 'QK_init' is never used. [unusedFunction]
+
+^
+ports/pic32/qk/xc32/qk_port.c:47:0: style: The function 'QK_isr_' is never used. [unusedFunction]
+
+^
+examples/arm-cm/blinky_efm32-slstk3401a/qk/bsp.c:134:0: style: The function 'QK_onIdle' is never used. [unusedFunction]
+
+^
+ports/arm-cm/qk/armclang/qk_port.c:191:0: style: The function 'QK_thread_ret' is never used. [unusedFunction]
+
+^
+ports/qube/qube.c:402:0: style: The function 'QSPY_onPrintLn' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/qv/bsp.c:548:0: style: The function 'QS_onCommand' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/qv/bsp.c:518:0: style: The function 'QS_onGetTime' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/qv/bsp.c:452:0: style: The function 'QS_onStartup' is never used. [unusedFunction]
+
+^
+examples/qutest/blinky/test/test_blinky.c:93:0: style: The function 'QS_onTestEvt' is never used. [unusedFunction]
+
+^
+ports/posix-qutest/qutest_port.c:248:0: style: The function 'QS_onTestLoop' is never used. [unusedFunction]
+
+^
+examples/qutest/blinky/test/test_blinky.c:103:0: style: The function 'QS_onTestPost' is never used. [unusedFunction]
+
+^
+examples/qutest/blinky/test/test_blinky.c:76:0: style: The function 'QS_onTestSetup' is never used. [unusedFunction]
+
+^
+examples/qutest/blinky/test/test_blinky.c:79:0: style: The function 'QS_onTestTeardown' is never used. [unusedFunction]
+
+^
+ports/posix-qv/qs_port.c:243:0: style: The function 'QS_output' is never used. [unusedFunction]
+
+^
+ports/posix-qv/qs_port.c:288:0: style: The function 'QS_rx_input' is never used. [unusedFunction]
+
+^
+test/qk/test_sched/bsp_efm32pg1b.c:358:0: style: The function 'QTimeEvt_tick1_' is never used. [unusedFunction]
+
+^
+test/qf/qequeue/test.c:78:0: style: The function 'QTimeEvt_tick_' is never used. [unusedFunction]
+
+^
+ports/arm-cm/qv/armclang/qv_port.c:58:0: style: The function 'QV_init' is never used. [unusedFunction]
+
+^
+examples/arm-cm/blinky_efm32-slstk3401a/qv/bsp.c:132:0: style: The function 'QV_onIdle' is never used. [unusedFunction]
+
+^
+ports/arm-cm/qxk/armclang/qxk_port.c:72:0: style: The function 'QXK_init' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/qxk/bsp.c:325:0: style: The function 'QXK_onIdle' is never used. [unusedFunction]
+
+^
+ports/arm-cm/qxk/armclang/qxk_port.c:118:0: style: The function 'QXK_stackInit_' is never used. [unusedFunction]
+
+^
+ports/arm-cm/qxk/armclang/qxk_port.c:514:0: style: The function 'QXK_thread_ret' is never used. [unusedFunction]
+
+^
+ports/qube/qube.c:79:0: style: The function 'Qube_setAO' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1540:0: style: The function 'SEGGER_RTT_AllocDownBuffer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1642:0: style: The function 'SEGGER_RTT_ConfigUpBuffer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:2027:0: style: The function 'SEGGER_RTT_GetAvailWriteSpace' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:2048:0: style: The function 'SEGGER_RTT_GetBytesInBuffer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1491:0: style: The function 'SEGGER_RTT_HasData' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1512:0: style: The function 'SEGGER_RTT_HasDataUp' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1463:0: style: The function 'SEGGER_RTT_HasKey' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1869:0: style: The function 'SEGGER_RTT_Init' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1349:0: style: The function 'SEGGER_RTT_PutChar' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1290:0: style: The function 'SEGGER_RTT_PutCharSkip' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1240:0: style: The function 'SEGGER_RTT_PutCharSkipNoLock' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:738:0: style: The function 'SEGGER_RTT_ReadUpBuffer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1841:0: style: The function 'SEGGER_RTT_SetFlagsDownBuffer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1806:0: style: The function 'SEGGER_RTT_SetFlagsUpBuffer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1771:0: style: The function 'SEGGER_RTT_SetNameDownBuffer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1736:0: style: The function 'SEGGER_RTT_SetNameUpBuffer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1890:0: style: The function 'SEGGER_RTT_SetTerminal' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1939:0: style: The function 'SEGGER_RTT_TerminalOut' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1440:0: style: The function 'SEGGER_RTT_WaitKey' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1151:0: style: The function 'SEGGER_RTT_WriteDownBuffer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:1210:0: style: The function 'SEGGER_RTT_WriteString' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT.c:809:0: style: The function 'SEGGER_RTT_WriteWithOverwriteNoLock' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_RTT_printf.c:475:0: style: The function 'SEGGER_RTT_printf' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW_Config_embOS.c:98:0: style: The function 'SEGGER_SYSVIEW_Conf' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:3011:0: style: The function 'SEGGER_SYSVIEW_DisableEvents' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2997:0: style: The function 'SEGGER_SYSVIEW_EnableEvents' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2471:0: style: The function 'SEGGER_SYSVIEW_EncodeData' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2499:0: style: The function 'SEGGER_SYSVIEW_EncodeId' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2445:0: style: The function 'SEGGER_SYSVIEW_EncodeString' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2418:0: style: The function 'SEGGER_SYSVIEW_EncodeU32' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2975:0: style: The function 'SEGGER_SYSVIEW_Error' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2822:0: style: The function 'SEGGER_SYSVIEW_ErrorfHost' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2912:0: style: The function 'SEGGER_SYSVIEW_ErrorfTarget' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1830:0: style: The function 'SEGGER_SYSVIEW_GetChannelID' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:3026:0: style: The function 'SEGGER_SYSVIEW_IsStarted' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2307:0: style: The function 'SEGGER_SYSVIEW_Mark' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2265:0: style: The function 'SEGGER_SYSVIEW_MarkStart' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2286:0: style: The function 'SEGGER_SYSVIEW_MarkStop' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2334:0: style: The function 'SEGGER_SYSVIEW_NameMarker' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2362:0: style: The function 'SEGGER_SYSVIEW_NameResource' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2113:0: style: The function 'SEGGER_SYSVIEW_OnIdle' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2132:0: style: The function 'SEGGER_SYSVIEW_OnTaskCreate' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2181:0: style: The function 'SEGGER_SYSVIEW_OnTaskStartExec' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2219:0: style: The function 'SEGGER_SYSVIEW_OnTaskStartReady' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2201:0: style: The function 'SEGGER_SYSVIEW_OnTaskStopExec' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2242:0: style: The function 'SEGGER_SYSVIEW_OnTaskStopReady' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2157:0: style: The function 'SEGGER_SYSVIEW_OnTaskTerminate' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2931:0: style: The function 'SEGGER_SYSVIEW_Print' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2752:0: style: The function 'SEGGER_SYSVIEW_PrintfHost' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2718:0: style: The function 'SEGGER_SYSVIEW_PrintfHostEx' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2874:0: style: The function 'SEGGER_SYSVIEW_PrintfTarget' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2855:0: style: The function 'SEGGER_SYSVIEW_PrintfTargetEx' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2072:0: style: The function 'SEGGER_SYSVIEW_RecordEndCall' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2094:0: style: The function 'SEGGER_SYSVIEW_RecordEndCallU32' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1969:0: style: The function 'SEGGER_SYSVIEW_RecordEnterISR' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2036:0: style: The function 'SEGGER_SYSVIEW_RecordEnterTimer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1996:0: style: The function 'SEGGER_SYSVIEW_RecordExitISR' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2018:0: style: The function 'SEGGER_SYSVIEW_RecordExitISRToScheduler' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2054:0: style: The function 'SEGGER_SYSVIEW_RecordExitTimer' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2590:0: style: The function 'SEGGER_SYSVIEW_RecordModuleDescription' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1721:0: style: The function 'SEGGER_SYSVIEW_RecordString' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1686:0: style: The function 'SEGGER_SYSVIEW_RecordU32x10' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1455:0: style: The function 'SEGGER_SYSVIEW_RecordU32x3' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1482:0: style: The function 'SEGGER_SYSVIEW_RecordU32x4' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1511:0: style: The function 'SEGGER_SYSVIEW_RecordU32x5' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1542:0: style: The function 'SEGGER_SYSVIEW_RecordU32x6' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1575:0: style: The function 'SEGGER_SYSVIEW_RecordU32x7' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1610:0: style: The function 'SEGGER_SYSVIEW_RecordU32x8' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1647:0: style: The function 'SEGGER_SYSVIEW_RecordU32x9' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2549:0: style: The function 'SEGGER_SYSVIEW_RegisterModule' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2391:0: style: The function 'SEGGER_SYSVIEW_SendPacket' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1870:0: style: The function 'SEGGER_SYSVIEW_SendTaskInfo' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:1373:0: style: The function 'SEGGER_SYSVIEW_SetRAMBase' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2527:0: style: The function 'SEGGER_SYSVIEW_ShrinkId' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2953:0: style: The function 'SEGGER_SYSVIEW_Warn' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2787:0: style: The function 'SEGGER_SYSVIEW_WarnfHost' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/SEGGER/SEGGER_SYSVIEW.c:2893:0: style: The function 'SEGGER_SYSVIEW_WarnfTarget' is never used. [unusedFunction]
+
+^
+examples/emwin/demo_no_wm/Config/SIMConf.c:51:0: style: The function 'SIMConf_C' is never used. [unusedFunction]
+
+^
+examples/emwin/demo_no_wm/Config/SIMConf.c:41:0: style: The function 'SIM_X_Config' is never used. [unusedFunction]
+
+^
+examples/emwin/demo_no_wm/sim_x.c:37:0: style: The function 'SIM_X_Init' is never used. [unusedFunction]
+
+^
+examples/qutest/unity_ledbar2/test/mocks/MockSpi.c:88:0: style: The function 'SPI_beginTransaction_CMockExpect' is never used. [unusedFunction]
+
+^
+examples/qutest/unity_ledbar2/test/mocks/MockSpi.c:143:0: style: The function 'SPI_endTransaction_CMockExpect' is never used. [unusedFunction]
+
+^
+examples/qutest/unity_ledbar2/test/mocks/MockSpi.c:120:0: style: The function 'SPI_transfer_CMockExpect' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qf_ticker.c:14:0: style: The function 'SysTick_Handler' is never used. [unusedFunction]
+
+^
+examples/msp430/blinky_msp-exp430f5529lp/qk/bsp.c:65:0: style: The function 'TIMER0_A0_ISR' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qf_ticker.c:21:0: style: The function 'Timer0A_IRQHandler' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qep_qhist.c:8:0: style: The function 'ToastOven_doorClosed' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qep_qhist.c:23:0: style: The function 'ToastOven_doorOpen' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_ek-tm4c123gxl/qk/bsp.c:148:0: style: The function 'UART0_IRQHandler' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/qv/bsp.c:141:0: style: The function 'USART0_RX_IRQHandler' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-c031c6/qk/bsp.c:135:0: style: The function 'USART2_IRQHandler' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_nucleo-h743zi/qk/bsp.c:136:0: style: The function 'USART3_IRQHandler' is never used. [unusedFunction]
+
+^
+examples/msp430/dpp_msp-exp430f5529lp/qk/bsp.c:240:0: style: The function 'USCI_A1_ISR' is never used. [unusedFunction]
+
+^
+examples/arm-cm/dpp_efm32-slstk3401a/win32-gui/bsp.c:74:0: style: The function 'WinMain' is never used. [unusedFunction]
+
+^
+examples/arm-cm/low-power_ek-tm4c123gxl/qxk/xblinky1.c:48:0: style: The function 'XBlinky1_ctor' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/RTOSInit_STM32H7xx.c:101:0: style: The function '_OS_OnRX' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/RTOSInit_STM32H7xx.c:113:0: style: The function '_OS_OnTX' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_MallocLock.c:72:0: style: The function '__malloc_lock' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_MallocLock.c:81:0: style: The function '__malloc_unlock' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:104:0: style: The function '_close' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:117:0: style: The function '_execve' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:132:0: style: The function '_exit' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:145:0: style: The function '_fork' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:161:0: style: The function '_fstat' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:175:0: style: The function '_getpid' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:186:0: style: The function '_gettimeofday' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:203:0: style: The function '_isatty' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:217:0: style: The function '_kill' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:232:0: style: The function '_link' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:247:0: style: The function '_lseek' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:262:0: style: The function '_open' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:277:0: style: The function '_read' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:293:0: style: The function '_sbrk' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:319:0: style: The function '_stat' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:334:0: style: The function '_times' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:347:0: style: The function '_unlink' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:361:0: style: The function '_wait' is never used. [unusedFunction]
+
+^
+examples/embos/arm-cm/dpp_nucleo-h743zi/gnu/Setup/OS_Syscalls.c:381:0: style: The function '_write' is never used. [unusedFunction]
+
+^
+examples/esp-idf/dpp-esp32devkitc/main/main.c:40:0: style: The function 'app_main' is never used. [unusedFunction]
+
+^
+examples/arm-cm/blinky_efm32-slstk3401a/qk/bsp.c:163:0: style: The function 'assert_failed' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qxk_sema.c:12:0: style: The function 'main_threadXYZ' is never used. [unusedFunction]
+
+^
+examples/qutest/unity_basic/test_unity/TestProductionCode_Runner.c:39:0: style: The function 'resetTest' is never used. [unusedFunction]
+
+^
+examples/arm-cr/blinky_launchxl2-tms57012/qv/bsp.c:79:0: style: The function 'rtiNotification' is never used. [unusedFunction]
+
+^
+doxygen/snippets/qa_run.c:2:0: style: The function 'run' is never used. [unusedFunction]
+
+^
+examples/lwip/arm-cm/lwip_ek-lm3s6965/qk/bsp.c:235:0: style: The function 'sys_now' is never used. [unusedFunction]
+
+^
+examples/threadx/arm-cm/dpp_ek-tm4c123gxl/main.c:61:0: style: The function 'tx_application_define' is never used. [unusedFunction]
+
+^
+examples/freertos/arm-cm/dpp_ek-tm4c123gxl/bsp.c:219:0: style: The function 'vApplicationGetIdleTaskMemory' is never used. [unusedFunction]
+
+^
+examples/freertos/arm-cm/dpp_ek-tm4c123gxl/bsp.c:174:0: style: The function 'vApplicationIdleHook' is never used. [unusedFunction]
+
+^
+examples/freertos/arm-cm/dpp_ek-tm4c123gxl/bsp.c:209:0: style: The function 'vApplicationStackOverflowHook' is never used. [unusedFunction]
+
+^
+examples/freertos/arm-cm/dpp_ek-tm4c123gxl/bsp.c:131:0: style: The function 'vApplicationTickHook' is never used. [unusedFunction]
+
+^
+examples/qutest/unity_ledbar/test/TestLedBar_Runner.c:47:0: style: The function 'verifyTest' is never used. [unusedFunction]
+
+^
+nofile:0:0: information: Cppcheck cannot find all the include files (use --check-config for details) [missingInclude]
+
